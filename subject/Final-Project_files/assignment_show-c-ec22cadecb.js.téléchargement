@@ -1,0 +1,627 @@
+(window["canvasWebpackJsonp"]=window["canvasWebpackJsonp"]||[]).push([[274,655],{"0jNN":function(e,t,n){"use strict"
+var r=Object.prototype.hasOwnProperty
+var o=Array.isArray
+var i=function(){var e=[]
+for(var t=0;t<256;++t)e.push("%"+((t<16?"0":"")+t.toString(16)).toUpperCase())
+return e}()
+var a=function(e){while(e.length>1){var t=e.pop()
+var n=t.obj[t.prop]
+if(o(n)){var r=[]
+for(var i=0;i<n.length;++i)"undefined"!==typeof n[i]&&r.push(n[i])
+t.obj[t.prop]=r}}}
+var s=function(e,t){var n=t&&t.plainObjects?Object.create(null):{}
+for(var r=0;r<e.length;++r)"undefined"!==typeof e[r]&&(n[r]=e[r])
+return n}
+var l=function e(t,n,i){if(!n)return t
+if("object"!==typeof n){if(o(t))t.push(n)
+else{if(!t||"object"!==typeof t)return[t,n];(i&&(i.plainObjects||i.allowPrototypes)||!r.call(Object.prototype,n))&&(t[n]=true)}return t}if(!t||"object"!==typeof t)return[t].concat(n)
+var a=t
+o(t)&&!o(n)&&(a=s(t,i))
+if(o(t)&&o(n)){n.forEach((function(n,o){if(r.call(t,o)){var a=t[o]
+a&&"object"===typeof a&&n&&"object"===typeof n?t[o]=e(a,n,i):t.push(n)}else t[o]=n}))
+return t}return Object.keys(n).reduce((function(t,o){var a=n[o]
+r.call(t,o)?t[o]=e(t[o],a,i):t[o]=a
+return t}),a)}
+var c=function(e,t){return Object.keys(t).reduce((function(e,n){e[n]=t[n]
+return e}),e)}
+var d=function(e,t,n){var r=e.replace(/\+/g," ")
+if("iso-8859-1"===n)return r.replace(/%[0-9a-f]{2}/gi,unescape)
+try{return decodeURIComponent(r)}catch(e){return r}}
+var _=function(e,t,n){if(0===e.length)return e
+var r=e
+"symbol"===typeof e?r=Symbol.prototype.toString.call(e):"string"!==typeof e&&(r=String(e))
+if("iso-8859-1"===n)return escape(r).replace(/%u[0-9a-f]{4}/gi,(function(e){return"%26%23"+parseInt(e.slice(2),16)+"%3B"}))
+var o=""
+for(var a=0;a<r.length;++a){var s=r.charCodeAt(a)
+if(45===s||46===s||95===s||126===s||s>=48&&s<=57||s>=65&&s<=90||s>=97&&s<=122){o+=r.charAt(a)
+continue}if(s<128){o+=i[s]
+continue}if(s<2048){o+=i[192|s>>6]+i[128|63&s]
+continue}if(s<55296||s>=57344){o+=i[224|s>>12]+i[128|s>>6&63]+i[128|63&s]
+continue}a+=1
+s=65536+((1023&s)<<10|1023&r.charCodeAt(a))
+o+=i[240|s>>18]+i[128|s>>12&63]+i[128|s>>6&63]+i[128|63&s]}return o}
+var u=function(e){var t=[{obj:{o:e},prop:"o"}]
+var n=[]
+for(var r=0;r<t.length;++r){var o=t[r]
+var i=o.obj[o.prop]
+var s=Object.keys(i)
+for(var l=0;l<s.length;++l){var c=s[l]
+var d=i[c]
+if("object"===typeof d&&null!==d&&-1===n.indexOf(d)){t.push({obj:i,prop:c})
+n.push(d)}}}a(t)
+return e}
+var f=function(e){return"[object RegExp]"===Object.prototype.toString.call(e)}
+var p=function(e){if(!e||"object"!==typeof e)return false
+return!!(e.constructor&&e.constructor.isBuffer&&e.constructor.isBuffer(e))}
+var h=function(e,t){return[].concat(e,t)}
+e.exports={arrayToObject:s,assign:c,combine:h,compact:u,decode:d,encode:_,isBuffer:p,isRegExp:f,merge:l}},"6V2X":function(e,t,n){"use strict"
+var r=n("An8g")
+var o=n("Ff2n")
+var i=n("pQTu")
+var a=n("m0r6")
+Object(a["a"])(JSON.parse('{"ar":{"copy_to_64f8456b":"نسخ إلى..."},"cy":{"copy_to_64f8456b":"Copïo I..."},"da":{"copy_to_64f8456b":"Kopier til ..."},"da-x-k12":{"copy_to_64f8456b":"Kopier til ..."},"de":{"copy_to_64f8456b":"Kopieren nach ..."},"en-AU":{"copy_to_64f8456b":"Copy To..."},"en-CA":{"copy_to_64f8456b":"Copy To..."},"en-GB":{"copy_to_64f8456b":"Copy To..."},"es":{"copy_to_64f8456b":"Copiar a..."},"fi":{"copy_to_64f8456b":"Kopioi kohteeseen..."},"fr":{"copy_to_64f8456b":"Copier dans..."},"fr-CA":{"copy_to_64f8456b":"Copier à…"},"ht":{"copy_to_64f8456b":"Kopye Nan..."},"is":{"copy_to_64f8456b":"Afrita til…"},"it":{"copy_to_64f8456b":"Copia a..."},"ja":{"copy_to_64f8456b":"コピー先..."},"mi":{"copy_to_64f8456b":"Tārua kī ..."},"nb":{"copy_to_64f8456b":"Kopier til..."},"nb-x-k12":{"copy_to_64f8456b":"Kopier til..."},"nl":{"copy_to_64f8456b":"Kopiëren naar..."},"nn":{"copy_to_64f8456b":"Kopier til..."},"pl":{"copy_to_64f8456b":"Kopiuj do..."},"pt":{"copy_to_64f8456b":"Copiar para..."},"pt-BR":{"copy_to_64f8456b":"Cópia para..."},"ru":{"copy_to_64f8456b":"Копировать в..."},"sv":{"copy_to_64f8456b":"Kopiera till..."},"sv-x-k12":{"copy_to_64f8456b":"Kopiera till..."},"zh-Hans":{"copy_to_64f8456b":"复制到..."},"zh-Hant":{"copy_to_64f8456b":"複製到..."}}'))
+n("jQeR")
+n("0sPK")
+var s=i["default"].scoped("direct_share_course_tray")
+var l=n("q1tI")
+var c=n.n(l)
+var d=n("xGaD")
+n.d(t,"a",(function(){return u}))
+const _=Object(l["lazy"])(()=>Promise.all([n.e(4),n.e(5),n.e(8),n.e(30),n.e(123),n.e(591)]).then(n.bind(null,"mftS")))
+function u(e){let t=e.sourceCourseId,n=e.contentSelection,i=e.onDismiss,a=Object(o["a"])(e,["sourceCourseId","contentSelection","onDismiss"])
+return c.a.createElement(d["a"],Object.assign({label:s.t("Copy To..."),placement:"end",onDismiss:i,padding:"0 1.5rem"},a),Object(r["a"])(_,{sourceCourseId:t,contentSelection:n,onCancel:i}))}},B1vq:function(e,t,n){"use strict"
+var r=n("ouhR")
+var o=n.n(r)
+n("s/PJ")
+o.a.fn.scrollToVisible=function(e){const t={}
+const n=o()(e)
+if(0===n.length)return
+let r=n.offset(),i=n.outerWidth(),a=n.outerHeight(),s=r.top,l=s+a,c=r.left,d=c+i,_="html,body"==this.selector?o.a.windowScrollTop():this.scrollTop(),u=this.scrollLeft(),f=this.outerHeight(),p=this.outerWidth()
+if("html,body"!=this.selector){let e=o()("body").offset()
+this.each((function(){try{e=o()(this).offset()
+return false}catch(e){}}))
+s-=e.top
+l-=e.top
+c-=e.left
+d-=e.left}if("HTML"==this[0].tagName||"BODY"==this[0].tagName){f=o()(window).height()
+o()("#wizard_box:visible").length>0&&(f-=o()("#wizard_box:visible").height())
+p=o()(window).width()
+s-=_
+c-=u
+l-=_
+d-=u}s<0||f<a&&l>f?t.scrollTop=s+_:l>f&&(t.scrollTop=l+_-f+20)
+c<0?t.scrollLeft=c+u:d>p&&(t.scrollLeft=d+u-p+20)
+1==t.scrollTop&&(t.scrollTop=0)
+1==t.scrollLeft&&(t.scrollLeft=0)
+this.scrollTop(t.scrollTop)
+this.scrollLeft(t.scrollLeft)
+return this}},H4Sz:function(e,t,n){"use strict"
+var r=n("An8g")
+var o=n("ouhR")
+var i=n.n(o)
+var a=n("q1tI")
+var s=n.n(a)
+n("17x9")
+var l=n("i8i4")
+var c=n.n(l)
+var d=n("P4VU")
+n("MWZS")
+var _=n("mykf")
+var u=n("etQE")
+var f=Object(r["a"])("div",{className:"ic-flash__icon","aria-hidden":"true"},void 0,Object(r["a"])("i",{className:"icon-info"}))
+var p=Object(r["a"])("div",{className:"ic-flash__icon","aria-hidden":"true"},void 0,Object(r["a"])("i",{className:"icon-info"}))
+var h=Object(r["a"])("div",{})
+class g extends s.a.Component{constructor(e){super(e)
+this.getMaxIFrameWidth=()=>{if(this.state.tools){let e=0
+for(let t=0;t<this.state.tools.length;t++){const n=this.state.tools[t]
+const r=this["tool_iframe_".concat(n.definition_id)].offsetWidth
+r>e&&(e=r)}return e}return null}
+this.handleAlertFocus=e=>{const t={iframeStyle:{border:"2px solid #008EE2",width:"".concat(this.getMaxIFrameWidth()-4,"px")}}
+e.target.className.search("before")>-1?t.beforeExternalContentAlertClass="":e.target.className.search("after")>-1&&(t.afterExternalContentAlertClass="")
+this.setState(t)}
+this.handleAlertBlur=e=>{const t={iframeStyle:{border:"none",width:"100%"}}
+e.target.className.search("before")>-1?t.beforeExternalContentAlertClass="screenreader-only":e.target.className.search("after")>-1&&(t.afterExternalContentAlertClass="screenreader-only")
+this.setState(t)}
+this.state={tools:[],beforeExternalContentAlertClass:"screenreader-only",afterExternalContentAlertClass:"screenreader-only",iframeStyle:{}}}componentWillMount(){this.getTools()}componentDidMount(){if(this.state.tools)for(let e=0;e<this.state.tools.length;e++){const t=this.state.tools[e]
+this["tool_iframe_".concat(t.definition_id)].setAttribute("allow",Object(_["a"])())}}async getTools(){const e=encodeURI("".concat(this.getDefinitionsUrl(),"?placements[]=").concat(this.props.placement))
+try{const t=Object(u["e"])(e)||fetch(e,u["d"])
+const n=await Object(u["b"])(t)
+n.forEach(e=>e.launch=this.getLaunch(e))
+this.setState({tools:n})}catch(e){i.a.flashError(d["a"].t("Error retrieving assignment external tools"))}}getDefinitionsUrl(){return"/api/v1/courses/".concat(this.props.courseId,"/lti_apps/launch_definitions")}getLaunch(e){const t=e.placements[this.props.placement].url
+let n="?borderless=true&url=".concat(encodeURIComponent(t),"&placement=").concat(this.props.placement)
+this.props.assignmentId&&(n+="&assignment_id=".concat(this.props.assignmentId))
+const r="/courses/".concat(this.props.courseId,"/external_tools/retrieve")
+return r+n}renderTool(e){const t={}
+i.a.extend(t,this.state.iframeStyle)
+if(e.placements[this.props.placement].launch_height){t.height=e.placements[this.props.placement].launch_height
+t.minHeight="unset"}e.placements[this.props.placement].launch_width&&(t.width=e.placements[this.props.placement].launch_width)
+return s.a.createElement("iframe",{src:e.launch,className:"tool_launch",style:t,key:e.definition_id,title:d["a"].t("External Tool %{tool_id}",{tool_id:e.definition_id}),ref:t=>{this["tool_iframe_".concat(e.definition_id)]=t},"data-lti-launch":"true"})}renderToolsContainer(){const e="before_external_content_info_alert ".concat(this.state.beforeExternalContentAlertClass)
+const t="after_external_content_info_alert ".concat(this.state.afterExternalContentAlertClass)
+return Object(r["a"])("div",{style:{display:"about:blank"===this.state.toolLaunchUrl?"none":"block"}},void 0,Object(r["a"])("div",{onFocus:this.handleAlertFocus,onBlur:this.handleAlertBlur,className:e,tabIndex:"0"},void 0,Object(r["a"])("div",{className:"ic-flash-info",style:{width:"auto",margin:"20px"}},void 0,f,d["a"].t("The following content is partner provided"))),this.state.tools.map(e=>this.renderTool(e)),Object(r["a"])("div",{onFocus:this.handleAlertFocus,onBlur:this.handleAlertBlur,className:t,tabIndex:"0"},void 0,Object(r["a"])("div",{className:"ic-flash-info",style:{width:"auto",margin:"20px"}},void 0,p,d["a"].t("The preceding content is partner provided"))))}render(){if(0===this.state.tools.length)return h
+return Object(r["a"])("div",{},void 0,Object(r["a"])("div",{className:"border border-trbl border-round"},void 0,this.renderToolsContainer()))}}g.defaultProps={assignmentId:void 0}
+const v=function(e,t,n,o){const i=Object(r["a"])(g,{placement:t,courseId:n,assignmentId:o})
+c.a.render(i,e)}
+const m={configTools:g,attach:v}
+t["a"]=m},KuFa:function(e,t,n){"use strict"
+n.r(t)
+var r=n("An8g")
+var o=n("u7Gu")
+var i=n("EcmN")
+var a=n("ouhR")
+var s=n.n(a)
+n("q1tI")
+var l=n("i8i4")
+var c=n.n(l)
+var d=n("x1Tw")
+var _=n("Qyje")
+var u=n.n(_)
+var f=n("Et5h")
+var p=n("7FZx")
+var h=n("FIFq")
+var g=n.n(h)
+var v=function(e,t){return function(){return e.apply(t,arguments)}},m=function(e,t){for(var n in t)b.call(t,n)&&(e[n]=t[n])
+function r(){this.constructor=e}r.prototype=t.prototype
+e.prototype=new r
+e.__super__=t.prototype
+return e},b={}.hasOwnProperty
+var y=function(e){m(t,e)
+function t(){this.toggleSpeedgraderLink=v(this.toggleSpeedgraderLink,this)
+return t.__super__.constructor.apply(this,arguments)}t.prototype.initialize=function(){t.__super__.initialize.apply(this,arguments)
+return this.model.on("change:published",this.toggleSpeedgraderLink)}
+t.prototype.toggleSpeedgraderLink=function(){return this.model.get("published")?this.$el.removeClass("hidden"):this.$el.addClass("hidden")}
+return t}(g.a.View)
+var k=n("goGJ")
+var j=n("oMlh")
+var x=n("GXQz")
+n("Z+Ib")
+var w=n("y8OA")
+var E=n("H4Sz")
+var O=n("mKSb")
+var S=n("i+HM")
+var C=n("ppA4")
+var A=n("6V2X")
+const N=new w["default"]
+N.init({itemType:"assignment",page:"show"})
+function I(e){if("0"!==e){d["a"].put("/api/v1/courses/".concat(ENV.COURSE_ID,"/gradebook_settings"),u.a.stringify({gradebook_settings:{filter_rows_by:{student_group_id:e}}}))
+ENV.selected_student_group_id=e
+T()
+z()}}function z(){const e=ENV.SETTINGS.filter_speed_grader_by_student_group&&!ENV.selected_student_group_id
+const t=document.getElementById("speed_grader_link_mount_point")
+t&&c.a.render(Object(r["a"])(S["a"],{disabled:e,href:ENV.speed_grader_url,disabledTip:i["a"].t("Must select a student group first")}),t)}function T(){const e=document.getElementById("student_group_filter_mount_point")
+e&&c.a.render(Object(r["a"])(O["a"],{categories:ENV.group_categories,label:i["a"].t("Select Group to Grade"),onChange:I,value:ENV.selected_student_group_id}),e)}const D=Promise.all([n.e(2),n.e(60),n.e(603)]).then(n.bind(null,"/j35"))
+s()(()=>{const e=s()("#assignment_publish_button")
+if(e.length>0){const t=new f["a"]({id:e.attr("data-id"),unpublishable:!e.hasClass("disabled"),published:e.hasClass("published")})
+t.doNotParse()
+new y({model:t,el:"#assignment-speedgrader-link"}).render()
+const n=new p["a"]({model:t,el:e})
+n.render()
+n.on("publish",()=>s()("#moderated_grading_button").show())
+n.on("unpublish",()=>s()("#moderated_grading_button").hide())}D.then(()=>{s()("#sequence_footer").moduleSequenceFooter({courseID:ENV.COURSE_ID,assetType:"Assignment",assetID:ENV.ASSIGNMENT_ID,location:window.location})})
+return Object(k["a"])()})
+s()(()=>s()("#content").on("click","#mark-as-done-checkbox",(function(){return j["a"].toggle(this)})))
+function F(e){let t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1]
+e&&e.preventDefault()
+c.a.render(Object(r["a"])(C["a"],{open:t,sourceCourseId:ENV.COURSE_ID,contentShare:{content_type:"assignment",content_id:ENV.ASSIGNMENT_ID},onDismiss:()=>{F(null,false)
+s()(".al-trigger").focus()}}),document.getElementById("direct-share-mount-point"))}function L(e){let t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1]
+e&&e.preventDefault()
+c.a.render(Object(r["a"])(A["a"],{open:t,sourceCourseId:ENV.COURSE_ID,contentSelection:{assignments:[ENV.ASSIGNMENT_ID]},onDismiss:()=>{L(null,false)
+s()(".al-trigger").focus()}}),document.getElementById("direct-share-mount-point"))}s()(()=>{s()(".direct-share-send-to-menu-item").click(F)
+s()(".direct-share-copy-to-menu-item").click(L)})
+s()(()=>{if(ENV.speed_grader_url){ENV.SETTINGS.filter_speed_grader_by_student_group&&T()
+z()}})
+s()(()=>{s()(".upload_submissions_link").click(e=>{e.preventDefault()
+s()("#re_upload_submissions_form").slideToggle()})
+s()(".download_submissions_link").click((function(e){e.preventDefault()
+o["a"].downloadSubmissions(s()(this).attr("href"))
+s()(".upload_submissions_link").slideDown()}))
+s()("#re_upload_submissions_form").submit((function(e){const t=s()(this).getFormData()
+if(t.submissions_zip){if(!t.submissions_zip.match(/\.zip$/)){e.preventDefault()
+e.stopPropagation()
+s()(this).formErrors({submissions_zip:i["a"].t("Please upload files as a .zip")})}}else{e.preventDefault()
+e.stopPropagation()}}))
+s()("#edit_assignment_form").bind("assignment_updated",(e,t)=>{t.assignment&&t.assignment.peer_reviews?s()(".assignment_peer_reviews_link").slideDown():s()(".assignment_peer_reviews_link").slideUp()})})
+s()(()=>{const e=document.getElementById("crs-graphs")
+const t=document.getElementById("not_right_side")
+x["default"].init(e,t)
+document.getElementById("assignment_external_tools")&&E["a"].attach(document.getElementById("assignment_external_tools"),"assignment_view",parseInt(ENV.COURSE_ID,10),parseInt(ENV.ASSIGNMENT_ID,10))})},P4VU:function(e,t,n){"use strict"
+var r=n("pQTu")
+var o=n("m0r6")
+Object(o["a"])(JSON.parse('{"ar":{"error_retrieving_assignment_external_tools_9102d343":"خطأ أثناء استعادة الأدوات الخارجية للمهمة","error_retrieving_similarity_detection_tools_d6d4f9e9":"خطأ أثناء استعادة أدوات اكتشاف التشابه","external_tool_tool_id_6028b3b1":"أداة خارجية %{tool_id}","the_following_content_is_partner_provided_ed1da756":"المحتوى التالي تم إدخاله بواسطة شريك","the_preceding_content_is_partner_provided_d753928c":"المحتوى السابق تم إدخاله بواسطة شريك"},"cy":{"error_retrieving_assignment_external_tools_9102d343":"Gwall wrth adfer adnoddau allanol aseiniad","error_retrieving_similarity_detection_tools_d6d4f9e9":"Gwall wrth adfer adnoddau adnabod tebygrwydd","external_tool_tool_id_6028b3b1":"Adnodd Allanol %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Mae’r cynnwys canlynol yn cael ei ddarparu gan bartner","the_preceding_content_is_partner_provided_d753928c":"Mae’r cynnwys blaenorol yn cael ei ddarparu gan bartner"},"da":{"error_retrieving_assignment_external_tools_9102d343":"Fejl ved hentning af opgavens eksterne værktøjer","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fejl ved hentning af ligheds-detektionsværktøjer","external_tool_tool_id_6028b3b1":"Eksternt værktøj %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Følgende indhold er partnerleveret","the_preceding_content_is_partner_provided_d753928c":"Foregående indhold er partnerleveret"},"da-x-k12":{"error_retrieving_assignment_external_tools_9102d343":"Fejl ved hentning af opgavens eksterne værktøjer","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fejl ved hentning af ligheds-detektionsværktøjer","external_tool_tool_id_6028b3b1":"Eksternt værktøj %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Følgende indhold er partnerleveret","the_preceding_content_is_partner_provided_d753928c":"Foregående indhold er partnerleveret"},"de":{"error_retrieving_assignment_external_tools_9102d343":"Fehler beim Abrufen aufgabenexterner-Tools","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fehler beim Abrufen der Similarity-Detection-Tools","external_tool_tool_id_6028b3b1":"Externes Tool %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Der folgende Content stammt von einem Partner.","the_preceding_content_is_partner_provided_d753928c":"Der vorhergehende Content stammt von einem Partner."},"en-AU":{"error_retrieving_assignment_external_tools_9102d343":"Error retrieving assignment external tools","error_retrieving_similarity_detection_tools_d6d4f9e9":"Error retrieving similarity detection tools","external_tool_tool_id_6028b3b1":"External Tool %{tool_id}","the_following_content_is_partner_provided_ed1da756":"The following content is partner provided","the_preceding_content_is_partner_provided_d753928c":"The preceding content is partner provided"},"en-CA":{"error_retrieving_assignment_external_tools_9102d343":"Error retrieving assignment external tools","error_retrieving_similarity_detection_tools_d6d4f9e9":"Error retrieving similarity detection tools","external_tool_tool_id_6028b3b1":"External Tool %{tool_id}","the_following_content_is_partner_provided_ed1da756":"The following content is partner provided","the_preceding_content_is_partner_provided_d753928c":"The preceding content is partner provided"},"en-GB":{"error_retrieving_assignment_external_tools_9102d343":"Error retrieving assignment external tools","error_retrieving_similarity_detection_tools_d6d4f9e9":"Error retrieving similarity detection tools","external_tool_tool_id_6028b3b1":"External tool %{tool_id}","the_following_content_is_partner_provided_ed1da756":"The following content is partner provided","the_preceding_content_is_partner_provided_d753928c":"The preceding content is partner provided"},"es":{"error_retrieving_assignment_external_tools_9102d343":"Error al recuperar las herramientas externas de la tarea","error_retrieving_similarity_detection_tools_d6d4f9e9":"Error al consultar las herramientas de detección de similitud","external_tool_tool_id_6028b3b1":"Herramienta Externa %{tool_id}","the_following_content_is_partner_provided_ed1da756":"El siguiente contenido está proporcionado por un socio","the_preceding_content_is_partner_provided_d753928c":"El contenido anterior está proporcionado por un socio"},"fa":{"error_retrieving_similarity_detection_tools_d6d4f9e9":"خطا در بازیابی ابزارهای تشخیص شباهت","the_following_content_is_partner_provided_ed1da756":"محتوای زیر توسط شریک فراهم شده است","the_preceding_content_is_partner_provided_d753928c":"محتوای پیشین توسط شریک ارائه شده است"},"fi":{"error_retrieving_assignment_external_tools_9102d343":"Virhe noudettaessa tehtävän ulkoisia työkaluja","error_retrieving_similarity_detection_tools_d6d4f9e9":"Virhe noudettaessa samanlaisuuden havaintotyökaluja","external_tool_tool_id_6028b3b1":"Ulkoinen työkalu %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Seuraava sisältö on kumppanin toimittajaa","the_preceding_content_is_partner_provided_d753928c":"edeltävä sisältö on kumppanin toimittamaa"},"fr":{"error_retrieving_assignment_external_tools_9102d343":"Outils externes de récupération d\'erreur des travaux","error_retrieving_similarity_detection_tools_d6d4f9e9":"Erreur lors de la récupération des outils de détection de similitude.","external_tool_tool_id_6028b3b1":"Outil externe %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Le contenu suivant est fourni par un partenaire","the_preceding_content_is_partner_provided_d753928c":"Le contenu qui précède était fourni par un partenaire"},"fr-CA":{"error_retrieving_assignment_external_tools_9102d343":"Erreur lors de la récupération des outils externes des tâches","error_retrieving_similarity_detection_tools_d6d4f9e9":"Erreur lors de la récupération des outils de détection de similarité","external_tool_tool_id_6028b3b1":"Outil externe %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Le contenu suivant est fourni par le partenaire","the_preceding_content_is_partner_provided_d753928c":"Le contenu précédent est fourni par le partenaire"},"he":{"error_retrieving_similarity_detection_tools_d6d4f9e9":"תקלה בהעלאת כלי זיהוי העתקות"},"ht":{"error_retrieving_assignment_external_tools_9102d343":"Erè pandan rekiperasyon zouti ekstèn sesyon an","error_retrieving_similarity_detection_tools_d6d4f9e9":"Erè pandan rekiperasyon zouti deteksyon resanblans yo","external_tool_tool_id_6028b3b1":"Zouti Ekstèn %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Kontni annapre a se yon asosye ki bay li","the_preceding_content_is_partner_provided_d753928c":"Kontni anvan an se yon asosye ki bay li"},"is":{"error_retrieving_assignment_external_tools_9102d343":"Villa við að ná í ytri tól verkefnis","error_retrieving_similarity_detection_tools_d6d4f9e9":"Villa við endurheimt líkindagreiningartóla","external_tool_tool_id_6028b3b1":"Ytra tól %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Eftirfarandi efni er gefið upp af samstarfsaðila","the_preceding_content_is_partner_provided_d753928c":"Framangreint efni er gefið upp af samstarfsaðila"},"it":{"error_retrieving_assignment_external_tools_9102d343":"Errore recupero strumenti esterni compito","error_retrieving_similarity_detection_tools_d6d4f9e9":"Errore durante il recupero degli strumenti di rilevamento similarità","external_tool_tool_id_6028b3b1":"Strumento esterno %{tool_id}","the_following_content_is_partner_provided_ed1da756":"I contenuti seguenti sono forniti dal partner","the_preceding_content_is_partner_provided_d753928c":"I contenuti precedenti sono forniti dal partner"},"ja":{"error_retrieving_assignment_external_tools_9102d343":"課題外部ツールの取得中にエラーが発生しました","error_retrieving_similarity_detection_tools_d6d4f9e9":"類似性検知ツールの取得中にエラーが発生しました","external_tool_tool_id_6028b3b1":"外部ツール%{tool_id}","the_following_content_is_partner_provided_ed1da756":"以下のコンテンツはパートナーが提供しています","the_preceding_content_is_partner_provided_d753928c":"上記のコンテンツはパートナーが提供しています"},"mi":{"error_retrieving_assignment_external_tools_9102d343":"Hapa ki te tiki i ngā whakataunga taputapu o waho","error_retrieving_similarity_detection_tools_d6d4f9e9":"I hapa i te wā e tiki ana taputapu rapunga ritenga.","external_tool_tool_id_6028b3b1":"Taputapu o waho %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Ko ngā kōrero e whai ake nei he hoa mahi","the_preceding_content_is_partner_provided_d753928c":"Ko te tuhinga o mua he hoa mahi"},"nb":{"error_retrieving_assignment_external_tools_9102d343":"Avvik ved henting av oppgavens eksterne verktøy","error_retrieving_similarity_detection_tools_d6d4f9e9":"Feil ved henting av verktøy for likhetsgjenkjenning","external_tool_tool_id_6028b3b1":"Eksternt verktøy %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Følgende innhold er gitt av en partner","the_preceding_content_is_partner_provided_d753928c":"Det foregående innholdet er gitt av en partner"},"nb-x-k12":{"error_retrieving_assignment_external_tools_9102d343":"Avvik ved henting av oppgavens eksterne verktøy","error_retrieving_similarity_detection_tools_d6d4f9e9":"Feil ved henting av verktøy for likhetsgjenkjenning","external_tool_tool_id_6028b3b1":"Eksternt verktøy %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Følgende innhold er gitt av en partner","the_preceding_content_is_partner_provided_d753928c":"Det foregående innholdet er gitt av en partner"},"nl":{"error_retrieving_assignment_external_tools_9102d343":"Fout bij het ophalen van externe tools voor opdrachten","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fout bij het ophalen van tools voor vergelijkbaarheidsdetectie","external_tool_tool_id_6028b3b1":"Externe tool %{tool_id}","the_following_content_is_partner_provided_ed1da756":"De volgende inhoud is door een partner geleverd","the_preceding_content_is_partner_provided_d753928c":"De voorgaande inhoud is door een partner geleverd"},"nn":{"error_retrieving_assignment_external_tools_9102d343":"Det oppstod ein feil under henting av oppgåve frå eksternt verktøy","error_retrieving_similarity_detection_tools_d6d4f9e9":"Det oppstod ein feil ved framhenting av verktøy for likskapskontroll","external_tool_tool_id_6028b3b1":"Eksternt verktøy %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Følgande innhald er lagt til av partnar","the_preceding_content_is_partner_provided_d753928c":"Det føregåande innhaldet er lagt til av partnar"},"pl":{"error_retrieving_assignment_external_tools_9102d343":"Błąd pobierania zewnętrznych narzędzi do zadań","error_retrieving_similarity_detection_tools_d6d4f9e9":"Błąd pobierania narzędzi do wykrywania podobieństw","external_tool_tool_id_6028b3b1":"Narzędzie zewnętrzne %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Następującą zawartość dostarcza partner","the_preceding_content_is_partner_provided_d753928c":"Poprzednią zawartość dostarcza partner"},"pt":{"error_retrieving_assignment_external_tools_9102d343":"Erro ao recuperar ferramentas externas de atribuição","error_retrieving_similarity_detection_tools_d6d4f9e9":"Erro ao recuperar ferramentas de detecção de similaridade","external_tool_tool_id_6028b3b1":"Ferramenta Externa %{tool_id}","the_following_content_is_partner_provided_ed1da756":"O parceiro fornece o seguinte conteúdo","the_preceding_content_is_partner_provided_d753928c":"O conteúdo anterior é parceiro fornecido"},"pt-BR":{"error_retrieving_assignment_external_tools_9102d343":"Erro ao recuperar ferramentas externas da tarefa","error_retrieving_similarity_detection_tools_d6d4f9e9":"Erro ao recuperar as ferramentas de detecção de similaridade","external_tool_tool_id_6028b3b1":"Ferramenta externa %{tool_id}","the_following_content_is_partner_provided_ed1da756":"O seguinte conteúdo é fornecido por parceiro","the_preceding_content_is_partner_provided_d753928c":"O conteúdo precedente é fornecido por parceiro"},"ru":{"error_retrieving_assignment_external_tools_9102d343":"Ошибка при получении внешних инструментов задания","error_retrieving_similarity_detection_tools_d6d4f9e9":"Ошибка при считывании инструментов обнаружения сходства","external_tool_tool_id_6028b3b1":"Внешний инструмент %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Последующий контент предоставляется партнером","the_preceding_content_is_partner_provided_d753928c":"Предыдущий контент предоставляется партнером"},"sl":{"error_retrieving_assignment_external_tools_9102d343":"Napaka pri pridobivanju zunanjih orodij za nalogo","error_retrieving_similarity_detection_tools_d6d4f9e9":"Napaka pri pridobivanju orodij za zaznavanje ujemanja","external_tool_tool_id_6028b3b1":"Zunanje orodje %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Naslednjo vsebino zagotavljajo partnerji.","the_preceding_content_is_partner_provided_d753928c":"Predhodno vsebino zagotavljajo partnerji."},"sv":{"error_retrieving_assignment_external_tools_9102d343":"Det gick inte att hämta externa verktyg för uppgiften","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fel vid hämtning av verktyg för likhetsidentifiering","external_tool_tool_id_6028b3b1":"Externt verktyg %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Följande innehåll har tillhandahållits av partner","the_preceding_content_is_partner_provided_d753928c":"Det föregående innehållet har tillhandahållits av partner"},"sv-x-k12":{"error_retrieving_assignment_external_tools_9102d343":"Det gick inte att hämta externa verktyg för uppgiften","error_retrieving_similarity_detection_tools_d6d4f9e9":"Fel vid hämtning av verktyg för likhetsidentifiering","external_tool_tool_id_6028b3b1":"Externt verktyg %{tool_id}","the_following_content_is_partner_provided_ed1da756":"Följande innehåll har tillhandahållits av partner","the_preceding_content_is_partner_provided_d753928c":"Det föregående innehållet har tillhandahållits av partner"},"uk":{"error_retrieving_similarity_detection_tools_d6d4f9e9":"Помилка отримання параметрів виявлення схожості","the_following_content_is_partner_provided_ed1da756":"Наступний контент наданий партнером","the_preceding_content_is_partner_provided_d753928c":"Попередній контент наданий партнером"},"zh-Hans":{"error_retrieving_assignment_external_tools_9102d343":"提取作业外部工具时出错","error_retrieving_similarity_detection_tools_d6d4f9e9":"检索相似性检测工具时发生错误","external_tool_tool_id_6028b3b1":"外部工具%{tool_id}","the_following_content_is_partner_provided_ed1da756":"以下内容由合作伙伴提供","the_preceding_content_is_partner_provided_d753928c":"以上内容由合作伙伴提供"},"zh-Hant":{"error_retrieving_assignment_external_tools_9102d343":"檢索作業外部工具時出錯","error_retrieving_similarity_detection_tools_d6d4f9e9":"檢索相似性檢測工具錯誤","external_tool_tool_id_6028b3b1":"外部工具%{tool_id}","the_following_content_is_partner_provided_ed1da756":"以下內容由合作夥伴提供","the_preceding_content_is_partner_provided_d753928c":"上述內容由合作夥伴提供"}}'))
+n("jQeR")
+n("0sPK")
+t["a"]=r["default"].scoped("moderated_grading")},QSc6:function(e,t,n){"use strict"
+var r=n("0jNN")
+var o=n("sxOR")
+var i=Object.prototype.hasOwnProperty
+var a={brackets:function(e){return e+"[]"},comma:"comma",indices:function(e,t){return e+"["+t+"]"},repeat:function(e){return e}}
+var s=Array.isArray
+var l=Array.prototype.push
+var c=function(e,t){l.apply(e,s(t)?t:[t])}
+var d=Date.prototype.toISOString
+var _=o["default"]
+var u={addQueryPrefix:false,allowDots:false,charset:"utf-8",charsetSentinel:false,delimiter:"&",encode:true,encoder:r.encode,encodeValuesOnly:false,format:_,formatter:o.formatters[_],indices:false,serializeDate:function(e){return d.call(e)},skipNulls:false,strictNullHandling:false}
+var f=function(e){return"string"===typeof e||"number"===typeof e||"boolean"===typeof e||"symbol"===typeof e||"bigint"===typeof e}
+var p=function e(t,n,o,i,a,l,d,_,p,h,g,v,m){var b=t
+"function"===typeof d?b=d(n,b):b instanceof Date?b=h(b):"comma"===o&&s(b)&&(b=b.join(","))
+if(null===b){if(i)return l&&!v?l(n,u.encoder,m,"key"):n
+b=""}if(f(b)||r.isBuffer(b)){if(l){var y=v?n:l(n,u.encoder,m,"key")
+return[g(y)+"="+g(l(b,u.encoder,m,"value"))]}return[g(n)+"="+g(String(b))]}var k=[]
+if("undefined"===typeof b)return k
+var j
+if(s(d))j=d
+else{var x=Object.keys(b)
+j=_?x.sort(_):x}for(var w=0;w<j.length;++w){var E=j[w]
+if(a&&null===b[E])continue
+s(b)?c(k,e(b[E],"function"===typeof o?o(n,E):n,o,i,a,l,d,_,p,h,g,v,m)):c(k,e(b[E],n+(p?"."+E:"["+E+"]"),o,i,a,l,d,_,p,h,g,v,m))}return k}
+var h=function(e){if(!e)return u
+if(null!==e.encoder&&void 0!==e.encoder&&"function"!==typeof e.encoder)throw new TypeError("Encoder has to be a function.")
+var t=e.charset||u.charset
+if("undefined"!==typeof e.charset&&"utf-8"!==e.charset&&"iso-8859-1"!==e.charset)throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined")
+var n=o["default"]
+if("undefined"!==typeof e.format){if(!i.call(o.formatters,e.format))throw new TypeError("Unknown format option provided.")
+n=e.format}var r=o.formatters[n]
+var a=u.filter;("function"===typeof e.filter||s(e.filter))&&(a=e.filter)
+return{addQueryPrefix:"boolean"===typeof e.addQueryPrefix?e.addQueryPrefix:u.addQueryPrefix,allowDots:"undefined"===typeof e.allowDots?u.allowDots:!!e.allowDots,charset:t,charsetSentinel:"boolean"===typeof e.charsetSentinel?e.charsetSentinel:u.charsetSentinel,delimiter:"undefined"===typeof e.delimiter?u.delimiter:e.delimiter,encode:"boolean"===typeof e.encode?e.encode:u.encode,encoder:"function"===typeof e.encoder?e.encoder:u.encoder,encodeValuesOnly:"boolean"===typeof e.encodeValuesOnly?e.encodeValuesOnly:u.encodeValuesOnly,filter:a,formatter:r,serializeDate:"function"===typeof e.serializeDate?e.serializeDate:u.serializeDate,skipNulls:"boolean"===typeof e.skipNulls?e.skipNulls:u.skipNulls,sort:"function"===typeof e.sort?e.sort:null,strictNullHandling:"boolean"===typeof e.strictNullHandling?e.strictNullHandling:u.strictNullHandling}}
+e.exports=function(e,t){var n=e
+var r=h(t)
+var o
+var i
+if("function"===typeof r.filter){i=r.filter
+n=i("",n)}else if(s(r.filter)){i=r.filter
+o=i}var l=[]
+if("object"!==typeof n||null===n)return""
+var d
+d=t&&t.arrayFormat in a?t.arrayFormat:t&&"indices"in t?t.indices?"indices":"repeat":"indices"
+var _=a[d]
+o||(o=Object.keys(n))
+r.sort&&o.sort(r.sort)
+for(var u=0;u<o.length;++u){var f=o[u]
+if(r.skipNulls&&null===n[f])continue
+c(l,p(n[f],f,_,r.strictNullHandling,r.skipNulls,r.encode?r.encoder:null,r.filter,r.sort,r.allowDots,r.serializeDate,r.formatter,r.encodeValuesOnly,r.charset))}var g=l.join(r.delimiter)
+var v=true===r.addQueryPrefix?"?":""
+r.charsetSentinel&&("iso-8859-1"===r.charset?v+="utf8=%26%2310003%3B&":v+="utf8=%E2%9C%93&")
+return g.length>0?v+g:""}},Qyje:function(e,t,n){"use strict"
+var r=n("QSc6")
+var o=n("nmq7")
+var i=n("sxOR")
+e.exports={formats:i,parse:o,stringify:r}},RhCJ:function(e,t,n){"use strict"
+n.d(t,"a",(function(){return r}))
+function r(e,t,n){if("input"===e.as){if("children"===t&&e.children||void 0==e.value)return new Error("Prop `value` and not `children` must be supplied if `".concat(n,' as="input"`'))}else{if("value"===t&&void 0!=e.value)return new Error("Prop `children` and not `value` must be supplied unless `".concat(n,' as="input"`'))
+if(!e.children)return new Error("Prop `children` should be supplied unless `".concat(n,' as="input"`.'))}return}},eAd9:function(e,t,n){(function(t){var n=false
+var r
+var o
+function i(){if("undefined"!==typeof r)return r
+var e=document.documentElement
+var t=document.createElement("div")
+t.setAttribute("style","width:99px;height:99px;position:absolute;top:-9999px;overflow:scroll;")
+e.appendChild(t)
+r=t.offsetWidth-t.clientWidth
+e.removeChild(t)
+return r}function a(){return document.documentElement.scrollHeight>window.innerHeight}function s(e){if("undefined"===typeof document||n)return
+var t=document.documentElement
+o=window.pageYOffset
+a()?t.style.width="calc(100% - "+i()+"px)":t.style.width="100%"
+t.style.position="fixed"
+t.style.top=-o+"px"
+t.style.overflow="hidden"
+n=true}function l(){if("undefined"===typeof document||!n)return
+var e=document.documentElement
+e.style.width=""
+e.style.position=""
+e.style.top=""
+e.style.overflow=""
+window.scroll(0,o)
+n=false}function c(){if(n){l()
+return}s()}var d={on:s,off:l,toggle:c}
+"undefined"!==typeof e.exports?e.exports=d:t.noScroll=d})(this)},goGJ:function(e,t,n){"use strict"
+n.d(t,"a",(function(){return i}))
+var r=n("ouhR")
+var o=n.n(r)
+n("rEd+")
+function i(){return o()(".vdd_tooltip_link").tooltip({position:{my:"center bottom",at:"center top-10",collision:"fit fit"},tooltipClass:"center bottom vertical",content(){const e=o()(this).data("tooltipSelector")
+try{const t=document.querySelector(e)
+return o()(t).html()}catch(e){}}})}},"i+HM":function(e,t,n){"use strict"
+var r=n("An8g")
+var o=n("VTBJ")
+var i=n("q1tI")
+var a=n.n(i)
+n("17x9")
+var s=n("5Shj")
+var l=n("EcmN")
+function c(e){return a.a.createElement("a",Object.assign({rel:"noopener noreferrer",target:"_blank"},e),l["a"].t("SpeedGrader™"))}function d(e){const t=e.className?"icon-speed-grader ".concat(e.className):"icon-speed-grader"
+let n={className:t,href:e.href}
+e.disabled&&(n=Object(o["a"])({},n,{"aria-disabled":"true","aria-describedby":e.disabledTip,onClick:e=>{e.preventDefault()},role:"button",style:{opacity:.5}}))
+return e.disabled?Object(r["a"])(s["a"],{placement:"bottom",tip:e.disabledTip,variant:"inverse"},void 0,c(n)):c(n)}t["a"]=d},mKSb:function(e,t,n){"use strict"
+var r=n("An8g")
+n("17x9")
+var o=n("sTNg")
+var i=n("EcmN")
+n("q1tI")
+function a(e){return Object(r["a"])("option",{value:e.id},e.id,e.name)}function s(e){return Object(r["a"])("optgroup",{label:e.name},"group_category_".concat(e.id),e.groups.map(e=>a(e)))}function l(e){return Object(r["a"])(o["a"],{id:"student-group-filter",label:e.label},void 0,Object(r["a"])("select",{onChange:t=>{e.onChange(t.target.value)},style:{margin:"0",width:"100%"},value:e.value||"0"},void 0,Object(r["a"])("option",{"aria-disabled":"true",disabled:"disabled",value:"0"},"0",i["a"].t("Select One")),e.categories.map(e=>s(e))))}t["a"]=l},mykf:function(e,t,n){"use strict"
+const r=()=>{const e=ENV.LTI_LAUNCH_FRAME_ALLOWANCES||[]
+return e.join("; ")}
+t["a"]=r},nmq7:function(e,t,n){"use strict"
+var r=n("0jNN")
+var o=Object.prototype.hasOwnProperty
+var i=Array.isArray
+var a={allowDots:false,allowPrototypes:false,arrayLimit:20,charset:"utf-8",charsetSentinel:false,comma:false,decoder:r.decode,delimiter:"&",depth:5,ignoreQueryPrefix:false,interpretNumericEntities:false,parameterLimit:1e3,parseArrays:true,plainObjects:false,strictNullHandling:false}
+var s=function(e){return e.replace(/&#(\d+);/g,(function(e,t){return String.fromCharCode(parseInt(t,10))}))}
+var l="utf8=%26%2310003%3B"
+var c="utf8=%E2%9C%93"
+var d=function(e,t){var n={}
+var d=t.ignoreQueryPrefix?e.replace(/^\?/,""):e
+var _=Infinity===t.parameterLimit?void 0:t.parameterLimit
+var u=d.split(t.delimiter,_)
+var f=-1
+var p
+var h=t.charset
+if(t.charsetSentinel)for(p=0;p<u.length;++p)if(0===u[p].indexOf("utf8=")){u[p]===c?h="utf-8":u[p]===l&&(h="iso-8859-1")
+f=p
+p=u.length}for(p=0;p<u.length;++p){if(p===f)continue
+var g=u[p]
+var v=g.indexOf("]=")
+var m=-1===v?g.indexOf("="):v+1
+var b,y
+if(-1===m){b=t.decoder(g,a.decoder,h,"key")
+y=t.strictNullHandling?null:""}else{b=t.decoder(g.slice(0,m),a.decoder,h,"key")
+y=t.decoder(g.slice(m+1),a.decoder,h,"value")}y&&t.interpretNumericEntities&&"iso-8859-1"===h&&(y=s(y))
+y&&"string"===typeof y&&t.comma&&y.indexOf(",")>-1&&(y=y.split(","))
+g.indexOf("[]=")>-1&&(y=i(y)?[y]:y)
+o.call(n,b)?n[b]=r.combine(n[b],y):n[b]=y}return n}
+var _=function(e,t,n){var r=t
+for(var o=e.length-1;o>=0;--o){var i
+var a=e[o]
+if("[]"===a&&n.parseArrays)i=[].concat(r)
+else{i=n.plainObjects?Object.create(null):{}
+var s="["===a.charAt(0)&&"]"===a.charAt(a.length-1)?a.slice(1,-1):a
+var l=parseInt(s,10)
+if(n.parseArrays||""!==s)if(!isNaN(l)&&a!==s&&String(l)===s&&l>=0&&n.parseArrays&&l<=n.arrayLimit){i=[]
+i[l]=r}else i[s]=r
+else i={0:r}}r=i}return r}
+var u=function(e,t,n){if(!e)return
+var r=n.allowDots?e.replace(/\.([^.[]+)/g,"[$1]"):e
+var i=/(\[[^[\]]*])/
+var a=/(\[[^[\]]*])/g
+var s=n.depth>0&&i.exec(r)
+var l=s?r.slice(0,s.index):r
+var c=[]
+if(l){if(!n.plainObjects&&o.call(Object.prototype,l)&&!n.allowPrototypes)return
+c.push(l)}var d=0
+while(n.depth>0&&null!==(s=a.exec(r))&&d<n.depth){d+=1
+if(!n.plainObjects&&o.call(Object.prototype,s[1].slice(1,-1))&&!n.allowPrototypes)return
+c.push(s[1])}s&&c.push("["+r.slice(s.index)+"]")
+return _(c,t,n)}
+var f=function(e){if(!e)return a
+if(null!==e.decoder&&void 0!==e.decoder&&"function"!==typeof e.decoder)throw new TypeError("Decoder has to be a function.")
+if("undefined"!==typeof e.charset&&"utf-8"!==e.charset&&"iso-8859-1"!==e.charset)throw new Error("The charset option must be either utf-8, iso-8859-1, or undefined")
+var t="undefined"===typeof e.charset?a.charset:e.charset
+return{allowDots:"undefined"===typeof e.allowDots?a.allowDots:!!e.allowDots,allowPrototypes:"boolean"===typeof e.allowPrototypes?e.allowPrototypes:a.allowPrototypes,arrayLimit:"number"===typeof e.arrayLimit?e.arrayLimit:a.arrayLimit,charset:t,charsetSentinel:"boolean"===typeof e.charsetSentinel?e.charsetSentinel:a.charsetSentinel,comma:"boolean"===typeof e.comma?e.comma:a.comma,decoder:"function"===typeof e.decoder?e.decoder:a.decoder,delimiter:"string"===typeof e.delimiter||r.isRegExp(e.delimiter)?e.delimiter:a.delimiter,depth:"number"===typeof e.depth||false===e.depth?+e.depth:a.depth,ignoreQueryPrefix:true===e.ignoreQueryPrefix,interpretNumericEntities:"boolean"===typeof e.interpretNumericEntities?e.interpretNumericEntities:a.interpretNumericEntities,parameterLimit:"number"===typeof e.parameterLimit?e.parameterLimit:a.parameterLimit,parseArrays:false!==e.parseArrays,plainObjects:"boolean"===typeof e.plainObjects?e.plainObjects:a.plainObjects,strictNullHandling:"boolean"===typeof e.strictNullHandling?e.strictNullHandling:a.strictNullHandling}}
+e.exports=function(e,t){var n=f(t)
+if(""===e||null===e||"undefined"===typeof e)return n.plainObjects?Object.create(null):{}
+var o="string"===typeof e?d(e,n):e
+var i=n.plainObjects?Object.create(null):{}
+var a=Object.keys(o)
+for(var s=0;s<a.length;++s){var l=a[s]
+var c=u(l,o[l],n)
+i=r.merge(i,c,n)}return r.compact(i)}},oMlh:function(e,t,n){"use strict"
+var r=n("ouhR")
+var o=n.n(r)
+n("jYyc")
+t["a"]={toggle(e){const t=o()(e).data.bind(o()(e))
+return o.a.ajaxJSON(t("url"),t("isChecked")?"DELETE":"PUT",{},()=>{t("isChecked",!t("isChecked"))
+o()(e).toggleClass("btn-success")
+o()("i",e).toggleClass("icon-empty icon-complete")
+o()(".mark-done-labels span",e).toggleClass("visible")})}}},p6Wi:function(e,t,n){"use strict"
+var r=n("pQTu")
+var o=n("m0r6")
+Object(o["a"])(JSON.parse('{"ar":{"buttons":{"cancel":"إلغاء","delete":"حذف"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"هل ترغب بالتأكيد في حذف هذا؟"}}},"cy":{"buttons":{"cancel":"Canslo","delete":"Dileu"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Ydych chi’n siŵr eich bod am ddileu hyn?"}}},"da":{"buttons":{"cancel":"Annuller","delete":"Slet"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Er du sikker på, at du vil slette dette?"}}},"da-x-k12":{"buttons":{"cancel":"Annuller","delete":"Slet"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Er du sikker på, at du vil slette dette?"}}},"de":{"buttons":{"cancel":"Abbrechen","delete":"Löschen"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Möchten Sie dies wirklich löschen?"}}},"el":{"buttons":{"cancel":"Ακύρωση","delete":"Διαγραφή"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Είστε σίγουρος/η ότι επιθυμείτε να το διαγράψετε;"}}},"en-AU":{"buttons":{"cancel":"Cancel","delete":"Delete"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Are you sure you want to delete this?"}}},"en-CA":{"buttons":{"cancel":"Cancel","delete":"Delete"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Are you sure you want to delete this?"}}},"en-GB":{"buttons":{"cancel":"Cancel","delete":"Delete"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Are you sure you want to delete this?"}}},"es":{"buttons":{"cancel":"Cancelar","delete":"Eliminar"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"¿Seguro que desea eliminarlo?"}}},"fa":{"buttons":{"cancel":"لغو","delete":"حذف"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"مطمئنید که می خواهید این مورد حذف شود؟"}}},"fi":{"buttons":{"cancel":"Peruuta","delete":"Poista"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Haluatko varmasti poistaa tämän?"}}},"fr":{"buttons":{"cancel":"Annuler","delete":"Supprimer"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Voulez-vous vraiment supprimer cet élément ?"}}},"fr-CA":{"buttons":{"cancel":"Annuler","delete":"Supprimer"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Voulez-vous vraiment supprimer cet élément?"}}},"he":{"buttons":{"cancel":"ביטול","delete":"ביטול"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"בטוח/ה שרוצה לבטל זאת?"}}},"ht":{"buttons":{"cancel":"Anile","delete":"Efase"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Ou kwè vrèman ou vle efase sa a?"}}},"hu":{"buttons":{"cancel":"Mégse","delete":"Törlés"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Biztos benne, hogy törli ezt?"}}},"hy":{"buttons":{"cancel":"Չեղյալ համարել","delete":"Ջնջել"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Դուք իսկապե՞ս ցանկանում եք ջնջել սա:"}}},"is":{"buttons":{"cancel":"Hætta við","delete":"Eyða"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Viltu örugglega eyða þessu?"}}},"it":{"buttons":{"cancel":"Annulla","delete":"Elimina"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Vuoi eliminare questo?"}}},"ja":{"buttons":{"cancel":"キャンセル","delete":"削除"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"これを削除してもよろしいですか?"}}},"ko":{"buttons":{"cancel":"취소","delete":"삭제"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"삭제하시겠습니까?"}}},"mi":{"buttons":{"cancel":"Whakakore","delete":"Muku"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"E tino hiahia ana koe ki te muku i tēnei?"}}},"nb":{"buttons":{"cancel":"Avbryt","delete":"Slett"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Er du sikker på at du ønsker å slette dette?"}}},"nb-x-k12":{"buttons":{"cancel":"Avbryt","delete":"Slett"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Er du sikker på at du ønsker å slette dette?"}}},"nl":{"buttons":{"cancel":"Annuleren","delete":"Verwijderen"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Weet je zeker dat je dit wilt verwijderen?"}}},"nn":{"buttons":{"cancel":"Avbryt","delete":"Slett"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Er du sikker på at du vil slette dette?"}}},"pl":{"buttons":{"cancel":"Anuluj","delete":"Usuń"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Czy na pewno chcesz usunąć ten element?"}}},"pt":{"buttons":{"cancel":"Cancelar","delete":"Excluir"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Tem certeza de que deseja excluir isto?"}}},"pt-BR":{"buttons":{"cancel":"Cancelar","delete":"Excluir"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Tem certeza que deseja excluir isto?"}}},"ru":{"buttons":{"cancel":"Отменить","delete":"Удалить"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Действительно хотите удалить?"}}},"sl":{"buttons":{"cancel":"Prekliči","delete":"Odstrani"}},"sv":{"buttons":{"cancel":"Avbryt","delete":"Ta bort"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Vill du verkligen radera det här?"}}},"sv-x-k12":{"buttons":{"cancel":"Avbryt","delete":"Ta bort"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Vill du verkligen radera det här?"}}},"tr":{"buttons":{"cancel":"İptal","delete":"Sil"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"Bunu silmek istediğinize emin misiniz?"}}},"uk":{"buttons":{"cancel":"Скасувати","delete":"Видалити"}},"zh-Hans":{"buttons":{"cancel":"取消","delete":"删除"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"是否确定要删除它?"}}},"zh-Hant":{"buttons":{"cancel":"取消","delete":"刪除"},"instructure_misc_plugins":{"confirms":{"default_delete_thing":"您是否確定要刪除？"}}}}'))
+n("jQeR")
+n("0sPK")
+var i=r["default"].scoped("instructure_misc_plugins")
+var a=n("ouhR")
+var s=n.n(a)
+var l=n("5Ky4")
+var c=n("JD5e")
+n("jYyc")
+n("YGE8")
+n("B1vq")
+n("s/PJ")
+s.a.fn.setOptions=function(e,t){let n=e?"<option value=''>"+Object(l["a"])(e)+"</option>":""
+null==t&&(t=[])
+t.forEach(e=>{const t=Object(l["a"])(e)
+n+='<option value="'+t+'">'+t+"</option>"})
+return this.html(s.a.raw(n))}
+s.a.fn.ifExists=function(e){this.length&&e.call(this,this)
+return this}
+s.a.fn.scrollbarWidth=function(){const e=s()('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div>').appendTo(this),t=e.find("div")
+const n=t.innerWidth()
+e.css("overflow-y","scroll")
+const r=t.innerWidth()
+e.remove()
+return n-r}
+s.a.fn.dim=function(e){return this.animate({opacity:.4},e)}
+s.a.fn.undim=function(e){return this.animate({opacity:1},e)}
+s.a.fn.confirmDelete=function(e){e=s.a.extend({},s.a.fn.confirmDelete.defaults,e)
+const t=this
+let n=null
+let r=true
+e.noMessage=e.noMessage||e.no_message
+const o=function(){if(!r){e.cancelled&&s.a.isFunction(e.cancelled)&&e.cancelled.call(t)
+return}e.confirmed||(e.confirmed=function(){t.dim()})
+e.confirmed.call(t)
+if(e.url){e.success||(e.success=function(e){t.fadeOut("slow",()=>{t.remove()})})
+const r=e.prepareData?e.prepareData.call(t,n):{}
+r.authenticity_token=Object(c["a"])()
+s.a.ajaxJSON(e.url,"DELETE",r,n=>{e.success.call(t,n)},(n,r,o,i)=>{e.error&&s.a.isFunction(e.error)?e.error.call(t,n,r,o,i):s.a.ajaxJSON.unhandledXHRs.push(r)})}else{e.success||(e.success=function(){t.fadeOut("slow",()=>{t.remove()})})
+e.success.call(t)}}
+if(e.message&&!e.noMessage&&!s.a.skipConfirmations){if(e.dialog){r=false
+const t="object"===typeof e.dialog?e.dialog:{}
+const a=e.url.includes("assignments")?"btn-danger":"btn-primary"
+n=s()(e.message).dialog(s.a.extend({},{modal:true,close:o,buttons:[{text:i.t("#buttons.cancel","Cancel"),click(){s()(this).dialog("close")}},{text:i.t("#buttons.delete","Delete"),class:a,click(){r=true
+s()(this).dialog("close")}}]},t))
+return}r=confirm(e.message)}o()}
+s.a.fn.confirmDelete.defaults={get message(){return i.t("confirms.default_delete_thing","Are you sure you want to delete this?")}}
+s.a.fn.fragmentChange=function(e){if(e&&true!==e){const n=(window.location.search||"").replace(/^\?/,"").split("&")
+let r=null
+for(var t=0;t<n.length;t++){const e=n[t]
+e&&0===e.indexOf("hash=")&&(r="#"+e.substring(5))}this.bind("document_fragment_change",e)
+const o=this
+let i=false
+for(t=0;t<s.a._checkFragments.fragmentList.length;t++){const e=s.a._checkFragments.fragmentList[t]
+e.doc[0]==o[0]&&(i=true)}i||s.a._checkFragments.fragmentList.push({doc:o,fragment:""})
+s()(window).bind("hashchange",s.a._checkFragments)
+setTimeout(()=>{r&&r.length>0?o.triggerHandler("document_fragment_change",r):o&&o[0]&&o[0].location&&o[0].location.hash.length>0&&o.triggerHandler("document_fragment_change",o[0].location.hash)},500)}else this.triggerHandler("document_fragment_change",this[0].location.hash)
+return this}
+s.a._checkFragments=function(){const e=s.a._checkFragments.fragmentList
+for(let t=0;t<e.length;t++){const n=e[t]
+const r=n.doc
+if(r[0].location.hash!=n.fragment){r.triggerHandler("document_fragment_change",r[0].location.hash)
+n.fragment=r[0].location.hash
+s.a._checkFragments.fragmentList[t]=n}}}
+s.a._checkFragments.fragmentList=[]
+s.a.fn.clickLink=function(){const e=this.eq(0)
+e.hasClass("disabled_link")||e.click()}
+s.a.fn.showIf=function(e){if(s.a.isFunction(e))return this.each((function(t){s()(this).showIf(e.call(this))}))
+e?this.show():this.hide()
+return this}
+s.a.fn.disableIf=function(e){s.a.isFunction(e)&&(e=e.call(this))
+this.prop("disabled",!!e)
+return this}
+s.a.fn.indicate=function(e){e=e||{}
+let t
+if("remove"==e){t=this.data("indicator")
+t&&t.remove()
+return}s()(".indicator_box").remove()
+let n=this.offset()
+e&&e.offset&&(n=e.offset)
+const r=this.width()
+const o=this.height()
+const i=(e.container||this).zIndex()
+t=s()(document.createElement("div"))
+t.css({width:r+6,height:o+6,top:n.top-3,left:n.left-3,zIndex:i+1,position:"absolute",display:"block","-moz-border-radius":5,opacity:.8,border:"2px solid #870",backgroundColor:"#fd0"})
+t.addClass("indicator_box")
+t.mouseover((function(){s()(this).stop().fadeOut("fast",(function(){s()(this).remove()}))}))
+this.data("indicator")&&this.indicate("remove")
+this.data("indicator",t)
+s()("body").append(t)
+e&&e.singleFlash?t.hide().fadeIn().animate({opacity:.8},500).fadeOut("slow",(function(){s()(this).remove()})):t.hide().fadeIn().animate({opacity:.8},500).fadeOut("slow").fadeIn("slow").animate({opacity:.8},2500).fadeOut("slow",(function(){s()(this).remove()}))
+e&&e.scroll&&s()("html,body").scrollToVisible(t)}
+s.a.fn.hasScrollbar=function(){return this.length&&this[0].clientHeight<this[0].scrollHeight}
+s.a.fn.log=function(e){console.log("%s: %o",e,this)
+return this}
+s.a.fn.fillWindowWithMe=function(e){const t=s.a.extend({minHeight:400},e),n=s()(this),r=s()("#wrapper"),o=s()("#main"),i=s()("#not_right_side"),a=s()(window),l=s()(this).add(t.alsoResize)
+function c(){l.height(0)
+const e=a.height()-(r.offset().top+r.outerHeight())+(o.height()-i.height()),c=Math.max(400,e)
+l.height(c)
+s.a.isFunction(t.onResize)&&t.onResize.call(n,c)}c()
+a.unbind("resize.fillWindowWithMe").bind("resize.fillWindowWithMe",c)
+return this}
+s.a.fn.autoGrowInput=function(e){e=s.a.extend({maxWidth:1e3,minWidth:0,comfortZone:70},e)
+this.filter("input:text").each((function(){let t=e.minWidth||s()(this).width(),n="",r=s()(this),o=s()("<tester/>").css({position:"absolute",top:-9999,left:-9999,width:"auto",fontSize:r.css("fontSize"),fontFamily:r.css("fontFamily"),fontWeight:r.css("fontWeight"),letterSpacing:r.css("letterSpacing"),whiteSpace:"nowrap"}),i=function(){setTimeout(()=>{if(n===(n=r.val()))return
+o.text(n)
+const i=o.width(),a=i+e.comfortZone>=t?i+e.comfortZone:t,s=r.width(),l=a<s&&a>=t||a>t&&a<e.maxWidth
+l&&r.width(a)})}
+o.insertAfter(r)
+s()(this).bind("keyup keydown blur update change",i)}))
+return this}
+s.a},ppA4:function(e,t,n){"use strict"
+var r=n("An8g")
+var o=n("VTBJ")
+var i=n("ODXe")
+var a=n("Ff2n")
+var s=n("pQTu")
+var l=n("m0r6")
+Object(l["a"])(JSON.parse('{"ar":{"cancel_caeb1e68":"إلغاء","content_share_started_successfully_2c37fb79":"تم بدء مشاركة المحتوى بنجاح","error_starting_content_share_18fb1532":"حدث خطأ أثناء بدء مشاركة المحتوى","loading_25990131":"جارٍ التحميل...","send_e3bd0ed0":"إرسال","send_to_b940900a":"إرسال إلى ...","starting_content_share_2d8c2999":"جارٍ بدء مشاركة المحتوى"},"cy":{"cancel_caeb1e68":"Canslo","content_share_started_successfully_2c37fb79":"Rhannu cynnwys wedi dechrau\'n llwyddiannus","error_starting_content_share_18fb1532":"Gwall wrth ddechrau rhannu cynnwys","loading_25990131":"Wrthi’n llwytho...","send_e3bd0ed0":"Anfon","send_to_b940900a":"Anfon At...","starting_content_share_2d8c2999":"Dechrau rhannu cynnwys"},"da":{"cancel_caeb1e68":"Annuller","content_share_started_successfully_2c37fb79":"Indholdsdelingen blev påbegyndt","error_starting_content_share_18fb1532":"Fejl ved påbegyndelse af indholdsdeling","loading_25990131":"Indlæser ...","send_e3bd0ed0":"Send","send_to_b940900a":"Send til ...","starting_content_share_2d8c2999":"Starter indholdsdeling"},"da-x-k12":{"cancel_caeb1e68":"Annuller","content_share_started_successfully_2c37fb79":"Indholdsdelingen blev påbegyndt","error_starting_content_share_18fb1532":"Fejl ved påbegyndelse af indholdsdeling","loading_25990131":"Indlæser ...","send_e3bd0ed0":"Send","send_to_b940900a":"Send til ...","starting_content_share_2d8c2999":"Starter indholdsdeling"},"de":{"cancel_caeb1e68":"Abbrechen","content_share_started_successfully_2c37fb79":"Inhaltsfreigabe erfolgreich gestartet","error_starting_content_share_18fb1532":"Fehler beim Starten der Inhaltsfreigabe","loading_25990131":"Wird geladen ...","send_e3bd0ed0":"Senden","send_to_b940900a":"Senden an ...","starting_content_share_2d8c2999":"Starten der Inhaltsfreigabe"},"el":{"cancel_caeb1e68":"Ακύρωση","loading_25990131":"Φόρτωση...","send_e3bd0ed0":"Αποστολή"},"en-AU":{"cancel_caeb1e68":"Cancel","content_share_started_successfully_2c37fb79":"Content share started successfully","error_starting_content_share_18fb1532":"Error starting content share","loading_25990131":"Loading...","send_e3bd0ed0":"Send","send_to_b940900a":"Send To...","starting_content_share_2d8c2999":"Starting content share"},"en-CA":{"cancel_caeb1e68":"Cancel","content_share_started_successfully_2c37fb79":"Content share started successfully","error_starting_content_share_18fb1532":"Error starting content share","loading_25990131":"Loading...","send_e3bd0ed0":"Send","send_to_b940900a":"Send To...","starting_content_share_2d8c2999":"Starting content share"},"en-GB":{"cancel_caeb1e68":"Cancel","content_share_started_successfully_2c37fb79":"Content share started successfully","error_starting_content_share_18fb1532":"Error starting content share","loading_25990131":"Loading...","send_e3bd0ed0":"Send","send_to_b940900a":"Send To...","starting_content_share_2d8c2999":"Starting content share"},"es":{"cancel_caeb1e68":"Cancelar","content_share_started_successfully_2c37fb79":"El contenido comenzó a compartirse correctamente","error_starting_content_share_18fb1532":"Ocurrió un error al comenzar a compartir contenido","loading_25990131":"Cargando...","send_e3bd0ed0":"Enviar","send_to_b940900a":"Enviar a...","starting_content_share_2d8c2999":"Comenzando a compartir contenido"},"fa":{"cancel_caeb1e68":"لغو","loading_25990131":"در حال بارگذاری...","send_e3bd0ed0":"ارسال"},"fi":{"cancel_caeb1e68":"Peruuta","content_share_started_successfully_2c37fb79":"Sisällön jako aloitettiin onnistuneesti","error_starting_content_share_18fb1532":"Virhe sisällön jaon aloittamisessa","loading_25990131":"Ladataan...","send_e3bd0ed0":"Lähetä","send_to_b940900a":"Lähetä kohteeseen...","starting_content_share_2d8c2999":"Sisällön jako aloitetaan"},"fr":{"cancel_caeb1e68":"Annuler","content_share_started_successfully_2c37fb79":"Le partage de contenu a été lancé avec succès","error_starting_content_share_18fb1532":"Erreur lors du lancement du partage de contenu","loading_25990131":"Chargement...","send_e3bd0ed0":"Envoyer","send_to_b940900a":"Envoyer à...","starting_content_share_2d8c2999":"Lancement du partage de contenu"},"fr-CA":{"cancel_caeb1e68":"Annuler","content_share_started_successfully_2c37fb79":"Le partage de contenu a démarré avec succès","error_starting_content_share_18fb1532":"Une erreur est survenue lors du démarrage du partage de contenu","loading_25990131":"En cours de chargement...","send_e3bd0ed0":"Envoyer","send_to_b940900a":"Envoyer à…","starting_content_share_2d8c2999":"Démarrage du partage de contenu"},"he":{"cancel_caeb1e68":"ביטול","loading_25990131":"טוען...","send_e3bd0ed0":"שליחה"},"ht":{"cancel_caeb1e68":"Anile","content_share_started_successfully_2c37fb79":"Pataj kontni kòmanse ak siksè","error_starting_content_share_18fb1532":"Erè nan demaraj pataj kontni","loading_25990131":"Chajman...","send_e3bd0ed0":"Voye","send_to_b940900a":"Voye Bay...","starting_content_share_2d8c2999":"Demaraj pataj kontni"},"hu":{"cancel_caeb1e68":"Mégse","loading_25990131":"Töltődik...","send_e3bd0ed0":"Küldés"},"hy":{"cancel_caeb1e68":"Չեղյալ համարել","loading_25990131":"Բեռնում է...","send_e3bd0ed0":"Ուղարկել"},"is":{"cancel_caeb1e68":"Hætta við","content_share_started_successfully_2c37fb79":"Efnisdeiling hófst giftusamlega","error_starting_content_share_18fb1532":"Villa við að byrja efnisdeilingu","loading_25990131":"Hleð inn...","send_e3bd0ed0":"Senda","send_to_b940900a":"Senda til…","starting_content_share_2d8c2999":"Byrja efnisdeilingu"},"it":{"cancel_caeb1e68":"Annulla","content_share_started_successfully_2c37fb79":"La condivisione dei contenuti è iniziata con successo","error_starting_content_share_18fb1532":"Errore nell’avvio della condivisione dei contenuti","loading_25990131":"Caricamento in corso...","send_e3bd0ed0":"Invia","send_to_b940900a":"Invia a...","starting_content_share_2d8c2999":"Inizio della condivisione dei contenuti"},"ja":{"cancel_caeb1e68":"キャンセル","content_share_started_successfully_2c37fb79":"コンテンツの共有が正常に開始されました","error_starting_content_share_18fb1532":"コンテンツの共有開始時にエラー","loading_25990131":"読み込み中・・・","send_e3bd0ed0":"送信","send_to_b940900a":"送信先...","starting_content_share_2d8c2999":"コンテンツの共有開始中"},"ko":{"cancel_caeb1e68":"취소","loading_25990131":"로드하는 중...","send_e3bd0ed0":"보내기"},"mi":{"cancel_caeb1e68":"Whakakore","content_share_started_successfully_2c37fb79":"Te tuari ihirangi i timata pai","error_starting_content_share_18fb1532":"He hapa i te wā e timata ana te tuari ihirangi","loading_25990131":"E uta ana ....","send_e3bd0ed0":"Tukua","send_to_b940900a":"Tukua ki ...","starting_content_share_2d8c2999":"E timata tuari ihirangi"},"nb":{"cancel_caeb1e68":"Avbryt","content_share_started_successfully_2c37fb79":"Innholdsdeling startet vellykket","error_starting_content_share_18fb1532":"Avvik under start av innholdsdeling","loading_25990131":"Laster...","send_e3bd0ed0":"Send","send_to_b940900a":"Send til...","starting_content_share_2d8c2999":"Starter innholdsdeling"},"nb-x-k12":{"cancel_caeb1e68":"Avbryt","content_share_started_successfully_2c37fb79":"Innholdsdeling startet vellykket","error_starting_content_share_18fb1532":"Avvik under start av innholdsdeling","loading_25990131":"Laster...","send_e3bd0ed0":"Send","send_to_b940900a":"Send til...","starting_content_share_2d8c2999":"Starter innholdsdeling"},"nl":{"cancel_caeb1e68":"Annuleren","content_share_started_successfully_2c37fb79":"Contentshare is gestart","error_starting_content_share_18fb1532":"Fout bij starten van contentshare","loading_25990131":"Bezig met laden...","send_e3bd0ed0":"Versturen","send_to_b940900a":"Verzenden naar...","starting_content_share_2d8c2999":"Contentshare starten"},"nn":{"cancel_caeb1e68":"Avbryt","content_share_started_successfully_2c37fb79":"Innhaldsdeling er starta","error_starting_content_share_18fb1532":"Det oppstod ein feil under oppstart av innhaldsdeling","loading_25990131":"Lastar...","send_e3bd0ed0":"Send","send_to_b940900a":"Send til...","starting_content_share_2d8c2999":"Startar innhaldsdeling"},"pl":{"cancel_caeb1e68":"Anuluj","content_share_started_successfully_2c37fb79":"Pomyślnie rozpoczęto udostępnianie zawartości","error_starting_content_share_18fb1532":"Błąd podczas udostępniania zawartości","loading_25990131":"Wczytywanie...","send_e3bd0ed0":"Wyślij","send_to_b940900a":"Wyślij do...","starting_content_share_2d8c2999":"Rozpoczynanie udostępniania zawartości"},"pt":{"cancel_caeb1e68":"Cancelar","content_share_started_successfully_2c37fb79":"O partilhamento de conteúdo foi iniciado com sucesso","error_starting_content_share_18fb1532":"Erro ao iniciar o partilhamento de conteúdo","loading_25990131":"A carregar...","send_e3bd0ed0":"Enviar","send_to_b940900a":"Enviar para...","starting_content_share_2d8c2999":"A iniciar o partilhamento de conteúdo"},"pt-BR":{"cancel_caeb1e68":"Cancelar","content_share_started_successfully_2c37fb79":"Compartilhamento de conteúdo iniciado com sucesso","error_starting_content_share_18fb1532":"Erro ao iniciar compartilhamento de conteúdo","loading_25990131":"Carregando...","send_e3bd0ed0":"Enviar","send_to_b940900a":"Enviar para...","starting_content_share_2d8c2999":"Iniciando compartilhamento de conteúdo"},"ru":{"cancel_caeb1e68":"Отменить","content_share_started_successfully_2c37fb79":"Общий доступ к контенту успешно запущен","error_starting_content_share_18fb1532":"Ошибка запуска общего доступа к контенту","loading_25990131":"Выполняется загрузка...","send_e3bd0ed0":"Отправить","send_to_b940900a":"Отправить в...","starting_content_share_2d8c2999":"Запуск общего доступа к контенту"},"sl":{"cancel_caeb1e68":"Prekliči","loading_25990131":"Nalaganje ...","send_e3bd0ed0":"Pošlji"},"sv":{"cancel_caeb1e68":"Avbryt","content_share_started_successfully_2c37fb79":"Innehållsdelning startades","error_starting_content_share_18fb1532":"Fel vid start av innehållsdelning","loading_25990131":"Läser in ...","send_e3bd0ed0":"Skicka","send_to_b940900a":"Skicka till...","starting_content_share_2d8c2999":"Startar innehållsdelning"},"sv-x-k12":{"cancel_caeb1e68":"Avbryt","content_share_started_successfully_2c37fb79":"Innehållsdelning startades","error_starting_content_share_18fb1532":"Fel vid start av innehållsdelning","loading_25990131":"Läser in ...","send_e3bd0ed0":"Skicka","send_to_b940900a":"Skicka till...","starting_content_share_2d8c2999":"Startar innehållsdelning"},"tr":{"cancel_caeb1e68":"İptal","content_share_started_successfully_2c37fb79":"İçerik paylaşımı başarılı bir şekilde başlatıldı","loading_25990131":"Yükleniyor...","send_e3bd0ed0":"Gönder"},"uk":{"cancel_caeb1e68":"Скасувати","loading_25990131":"Завантаження...","send_e3bd0ed0":"Надіслати"},"zh-Hans":{"cancel_caeb1e68":"取消","content_share_started_successfully_2c37fb79":"内容共享已成功启动","error_starting_content_share_18fb1532":"启动内容共享出错","loading_25990131":"加载中……","send_e3bd0ed0":"发送","send_to_b940900a":"发送至...","starting_content_share_2d8c2999":"启动内容共享"},"zh-Hant":{"cancel_caeb1e68":"取消","content_share_started_successfully_2c37fb79":"內容共用已成功開始","error_starting_content_share_18fb1532":"開始內容共用發生錯誤","loading_25990131":"正在載入……","send_e3bd0ed0":"發送","send_to_b940900a":"傳送到...","starting_content_share_2d8c2999":"開始內容共用"}}'))
+n("jQeR")
+n("0sPK")
+var c=s["default"].scoped("direct_share_user_modal")
+var d=n("q1tI")
+var _=n.n(d)
+n("17x9")
+var u=n("L+/K")
+var f=n("Xx/m")
+var p=n("VTJ5")
+var h=n("S4Kx")
+var g=n("BxIY")
+n("qBwj")
+var v=n("4Ogu")
+n.d(t,"a",(function(){return y}))
+const m=Object(d["lazy"])(()=>Promise.all([n.e(4),n.e(5),n.e(8),n.e(30),n.e(570)]).then(n.bind(null,"FB/m")))
+var b=Object(r["a"])(p["a"],{renderTitle:"",size:"x-small"})
+function y(e){let t=e.contentShare,n=e.courseId,s=Object(a["a"])(e,["contentShare","courseId"])
+const l=Object(d["useState"])([]),y=Object(i["a"])(l,2),k=y[0],j=y[1]
+const x=Object(d["useState"])(null),w=Object(i["a"])(x,2),E=w[0],O=w[1]
+const S=Object(d["useRef"])(s.open)
+function C(){j([])
+O(null)}function A(e){k.find(t=>t.id===e.id)||j(k.concat([e]))}function N(e){j(k.filter(t=>t.id!==e.id))}function I(){return Object(v["a"])({method:"POST",path:"/api/v1/users/self/content_shares",body:Object(o["a"])({},t,{receiver_ids:k.map(e=>e.id)})})}function z(){O("info")
+I().then(()=>O("success")).catch(e=>{console.error(e)
+e.response&&console.error(e.response)
+O("error")})}function T(){return _.a.createElement(_.a.Fragment,null,Object(r["a"])(f["a"],{onClick:s.onDismiss},void 0,c.t("Cancel")),Object(r["a"])(f["a"],{disabled:0===k.length||null!==E,variant:"primary",margin:"0 0 0 x-small",onClick:z},void 0,c.t("Send")))}const D=Object(r["a"])(h["a"],{as:"div",textAlign:"center"},void 0,Object(r["a"])(p["a"],{renderTitle:c.t("Loading...")}))
+if(s.open!==S.current){S.current=s.open
+C()}let F=""
+"info"===E?F=c.t("Starting content share"):"success"===E?F=c.t("Content share started successfully"):"error"===E&&(F=c.t("Error starting content share"))
+const L=F?Object(r["a"])(u["a"],{variant:E},void 0,Object(r["a"])("div",{role:"alert","aria-live":"assertive","aria-atomic":true},void 0,F),"info"===E?b:null):null
+return _.a.createElement(g["a"],Object.assign({label:c.t("Send To..."),size:"medium"},s,{footer:Object(r["a"])(T,{})}),Object(r["a"])(d["Suspense"],{fallback:D},void 0,L,Object(r["a"])(m,{courseId:n,selectedUsers:k,onUserSelected:A,onUserRemoved:N})))}},"rf+m":function(e,t,n){"use strict"
+n.d(t,"a",(function(){return f}))
+var r=n("VTBJ")
+var o=n("1OyB")
+var i=n("vuIU")
+var a=n("md7G")
+var s=n("foSv")
+var l=n("Ji7U")
+var c=n("q1tI")
+var d=n.n(c)
+var _=n("hPGw")
+var u=d.a.createElement("path",{d:"M568.13.012L392 176.142l783.864 783.989L392 1743.87 568.13 1920l960.118-959.87z",fillRule:"evenodd",stroke:"none",strokeWidth:"1"})
+var f=function(e){Object(l["a"])(t,e)
+function t(){Object(o["a"])(this,t)
+return Object(a["a"])(this,Object(s["a"])(t).apply(this,arguments))}Object(i["a"])(t,[{key:"render",value:function(){return d.a.createElement(_["a"],Object.assign({},this.props,{name:"IconArrowOpenEnd",viewBox:"0 0 1920 1920",bidirectional:true}),u)}}])
+t.displayName="IconArrowOpenEndSolid"
+return t}(c["Component"])
+f.glyphName="arrow-open-end"
+f.variant="Solid"
+f.propTypes=Object(r["a"])({},_["a"].propTypes)},sxOR:function(e,t,n){"use strict"
+var r=String.prototype.replace
+var o=/%20/g
+var i=n("0jNN")
+var a={RFC1738:"RFC1738",RFC3986:"RFC3986"}
+e.exports=i.assign({default:a.RFC3986,formatters:{RFC1738:function(e){return r.call(e,o,"+")},RFC3986:function(e){return String(e)}}},a)},ysUD:function(e,t,n){"use strict"
+var r=n("VTBJ")
+var o=n("rePB")
+var i=n("1OyB")
+var a=n("vuIU")
+var s=n("md7G")
+var l=n("foSv")
+var c=n("Ji7U")
+var d=n("q1tI")
+var _=n.n(d)
+var u=n("17x9")
+var f=n.n(u)
+var p=n("TSYQ")
+var h=n.n(p)
+var g=n("eAd9")
+var v=n.n(g)
+var m=n("J2CL")
+var b=n("sQ3t")
+var y=n("jtGx")
+function k(e){var t=e.colors,n=e.borders,r=e.stacking
+return{zIndex:r.topmost,background:"rgba(255, 255, 255, 0.75)",borderColor:"transparent",focusBorderColor:t.borderBrand,borderRadius:n.radiusMedium,borderWidth:n.widthSmall}}k.canvas=function(e){return{focusBorderColor:e["ic-brand-primary"]}}
+n.d(t,"a",(function(){return S}))
+var j,x,w,E
+var O={componentId:"fvvQs",template:function(e){return"\n\n.fvvQs_bGBk{background:".concat(e.background||"inherit",";border:").concat(e.borderWidth||"inherit"," solid ").concat(e.borderColor||"inherit",";border-radius:").concat(e.borderRadius||"inherit",";bottom:0;box-sizing:border-box;display:flex;justify-content:center;left:0;outline:none;overflow:auto;position:absolute;right:0;top:0;z-index:").concat(e.zIndex||"inherit","}\n\n.fvvQs_bGBk:focus{border-color:").concat(e.focusBorderColor||"inherit","}\n\n.fvvQs_cMOR{position:fixed}\n\n.fvvQs_dacV{align-items:flex-start}\n\n.fvvQs_cwzs{align-items:center}\n\n.fvvQs_cGWj{align-items:flex-end}\n\n.fvvQs_eFiI{align-items:stretch}")},root:"fvvQs_bGBk",fullscreen:"fvvQs_cMOR",top:"fvvQs_dacV",center:"fvvQs_cwzs",bottom:"fvvQs_cGWj",stretch:"fvvQs_eFiI"}
+var S=(j=Object(m["j"])(k,O),j(x=(E=w=function(e){Object(c["a"])(t,e)
+function t(){var e
+var n
+Object(i["a"])(this,t)
+for(var r=arguments.length,o=new Array(r),a=0;a<r;a++)o[a]=arguments[a]
+n=Object(s["a"])(this,(e=Object(l["a"])(t)).call.apply(e,[this].concat(o)))
+n.handleElementRef=function(e){n.props.elementRef(e)}
+n.contentRef=function(e){n._content=e}
+return n}Object(a["a"])(t,[{key:"componentDidMount",value:function(){this.props.fullscreen&&v.a.on()}},{key:"componentWillUnmount",value:function(){this.props.fullscreen&&v.a.off()}},{key:"render",value:function(){var e
+var n=Object(b["a"])(this.props.children,{ref:this.contentRef})
+var i=h()((e={},Object(o["a"])(e,O.root,true),Object(o["a"])(e,O[this.props.placement],true),Object(o["a"])(e,O.fullscreen,this.props.fullscreen),e))
+var a=Object(r["a"])({},Object(y["a"])(this.props,t.propTypes),{className:i,ref:this.handleElementRef})
+if("function"===typeof this.props.onClick){a.onClick=this.props.onClick
+a.tabIndex=-1}return _.a.createElement("span",a,n)}}])
+t.displayName="Mask"
+return t}(d["Component"]),w.propTypes={onDismiss:f.a.func,placement:f.a.oneOf(["top","center","bottom","stretch"]),fullscreen:f.a.bool,children:f.a.node,onClick:f.a.func,elementRef:f.a.func},w.defaultProps={placement:"center",fullscreen:false,onDismiss:void 0,children:null,onClick:void 0,elementRef:function(e){}},E))||x)}}])
