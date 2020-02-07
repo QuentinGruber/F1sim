@@ -7,10 +7,10 @@
 #include "Cars.h"
 
 void Cars::Display_info() {
-    std::cout<<"["<<name<<"'s info] "<<std::endl;
-    std::cout<<"pression_pneu : "<<pression_pneu<<"%"<<std::endl;
-    std::cout<<"usure_pneu : "<<usure_pneu<<"%"<<std::endl;
-    std::cout<<"Vitesse moyenne dernier tour : "<<speed<<"Km/h"<<std::endl;
+    std::cout << "\n[" << name << "'s info] " << std::endl;
+    std::cout << "pression_pneu : " << pression_pneu << "%" << std::endl;
+    std::cout << "usure_pneu : " << usure_pneu << "%" << std::endl;
+    std::cout << "Vitesse moyenne dernier tour : " << speed << "Km/h" << std::endl;
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
