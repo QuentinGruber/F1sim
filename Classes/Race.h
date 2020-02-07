@@ -10,6 +10,8 @@ public:static void start_race();
 
 private:
     static void Display_choices();
+    static float Loop_time(float Circuit_length,float Car_speed);
+    static void Display_Times();
 };
 
 #endif //PROJ_C_RACE_H

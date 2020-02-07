@@ -10,7 +10,7 @@ void Cars::Display_info() {
     std::cout<<"["<<name<<"'s info] "<<std::endl;
     std::cout<<"pression_pneu : "<<pression_pneu<<"%"<<std::endl;
     std::cout<<"usure_pneu : "<<usure_pneu<<"%"<<std::endl;
-    std::cout<<"Vitesse moyenne dernier tour : "<<Calculate_speed()<<"Km/h"<<std::endl;
+    std::cout<<"Vitesse moyenne dernier tour : "<<speed<<"Km/h"<<std::endl;
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
@@ -63,11 +63,11 @@ void Cars::Changer_pneu() {
     std::cout<<"Pneu neuf installé ! "<<std::endl;
 }
 
-int Cars::Calculate_speed() {
+void Cars::Generate_speed() {
     std::srand(std::time(nullptr)); // TODO: make a non-predictatble random generator
     int rnd_number = std::rand() % 100;
     int Speed =  150 + (rnd_number*173)/100; // Vitesse minimum de 150 max de 323
-    return Speed;
+    speed = Speed;
 
 }
 
