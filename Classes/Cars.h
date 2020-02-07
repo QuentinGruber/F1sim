@@ -11,7 +11,7 @@ public:
     float usure_pneu = 100.0;
     float temperature_moteur = 10.0;
     void Display_info();
-    void Usure(float Distance_Tour,int nb_virages);
+    void Wear(float Distance_Tour,float nb_virages);
     void Regonfler_pneu();
     void Changer_pneu();
     void manual_adjustment();

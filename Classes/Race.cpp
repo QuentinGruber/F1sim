@@ -41,8 +41,8 @@ void Race::start_race() {
         Car2.manual_adjustment();
 
         // The car make the loop and some of his components are used
-        Car1.Usure(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
-        Car2.Usure(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
+        Car1.Wear(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
+        Car2.Wear(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
         if(Car1.HasCrashed || Car2.HasCrashed) break;  // If one of the component get at a critical state the simulation end.
     }
 

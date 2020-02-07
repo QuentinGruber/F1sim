@@ -8,7 +8,7 @@ void Cars::Display_info() {
     std::cout<<"["<<name<<"'s info] "<<"pression_pneu : "<<pression_pneu<<"%"<<" usure_pneu : "<<usure_pneu<<"%"<<std::endl;
 }
 
-void Cars::Usure(float Distance_Tour,float nb_virages) {
+void Cars::Wear(float Distance_Tour,float nb_virages) {
     int Crash_log = 0;
     pression_pneu -= (0.003f * Distance_Tour + 0.003f * nb_virages); // 0.03% de perte de pression par mètre et le double pendant les virages
     usure_pneu -= (0.001f * Distance_Tour + 0.003f * nb_virages);
