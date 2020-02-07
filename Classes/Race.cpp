@@ -42,6 +42,7 @@ void Race::start_race() {
 
         // The car make the loop and some of his components are used
         Car1.Usure(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
+        Car2.Usure(Circuitos.distance,(Circuitos.virage_droit + Circuitos.virage_gauche));
         if(Car1.HasCrashed || Car2.HasCrashed) break;  // If one of the component get at a critical state the simulation end.
     }
 
