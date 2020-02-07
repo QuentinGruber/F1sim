@@ -8,9 +8,9 @@
 
 class Circuit {
 public: int nb_tours = 10;
-    float distance = 300;
-    int virage_droit = 3;
-    int virage_gauche = 4;
+    float distance = 5371.0; // 5.371km en mètre
+    float virage_droit = 3.0;
+    float virage_gauche = 4.0;
 
 };
 

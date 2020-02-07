@@ -1,11 +1,8 @@
-#include <iostream>
-#include "Classes/Cars.h"
-#include "Classes/Course.h"
+#include "Classes/Race.h"
 
 
 int main() {
-    Course Grandprix;
-    Grandprix.start_course();
+    Race::start_race();
     return 0;
 }
 
