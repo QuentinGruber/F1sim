@@ -83,9 +83,15 @@ void Race::Turn_anim() {
 
     for (int sec_g = 0; sec_g < Temp_max; sec_g++) {
         std::cout << Car1.name << ":";
-        std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car1.speed));
+        if(Car1.penality != 0 )
+            std::cout << Car_progress(sec_g - Car1.penality, Loop_time(Circuitos.distance, Car1.speed));
+        else
+            std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car1.speed));
         std::cout << Car2.name << ":";
-        std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car2.speed));
+        if(Car2.penality != 0 )
+            std::cout << Car_progress(sec_g - Car2.penality, Loop_time(Circuitos.distance, Car2.speed));
+        else
+            std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car2.speed));
         if (sec_g == int(Temp_max)) {
             // Clean screen // TODO: retirer le vomit
             std::cout << "\r";

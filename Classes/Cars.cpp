@@ -14,8 +14,8 @@ void Cars::Display_info() {
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
     int Crash_log = 0;
-    pression_pneu -= (0.0002f * Distance_Tour + 0.002f * nb_virages)*(speed/10); // 0.01% de perte de pression par mètre à + de 100km/h et le double pendant les virages
-    usure_pneu -= (0.0001f * Distance_Tour + 0.0002f * nb_virages)*(speed/10);
+    pression_pneu -= (0.00003f * Distance_Tour + 0.0003f * nb_virages)*(speed/10); // 0.01% de perte de pression par mètre à + de 100km/h et le double pendant les virages
+    usure_pneu -= (0.00001f * Distance_Tour + 0.00001f * nb_virages)*(speed/10);
     if(pression_pneu<=0.0) Crash_log = 1;
     if(usure_pneu<=0.0) Crash_log = 2;
 
@@ -33,14 +33,17 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
 }
 
 void Cars::manual_adjustment() {
+    penality = 0;
     int User_choice;
     std::cin>> User_choice;
     switch (User_choice) {
         case 1 :
             Regonfler_pneu();
+            penality = 10;
             break;
         case 2:
             Changer_pneu();
+            penality = 20;
             break;
         default:
             break;
@@ -50,8 +53,8 @@ void Cars::manual_adjustment() {
 
 void Cars::Regonfler_pneu() {
     pression_pneu += 30;
-    if (pression_pneu>100.0){
-        pression_pneu = 100;
+    if (pression_pneu>(100.0 - (100 -usure_pneu)/2)){
+        pression_pneu = 100.0 - (100 -usure_pneu)/2;
     }
     std::cout<<"Pression_pneu : "<<pression_pneu<<"%"<<std::endl;
 }

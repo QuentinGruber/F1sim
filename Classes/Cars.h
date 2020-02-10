@@ -6,6 +6,7 @@
 #define PROJ_C_CARS_H
 class Cars {
 public:
+    int penality = 0;
     char* name = "Noname";
     int speed = 0;
     float pression_pneu = 100.0;
