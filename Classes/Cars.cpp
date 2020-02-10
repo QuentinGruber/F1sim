@@ -75,3 +75,23 @@ void Cars::Generate_speed() {
 
 }
 
+void Cars::refill_fuel() {
+
+}
+
+void Cars::change_oil() {
+
+}
+
+void Cars::fix_DRS() {
+
+}
+
+void Cars::fix_sysfreinage() {
+
+}
+
+void Cars::fix_antiblocage() {
+
+}
+

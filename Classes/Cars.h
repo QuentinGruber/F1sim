@@ -9,6 +9,8 @@ public:
     int penality = 0;
     char* name = "Noname";
     int speed = 0;
+    bool HasCrashed = false;
+    // télémétrie
     float pression_pneu = 100.0;
     float usure_pneu = 100.0;
     float temperature_moteur = 100.0;
@@ -19,7 +21,6 @@ public:
     float usure_DRS = 100.0;
     float usure_antiblocage = 100.0;
     float usure_carroserie = 100.0;
-    bool HasCrashed = false;
     // Function
     void Generate_speed();
     void Display_info();
@@ -27,5 +28,11 @@ public:
     void Regonfler_pneu();
     void Changer_pneu();
     void manual_adjustment();
+    void refill_fuel();
+    void change_oil();
+    void fix_DRS();
+    void fix_sysfreinage();
+    void fix_antiblocage();
+
 };
 #endif //PROJ_C_CARS_H
