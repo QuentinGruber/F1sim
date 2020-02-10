@@ -14,9 +14,8 @@ void Cars::Display_info() {
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
     int Crash_log = 0;
-    pression_pneu -= ((0.0001f * Distance_Tour)*(speed/10) + 0.003f * nb_virages); // 0.01% de perte de pression par mètre à + de 100km/h et le double pendant les virages
-    std::cout<<((0.0001f * Distance_Tour)*(speed/10) + 0.003f * nb_virages)<<std::endl;
-    usure_pneu -= (0.001f * Distance_Tour + 0.003f * nb_virages);
+    pression_pneu -= (0.0002f * Distance_Tour + 0.002f * nb_virages)*(speed/10); // 0.01% de perte de pression par mètre à + de 100km/h et le double pendant les virages
+    usure_pneu -= (0.0001f * Distance_Tour + 0.0002f * nb_virages)*(speed/10);
     if(pression_pneu<=0.0) Crash_log = 1;
     if(usure_pneu<=0.0) Crash_log = 2;
 
