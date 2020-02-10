@@ -11,13 +11,21 @@ public:
     int speed = 0;
     float pression_pneu = 100.0;
     float usure_pneu = 100.0;
-    float temperature_moteur = 10.0;
+    float temperature_moteur = 100.0;
+    float taux_huile = 100.0;
+    float taux_essence = 100.0;
+    float usure_systeme_freinage = 100.0;
+    float usure_colonne_direction = 100.0;
+    float usure_DRS = 100.0;
+    float usure_antiblocage = 100.0;
+    float usure_carroserie = 100.0;
+    bool HasCrashed = false;
+    // Function
     void Generate_speed();
     void Display_info();
     void Wear(float Distance_Tour,float nb_virages);
     void Regonfler_pneu();
     void Changer_pneu();
     void manual_adjustment();
-    bool HasCrashed = false;
 };
 #endif //PROJ_C_CARS_H
