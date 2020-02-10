@@ -9,10 +9,12 @@
 class Cars_bot {
 public:
     int speed = 0;
+    float penality = 0;
     float global_time = 0;
     char *name = "undefined";
 
     void Generate_speed();
+    void Random_pit_stop();
 
 };
 

@@ -51,10 +51,12 @@ void Race::start_race() {
         Car2.Generate_speed();
         for (int j = 0; j < NB_BOT; j++) {
             bot[j].Generate_speed();
-            bot[j].global_time += Loop_time(Circuitos.distance, bot[j].speed);
+            bot[j].global_time += Loop_time(Circuitos.distance, bot[j].speed,bot[j].penality);
         }
-        Car1.global_time += Loop_time(Circuitos.distance, Car1.speed);
-        Car2.global_time += Loop_time(Circuitos.distance, Car2.speed);
+        Car1.last_loop_time = Loop_time(Circuitos.distance, Car1.speed, Car1.penality);
+        Car2.last_loop_time = Loop_time(Circuitos.distance, Car2.speed , Car2.penality);
+        Car1.global_time += Car1.last_loop_time;
+        Car2.global_time += Car2.last_loop_time;
         Make_leaderbord();
         Turn_anim();
         Display_Times();
@@ -70,38 +72,38 @@ void Race::Display_choices() {
     std::cout<< "Press 1 pour regonfler pneu ou 2 pour changer pneu" <<std::endl;
 }
 
-float Race::Loop_time(float Circuit_length, float Car_speed) {
+float Race::Loop_time(float Circuit_length, float Car_speed, float penality) {
     // speed in mps
     float Car_speed_mps = (Car_speed / 3600) * 1000;
-    return (Circuit_length / Car_speed_mps);
+    return (Circuit_length / Car_speed_mps) + penality;
 }
 
 void Race::Display_Times() {
-    std::cout << Car1.name << " finish this turn in " << Loop_time(Circuitos.distance, Car1.speed) << "Seconds"
+    std::cout << Car1.name << " finish this turn in " << Car1.last_loop_time << "Seconds"
               << " and his current position in the race is " << Car1.position << std::endl;
-    std::cout << Car2.name << " finish this turn in " << Loop_time(Circuitos.distance, Car2.speed) << "Seconds"
+    std::cout << Car2.name << " finish this turn in " << Car2.last_loop_time << "Seconds"
               << " and his current position in the race is " << Car2.position << std::endl;
 }
 
-void Race::Turn_anim() {
+void Race::Turn_anim() { // TODO: fix anim not smooth anymore
     int anim_speed = 20;
     float Temp_max;
-    if (Loop_time(Circuitos.distance, Car1.speed) >= Loop_time(Circuitos.distance, Car2.speed))
-        Temp_max = Loop_time(Circuitos.distance, Car1.speed);
+    if (Car1.last_loop_time >= Car2.last_loop_time)
+        Temp_max = Car1.last_loop_time;
     else
-        Temp_max = Loop_time(Circuitos.distance, Car2.speed);
+        Temp_max = Car2.last_loop_time;
 
     for (int sec_g = 0; sec_g < Temp_max; sec_g++) {
         std::cout << Car1.name << ":";
         if(Car1.penality != 0 )
-            std::cout << Car_progress(sec_g - Car1.penality, Loop_time(Circuitos.distance, Car1.speed));
+            std::cout << Car_progress(sec_g - Car1.penality, Car1.last_loop_time);
         else
-            std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car1.speed));
+            std::cout << Car_progress(sec_g, Car1.last_loop_time);
         std::cout << Car2.name << ":";
         if(Car2.penality != 0 )
-            std::cout << Car_progress(sec_g - Car2.penality, Loop_time(Circuitos.distance, Car2.speed));
+            std::cout << Car_progress(sec_g - Car2.penality, Car2.last_loop_time);
         else
-            std::cout << Car_progress(sec_g, Loop_time(Circuitos.distance, Car2.speed));
+            std::cout << Car_progress(sec_g, Car2.last_loop_time);
         if (sec_g == int(Temp_max)) {
             // Clean screen // TODO: retirer le vomit
             std::cout << "\r";
@@ -139,8 +141,10 @@ void Race::Make_leaderbord() {
     float tab[22] = {};
     tab[0] = Car1.global_time;
     tab[1] = Car2.global_time;
+    cout<<"[DEBUG]"<<Car1.global_time<<" "<<Car2.global_time<<"";
     for (int t = 0; t < NB_BOT; t++) {
         tab[2 + t] = bot[t].global_time;
+        cout<<bot[t].global_time<<" ";
     }
     std::sort(&tab[0], &tab[0] + 22); // trie par ordre croissant
     for (int i = 0; i < NB_BOT + 2; i++) { // find player position

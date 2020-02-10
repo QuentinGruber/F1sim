@@ -10,6 +10,7 @@ public:
     char *name = "Noname";
     int speed = 0;
     int position = 0;
+    float last_loop_time = 0;
     float global_time = 0;
     float chance_crash = 0.1;
     bool HasCrashed = false;
