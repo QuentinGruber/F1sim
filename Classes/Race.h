@@ -10,6 +10,8 @@ class Race {
 public:
     static void start_race();
 
+    static void Make_leaderbord();
+
 private:
     static void Display_choices();
 
