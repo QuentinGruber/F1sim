@@ -1,10 +1,9 @@
 //
 // Created by Quentin on 06/02/2020.
 //
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
 #include "Cars.h"
+#include <random>
 
 void Cars::Display_info() {
     std::cout << "\n[" << name << "'s info] " << std::endl;
@@ -64,9 +63,11 @@ void Cars::Changer_pneu() {
 }
 
 void Cars::Generate_speed() {
-    std::srand(std::time(nullptr)); // TODO: make a non-predictatble random generator
-    int rnd_number = std::rand() % 100;
-    int Speed =  150 + (rnd_number*173)/100; // Vitesse minimum de 150 max de 323
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(1.0, 100.0);
+    int rnd_number = dist(mt);
+    int Speed =  200 + (rnd_number*123)/100; // Vitesse minimum de 200 max de 323
     speed = Speed;
 
 }
