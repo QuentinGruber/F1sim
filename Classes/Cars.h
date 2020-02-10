@@ -9,6 +9,7 @@ public:
     int penality = 0;
     char* name = "Noname";
     int speed = 0;
+    float chance_crash = 0.1 ;
     bool HasCrashed = false;
     // télémétrie
     float pression_pneu = 100.0;
@@ -22,6 +23,7 @@ public:
     float usure_antiblocage = 100.0;
     float usure_carroserie = 100.0;
     // Function
+    void crash_test();
     void Generate_speed();
     void Display_info();
     void Wear(float Distance_Tour,float nb_virages);
