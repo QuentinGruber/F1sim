@@ -5,6 +5,13 @@
 * pression des pneus
 * usure des pneus
 * température du moteur
+* taux d'essence
+* taux d'huile
+* systeme de freinage
+* ouverture du DRS
+* antiblocage au freinage
+* Colonne de direction
+* Etat de la carroserie
 
 ## UML
 
