@@ -141,10 +141,8 @@ void Race::Make_leaderbord() {
     float tab[22] = {};
     tab[0] = Car1.global_time;
     tab[1] = Car2.global_time;
-    cout<<"[DEBUG]"<<Car1.global_time<<" "<<Car2.global_time<<"";
     for (int t = 0; t < NB_BOT; t++) {
         tab[2 + t] = bot[t].global_time;
-        cout<<bot[t].global_time<<" ";
     }
     std::sort(&tab[0], &tab[0] + 22); // trie par ordre croissant
     for (int i = 0; i < NB_BOT + 2; i++) { // find player position
