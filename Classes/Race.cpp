@@ -35,6 +35,12 @@ void Race::start_race() {
     // Start the race
     for (int i = 1; i <= Circuitos.nb_tours; i++) { // every loop
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
+
+        if (i != 1) { // si le premier tour est passé
+            for (int j = 0; j < NB_BOT; j++) {
+                bot[j].Random_pit_stop();
+            }
+        }
         // User choose to adjust some stuff on car 1
         Car1.Display_info();
         if (Car1.automated)
