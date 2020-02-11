@@ -37,11 +37,17 @@ void Race::start_race() {
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
         // User choose to adjust some stuff on car 1
         Car1.Display_info();
-        Car1.manual_adjustment();
+        if (Car1.automated)
+            Car1.auto_adjustment();
+        else
+            Car1.manual_adjustment();
 
         // User choose to adjust some stuff on car 2
         Car2.Display_info();
-        Car2.manual_adjustment();
+        if (Car2.automated)
+            Car2.auto_adjustment();
+        else
+            Car2.manual_adjustment();
 
 
         // The car make the loop and some of his components are used

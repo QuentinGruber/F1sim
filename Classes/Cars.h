@@ -6,6 +6,7 @@
 #define PROJ_C_CARS_H
 class Cars {
 public:
+    bool automated = false;
     int penality = 0;
     char *name = "Noname";
     int speed = 0;
@@ -27,6 +28,12 @@ public:
     float usure_carroserie = 100.0;
 
     // Function
+    void auto_adjustment();
+
+    void manual_adjustment();
+
+    void adjustment(int choice);
+
     void crash_test();
 
     void Generate_speed();
@@ -34,9 +41,11 @@ public:
     void Display_info();
 
     void Wear(float Distance_Tour, float nb_virages);
+
     void Regonfler_pneu();
+
     void Changer_pneu();
-    void manual_adjustment();
+
     void refill_fuel();
     void change_oil();
     void fix_DRS();

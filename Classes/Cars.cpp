@@ -31,6 +31,7 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
 
     if (pression_pneu <= 0.0) Crash_log = 1;
     if (usure_pneu <= 0.0) Crash_log = 2;
+    if (essence <= 0.0) Crash_log = 3;
 
     switch (Crash_log) {
         case 1 :
@@ -39,6 +40,10 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
             break;
         case 2 :
             std::cout << "[CRASH " << name << "] Un pneu a eclate" << std::endl;
+            HasCrashed = true;
+            break;
+        case 3:
+            std::cout << "[CRASH " << name << "] N'a plus assez d'essence pour finir le tour" << std::endl;
             HasCrashed = true;
             break;
         default:
@@ -57,11 +62,9 @@ void Cars::Generate_speed() {
 
 }
 
-void Cars::manual_adjustment() {
-    penality = 0;
-    int User_choice;
-    std::cin >> User_choice;
-    switch (User_choice) {
+
+void Cars::adjustment(int Choice) {
+    switch (Choice) {
         case 1 :
             Regonfler_pneu();
             penality = 10;
@@ -106,7 +109,30 @@ void Cars::manual_adjustment() {
         default:
             break;
     }
+}
 
+
+void Cars::auto_adjustment() {
+    penality = 0;
+    int User_choice;
+    if (essence < 20) {
+        User_choice = 3;
+    } else if (usure_pneu < 20) {
+        User_choice = 2;
+    } else if (pression_pneu < 40) {
+        User_choice = 1;
+    } else {
+        User_choice = 0;
+    }
+
+    adjustment(User_choice);
+}
+
+void Cars::manual_adjustment() {
+    penality = 0;
+    int User_choice;
+    std::cin >> User_choice;
+    adjustment(User_choice);
 }
 
 void Cars::Regonfler_pneu() {
