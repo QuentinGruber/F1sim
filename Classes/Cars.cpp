@@ -19,7 +19,7 @@ void Cars::Display_info() {
               << std::endl;
     std::cout << "Usure de la colonne de direction : " << usure_colonne_direction << "%" << std::endl;
     std::cout << "Usure de la carroserie : " << usure_carroserie << "%" << std::endl;
-    std::cout << "Choose if you want to fix something or not ( press 0 ): ";
+    std::cout << "\nChoose if you want to fix something or not ( press 0 ): ";
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
@@ -78,6 +78,31 @@ void Cars::manual_adjustment() {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             refill_fuel();
             break;
+        case 4 :
+            change_oil();
+            penality = 10;
+            std::cout << " Penality : " << penality << "sec" << std::endl;
+            break;
+        case 5 :
+            // temperature moteur
+            penality = 10;
+            std::cout << " Penality : " << penality << "sec" << std::endl;
+            break;
+        case 6 :
+            fix_DRS();
+            penality = 10;
+            std::cout << " Penality : " << penality << "sec" << std::endl;
+            break;
+        case 7 :
+            fix_antiblocage();
+            penality = 10;
+            std::cout << " Penality : " << penality << "sec" << std::endl;
+            break;
+        case 8 :
+            fix_sysfreinage();
+            penality = 10;
+            std::cout << " Penality : " << penality << "sec" << std::endl;
+            break;
         default:
             break;
     }
@@ -109,17 +134,29 @@ void Cars::change_oil() {
 }
 
 void Cars::fix_DRS() {
-    usure_DRS = 80;
-    std::cout << "DRS fixed at the best we can ! " << std::endl;
+    if (usure_DRS < 80) {
+        usure_DRS = 80;
+        std::cout << "DRS fixed at the best we can ! " << std::endl;
+    } else {
+        std::cout << "Nothing to fix on DRS ! " << std::endl;
+    }
 }
 
 void Cars::fix_sysfreinage() {
-    usure_systeme_freinage = 80;
-    std::cout << "sysfreinage fixed at the best we can ! " << std::endl;
+    if (usure_systeme_freinage < 80) {
+        usure_systeme_freinage = 80;
+        std::cout << "sysfreinage fixed at the best we can ! " << std::endl;
+    } else {
+        std::cout << "Nothing to fix on sysfreinage ! " << std::endl;
+    }
 }
 
 void Cars::fix_antiblocage() {
-    usure_antiblocage = 80;
-    std::cout << "antiblocage fixed at the best we can ! " << std::endl;
+    if (usure_antiblocage < 80) {
+        usure_antiblocage = 80;
+        std::cout << "antiblocage fixed at the best we can ! " << std::endl;
+    } else {
+        std::cout << "Nothing to fix on antiblocage ! " << std::endl;
+    }
 }
 
