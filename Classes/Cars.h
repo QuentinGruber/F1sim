@@ -18,7 +18,7 @@ public:
     // télémétrie
     float pression_pneu = 100.0;
     float usure_pneu = 100.0;
-    float temperature_moteur = 100.0;
+    float temperature_moteur = 60.0;
     float taux_huile = 100.0;
     float essence = 95.0; // ferrari f1 stat
     float usure_systeme_freinage = 100.0;
@@ -45,6 +45,8 @@ public:
     void Regonfler_pneu();
 
     void Changer_pneu();
+
+    void refroidir_moteur();
 
     void refill_fuel();
     void change_oil();
