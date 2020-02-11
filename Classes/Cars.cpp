@@ -8,16 +8,18 @@
 void Cars::Display_info() {
     std::cout << "\n[" << name << "'s info] " << std::endl;
     std::cout << "\nVitesse lors du dernier tour : " << speed << "km/h" << std::endl;
-    std::cout << "pression_pneu : " << pression_pneu << "%" << std::endl;
-    std::cout << "usure des pneu : " << usure_pneu << "%" << std::endl;
-    std::cout << "Reservoir d'essence : " << essence << "L" << std::endl;
-    std::cout << "Taux d'huile : " << taux_huile << "%" << std::endl;
-    std::cout << "Temperature du moteur : " << temperature_moteur << " degres" << std::endl;
-    std::cout << "Usure du DRS : " << usure_DRS << "%" << std::endl;
-    std::cout << "Usure du systeme d'antiblocage : " << usure_antiblocage << "%" << std::endl;
-    std::cout << "Usure du systeme de freinage : " << usure_systeme_freinage << "%" << std::endl;
+    std::cout << "pression_pneu : " << pression_pneu << "%" << " {Fix this with 1}" << std::endl;
+    std::cout << "usure des pneu : " << usure_pneu << "%" << " {Fix this with 2}" << std::endl;
+    std::cout << "Reservoir d'essence : " << essence << "L" << " {Fix this with 3}" << std::endl;
+    std::cout << "Taux d'huile : " << taux_huile << "%" << " {Fix this with 4}" << std::endl;
+    std::cout << "Temperature du moteur : " << temperature_moteur << " degres" " {Fix this with 5}" << std::endl;
+    std::cout << "Usure du DRS : " << usure_DRS << "%" << " {Fix this with 6}" << std::endl;
+    std::cout << "Usure du systeme d'antiblocage : " << usure_antiblocage << "%" << " {Fix this with 7}" << std::endl;
+    std::cout << "Usure du systeme de freinage : " << usure_systeme_freinage << "%" << " {Fix this with 8}"
+              << std::endl;
     std::cout << "Usure de la colonne de direction : " << usure_colonne_direction << "%" << std::endl;
     std::cout << "Usure de la carroserie : " << usure_carroserie << "%" << std::endl;
+    std::cout << "Choose if you want to fix something or not ( press 0 ): ";
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
@@ -71,9 +73,10 @@ void Cars::manual_adjustment() {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 3:
-            refill_fuel();
-            penality = ((95 - essence) / 12.1); // les pompes à essence ne peuvent pas dépasser 12,1 litres par secondes
+            // les pompes à essence ne peuvent pas dépasser 12,1 litres par secondes
+            penality = ((95 - essence) / 12.1) + 5.0; // minimum 5 secondes de penalité
             std::cout << " Penality : " << penality << "sec" << std::endl;
+            refill_fuel();
             break;
         default:
             break;
@@ -96,7 +99,7 @@ void Cars::Changer_pneu() {
 }
 
 void Cars::refill_fuel() {
-    essence = 100;
+    essence = 95;
     std::cout << "Reservoir d'essence plein ! ";
 }
 

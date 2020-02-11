@@ -37,12 +37,10 @@ void Race::start_race() {
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
         // User choose to adjust some stuff on car 1
         Car1.Display_info();
-        Display_choices();
         Car1.manual_adjustment();
 
         // User choose to adjust some stuff on car 2
         Car2.Display_info();
-        Display_choices();
         Car2.manual_adjustment();
 
 
@@ -66,10 +64,6 @@ void Race::start_race() {
             break;  // If one of the component get at a critical state the simulation end.
     }
     system("pause");
-}
-
-void Race::Display_choices() {
-    std::cout<< "Press 1 pour regonfler pneu ou 2 pour changer pneu" <<std::endl;
 }
 
 float Race::Loop_time(float Circuit_length, float Car_speed, float penality) {

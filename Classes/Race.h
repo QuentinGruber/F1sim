@@ -13,7 +13,6 @@ public:
     static void Make_leaderbord();
 
 private:
-    static void Display_choices();
 
     static float Loop_time(float Circuit_length, float Car_speed,float penality);
 

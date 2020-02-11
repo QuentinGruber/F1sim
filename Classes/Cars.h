@@ -19,7 +19,7 @@ public:
     float usure_pneu = 100.0;
     float temperature_moteur = 100.0;
     float taux_huile = 100.0;
-    float essence = 95; // ferrari f1 stat
+    float essence = 95.0; // ferrari f1 stat
     float usure_systeme_freinage = 100.0;
     float usure_colonne_direction = 100.0;
     float usure_DRS = 100.0;
