@@ -19,17 +19,21 @@ public:
     float usure_pneu = 100.0;
     float temperature_moteur = 100.0;
     float taux_huile = 100.0;
-    float taux_essence = 100.0;
+    float essence = 95; // ferrari f1 stat
     float usure_systeme_freinage = 100.0;
     float usure_colonne_direction = 100.0;
     float usure_DRS = 100.0;
     float usure_antiblocage = 100.0;
     float usure_carroserie = 100.0;
+
     // Function
     void crash_test();
+
     void Generate_speed();
+
     void Display_info();
-    void Wear(float Distance_Tour,float nb_virages);
+
+    void Wear(float Distance_Tour, float nb_virages);
     void Regonfler_pneu();
     void Changer_pneu();
     void manual_adjustment();
