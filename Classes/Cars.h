@@ -28,6 +28,7 @@ public:
     float usure_carroserie = 100.0;
 
     // Function
+
     void auto_adjustment();
 
     void manual_adjustment();

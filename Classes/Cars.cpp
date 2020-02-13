@@ -3,7 +3,7 @@
 //
 #include <iostream>
 #include "Cars.h"
-#include <random>
+#include "utils.h"
 
 void Cars::Display_info() {
     std::cout << "\n[" << name << "'s info] " << std::endl;
@@ -53,11 +53,7 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
 }
 
 void Cars::Generate_speed() {
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(1.0, 100.0);
-    int rnd_number = dist(mt);
-    int Speed = 200 + (rnd_number * 123) / 100; // Vitesse minimum de 200 max de 323
+    int Speed = 200 + (utils::rnd_number(1.0,100.0) * 123) / 100; // Vitesse minimum de 200 max de 323
     speed = Speed;
 
 }
@@ -184,5 +180,9 @@ void Cars::fix_antiblocage() {
     } else {
         std::cout << "Nothing to fix on antiblocage ! " << std::endl;
     }
+}
+
+void Cars::crash_test() {
+   // rnd_number();
 }
 
