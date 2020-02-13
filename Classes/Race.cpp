@@ -24,12 +24,19 @@ void Race::start_race() {
     Car1.name = "Tutur";
     Car2.name = "Nulardos";
 
-    for (int i = 0; i < sizeof(bot_namelist); i++) { // give to all bot a name
-        if (i < NB_BOT) {
+    for(int i = 0;i < NB_BOT;i++){ // give to all bot a name
+        if (i < size(bot_namelist)){
             bot[i].name = bot_namelist[i];
-        } else {
-            break;
         }
+        else{
+            bot[i].name = "NoName";
+        }
+    }
+
+    // debug
+
+    for(int i = 0;i<NB_BOT;i++){
+        std::cout<<"Bot name :"<<bot[i].name<<std::endl;
     }
 
     /*
