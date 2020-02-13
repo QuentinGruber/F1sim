@@ -55,7 +55,7 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
 void Cars::Generate_speed() {
     int Speed = 200 + (utils::rnd_number(1.0,100.0) * 123) / 100; // Vitesse minimum de 200 max de 323
     speed = Speed;
-
+    temperature_moteur += (Speed / temperature_moteur);
 }
 
 
@@ -122,6 +122,7 @@ void Cars::auto_adjustment() {
     }
 
     adjustment(User_choice);
+    refroidir_moteur();
 }
 
 void Cars::manual_adjustment() {
@@ -129,6 +130,7 @@ void Cars::manual_adjustment() {
     int User_choice;
     std::cin >> User_choice;
     adjustment(User_choice);
+    refroidir_moteur();
 }
 
 void Cars::Regonfler_pneu() {
@@ -183,6 +185,14 @@ void Cars::fix_antiblocage() {
 }
 
 void Cars::crash_test() {
-   // rnd_number();
+    // rnd_number();
+}
+
+void Cars::refroidir_moteur() {
+    temperature_moteur -= 4 * penality;
+    if (temperature_moteur < 80) {
+        temperature_moteur = 80;
+    }
+
 }
 

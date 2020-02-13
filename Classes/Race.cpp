@@ -10,16 +10,28 @@
 #include <thread>
 #include <algorithm>
 
+char *bot_namelist[21] = {"Bertand", "Bernie", "Olive", "Paul", "Jacob", "Maxon", "Laurent",
+                          "Aurelie", "Quentin", "Alban", "Judiael", "Alick", "Alcapone",
+                          "Anne marie", "Cyril", "Emma", "Mohamed", "Louise", "Clara", "Lancelot",
+                          "Pierre"};
 Circuit Circuitos;
 Cars Car1, Car2;
 const int NB_BOT = 20;
 Cars_bot *bot = new Cars_bot[NB_BOT];
 
-
 void Race::start_race() {
     // Init some stuff
     Car1.name = "Tutur";
     Car2.name = "Nulardos";
+
+    for (int i = 0; i < sizeof(bot_namelist); i++) { // give to all bot a name
+        if (i < NB_BOT) {
+            bot[i].name = bot_namelist[i];
+        } else {
+            break;
+        }
+    }
+
     /*
      * Disable this for easier testing TODO: make the user choose some parameters or use default one
     // Wait for User response to start simulation
@@ -75,6 +87,7 @@ void Race::start_race() {
         if (Car1.HasCrashed || Car2.HasCrashed)
             break;  // If one of the component get at a critical state the simulation end.
     }
+    // TODO: learderboard
     system("pause");
 }
 

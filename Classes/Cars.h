@@ -18,7 +18,7 @@ public:
     // télémétrie
     float pression_pneu = 100.0;
     float usure_pneu = 100.0;
-    float temperature_moteur = 60.0;
+    float temperature_moteur = 60.0; // min 60 max 120
     float taux_huile = 100.0;
     float essence = 95.0; // ferrari f1 stat
     float usure_systeme_freinage = 100.0;
