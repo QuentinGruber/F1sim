@@ -86,7 +86,7 @@ void Race::start_race() {
         Car2.last_loop_time = Loop_time(Circuitos.distance, Car2.speed , Car2.penality);
         Car1.global_time += Car1.last_loop_time;
         Car2.global_time += Car2.last_loop_time;
-        Make_leaderbord();
+        Make_leaderboard();
         Turn_anim();
         Display_Times();
         Car1.Wear(Circuitos.distance, (Circuitos.virage_droit + Circuitos.virage_gauche));
@@ -163,20 +163,38 @@ char *Race::Car_progress(float elapsed_time, float Total_time) {
     return Animtoshow_Render;
 }
 
-void Race::Make_leaderbord() {
-    float tab[22] = {};
-    tab[0] = Car1.global_time;
-    tab[1] = Car2.global_time;
+void Race::Make_leaderboard() {
+    Leaderboard[0] = Car1.global_time;
+    Leaderboard[1] = Car2.global_time;
     for (int t = 0; t < NB_BOT; t++) {
-        tab[2 + t] = bot[t].global_time;
+        Leaderboard[2 + t] = bot[t].global_time;
     }
-    std::sort(&tab[0], &tab[0] + 22); // trie par ordre croissant
+    std::sort(&Leaderboard[0], &Leaderboard[0] + (NB_BOT + 2)); // trie par ordre croissant
     for (int i = 0; i < NB_BOT + 2; i++) { // find player position
-        if (tab[i] == Car1.global_time) {
+        if (Leaderboard[i] == Car1.global_time) {
             Car1.position = i;
         }
-        if (tab[i] == Car2.global_time) {
+        if (Leaderboard[i] == Car2.global_time) {
             Car2.position = i;
         }
+    }
+}
+
+void Race::Display_learderboard() {
+    char *Current_position_name = "";
+    std::sort(&Leaderboard[0], &Leaderboard[0] + (NB_BOT + 2)); // trie par ordre croissant
+    for (int i = 0; i < NB_BOT + 2; i++) { // find player position
+        if (Leaderboard[i] == Car1.global_time) {
+            Current_position_name = Car1.name;
+        }
+        if (Leaderboard[i] == Car2.global_time) {
+            Current_position_name = Car2.name;
+        }
+        for (int j = 0; j < NB_BOT; j++) {
+            if (Leaderboard[i] == bot[j].global_time) {
+                Current_position_name = bot[j].name;
+            }
+        }
+        std::cout << "Position " << i << " :" << Current_position_name << std::endl;
     }
 }

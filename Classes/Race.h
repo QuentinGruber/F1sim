@@ -10,11 +10,14 @@ class Race {
 public:
     static void start_race();
 
-    static void Make_leaderbord();
+    static void Make_leaderboard();
 
+    static void Display_learderboard();
+
+    static float Leaderboard[];
 private:
 
-    static float Loop_time(float Circuit_length, float Car_speed,float penality);
+    static float Loop_time(float Circuit_length, float Car_speed, float penality);
 
     static void Display_Times();
 
