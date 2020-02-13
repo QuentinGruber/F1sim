@@ -10,7 +10,7 @@ class Race {
 public:
     static void start_race();
 
-    static void Make_leaderboard();
+    static void Display_cars_position();
 
     static void Display_learderboard();
 

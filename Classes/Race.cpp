@@ -55,8 +55,8 @@ void Race::start_race() {
     for (int i = 1; i <= Circuitos.nb_tours; i++) { // every loop
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
 
-        if (i != 1) { // si le premier tour est passé
-            for (int j = 0; j < NB_BOT; j++) {
+        if (i != 1) { // if first loop is passed
+            for (int j = 0; j < NB_BOT; j++) { // bot may have a random pit stop
                 bot[j].Random_pit_stop();
             }
         }
@@ -86,7 +86,7 @@ void Race::start_race() {
         Car2.last_loop_time = Loop_time(Circuitos.distance, Car2.speed , Car2.penality);
         Car1.global_time += Car1.last_loop_time;
         Car2.global_time += Car2.last_loop_time;
-        Make_leaderboard();
+        Display_cars_position();
         Turn_anim();
         Display_Times();
         Car1.Wear(Circuitos.distance, (Circuitos.virage_droit + Circuitos.virage_gauche));
@@ -94,6 +94,7 @@ void Race::start_race() {
         if (Car1.HasCrashed || Car2.HasCrashed)
             break;  // If one of the component get at a critical state the simulation end.
     }
+    // the race end so we display an leaderboard
     Display_learderboard();
     system("pause");
 }
@@ -163,7 +164,7 @@ char *Race::Car_progress(float elapsed_time, float Total_time) {
     return Animtoshow_Render;
 }
 
-void Race::Make_leaderboard() {
+void Race::Display_cars_position() {
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     Leaderboard[0] = Car1.global_time;
     Leaderboard[1] = Car2.global_time;
