@@ -49,6 +49,8 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
         default:
             break;
     }
+    if(HasCrashed)
+        global_time = 40404; // 40404 to be sure that we can't get this time without crashing
 
 }
 

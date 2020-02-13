@@ -32,13 +32,6 @@ void Race::start_race() {
             bot[i].name = "NoName";
         }
     }
-
-    // debug
-
-    for(int i = 0;i<NB_BOT;i++){
-        std::cout<<"Bot name :"<<bot[i].name<<std::endl;
-    }
-
     /*
      * Disable this for easier testing TODO: make the user choose some parameters or use default one
     // Wait for User response to start simulation
@@ -60,13 +53,14 @@ void Race::start_race() {
                 bot[j].Random_pit_stop();
             }
         }
-        // User choose to adjust some stuff on car 1
-        Car1.Display_info();
-        if (Car1.automated)
-            Car1.auto_adjustment();
-        else
-            Car1.manual_adjustment();
-
+        // User choose to adjust some stuff on car 1 if it didn't crash
+        if (!Car1.HasCrashed) {
+            Car1.Display_info();
+            if (Car1.automated)
+                Car1.auto_adjustment();
+            else
+                Car1.manual_adjustment();
+        }
         // User choose to adjust some stuff on car 2
         Car2.Display_info();
         if (Car2.automated)
@@ -76,23 +70,27 @@ void Race::start_race() {
 
 
         // The car make the loop and some of his components are used
-        Car1.Generate_speed();
+        if (!Car1.HasCrashed) {
+            Car1.Generate_speed();
+        }
         Car2.Generate_speed();
         for (int j = 0; j < NB_BOT; j++) {
             bot[j].Generate_speed();
             bot[j].global_time += Loop_time(Circuitos.distance, bot[j].speed,bot[j].penality);
         }
-        Car1.last_loop_time = Loop_time(Circuitos.distance, Car1.speed, Car1.penality);
+        if (!Car1.HasCrashed) {
+            Car1.last_loop_time = Loop_time(Circuitos.distance, Car1.speed, Car1.penality);
+            Car1.global_time += Car1.last_loop_time;
+        }
         Car2.last_loop_time = Loop_time(Circuitos.distance, Car2.speed , Car2.penality);
-        Car1.global_time += Car1.last_loop_time;
         Car2.global_time += Car2.last_loop_time;
         Display_cars_position();
         Turn_anim();
         Display_Times();
         Car1.Wear(Circuitos.distance, (Circuitos.virage_droit + Circuitos.virage_gauche));
         Car2.Wear(Circuitos.distance, (Circuitos.virage_droit + Circuitos.virage_gauche));
-        if (Car1.HasCrashed || Car2.HasCrashed)
-            break;  // If one of the component get at a critical state the simulation end.
+        /*if (Car1.HasCrashed || Car2.HasCrashed)
+            break;  // If one of the component get at a critical state the simulation end.*/
     }
     // the race end so we display an leaderboard
     Display_learderboard();
@@ -205,7 +203,12 @@ void Race::Display_learderboard() {
                 Current_position_name += bot[j].name;
             }
         }
-        std::cout << "Position " << i << " : " << Current_position_name << std::endl;
+        if (Leaderboard[i] != 40404) // if time != crash time
+            std::cout << "Position " << i + 1 << " : " << Current_position_name << " time : " << Leaderboard[i]
+                      << std::endl;
+        else
+            std::cout << Current_position_name << " has crashed during the race..."<< std::endl;
+
         Current_position_name = ""; // reset string
     }
 }
