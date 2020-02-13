@@ -14,7 +14,6 @@ public:
 
     static void Display_learderboard();
 
-    static float Leaderboard[];
 private:
 
     static float Loop_time(float Circuit_length, float Car_speed, float penality);

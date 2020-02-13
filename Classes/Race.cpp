@@ -94,7 +94,7 @@ void Race::start_race() {
         if (Car1.HasCrashed || Car2.HasCrashed)
             break;  // If one of the component get at a critical state the simulation end.
     }
-    // TODO: learderboard
+    Display_learderboard();
     system("pause");
 }
 
@@ -164,6 +164,7 @@ char *Race::Car_progress(float elapsed_time, float Total_time) {
 }
 
 void Race::Make_leaderboard() {
+    float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     Leaderboard[0] = Car1.global_time;
     Leaderboard[1] = Car2.global_time;
     for (int t = 0; t < NB_BOT; t++) {
@@ -181,7 +182,14 @@ void Race::Make_leaderboard() {
 }
 
 void Race::Display_learderboard() {
-    char *Current_position_name = "";
+    // init stuff
+    float Leaderboard[NB_BOT + 2]; // init leaderboard tab
+    Leaderboard[0] = Car1.global_time; // TODO: better Leaderboard systeme
+    Leaderboard[1] = Car2.global_time;
+    for (int t = 0; t < NB_BOT; t++) {
+        Leaderboard[2 + t] = bot[t].global_time;
+    }
+    std::string Current_position_name;
     std::sort(&Leaderboard[0], &Leaderboard[0] + (NB_BOT + 2)); // trie par ordre croissant
     for (int i = 0; i < NB_BOT + 2; i++) { // find player position
         if (Leaderboard[i] == Car1.global_time) {
@@ -192,9 +200,11 @@ void Race::Display_learderboard() {
         }
         for (int j = 0; j < NB_BOT; j++) {
             if (Leaderboard[i] == bot[j].global_time) {
-                Current_position_name = bot[j].name;
+                Current_position_name += "(Bot) ";
+                Current_position_name += bot[j].name;
             }
         }
-        std::cout << "Position " << i << " :" << Current_position_name << std::endl;
+        std::cout << "Position " << i << " : " << Current_position_name << std::endl;
+        Current_position_name = ""; // reset string
     }
 }
