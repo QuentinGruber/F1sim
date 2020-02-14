@@ -12,9 +12,11 @@ public:
     float penality = 0;
     float global_time = 0;
     char *name = "undefined";
+    bool HasCrashed = false;
 
     void Generate_speed();
     void Random_pit_stop();
+    void Random_crash();
 
 };
 

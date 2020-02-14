@@ -18,3 +18,10 @@ void Cars_bot::Random_pit_stop() {
         penality = utils::rnd_number(0.0, 100.0); // add a random penality between 0 and 20
     }
 }
+
+void Cars_bot::Random_crash() {
+    if(utils::rnd_number(0.0,1000.0) < 1){
+        HasCrashed = true;
+        global_time = 40404;
+    }
+}

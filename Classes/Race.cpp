@@ -51,6 +51,7 @@ void Race::start_race() {
         if (i != 1) { // if first loop is passed
             for (int j = 0; j < NB_BOT; j++) { // bot may have a random pit stop
                 bot[j].Random_pit_stop();
+                bot[j].Random_crash(); // and may have a random crash
             }
         }
         // User choose to adjust some stuff on car 1 if it didn't crash
@@ -75,8 +76,10 @@ void Race::start_race() {
         }
         Car2.Generate_speed();
         for (int j = 0; j < NB_BOT; j++) {
-            bot[j].Generate_speed();
-            bot[j].global_time += Loop_time(Circuitos.distance, bot[j].speed,bot[j].penality);
+            if (!bot[j].HasCrashed) {
+                bot[j].Generate_speed();
+                bot[j].global_time += Loop_time(Circuitos.distance, bot[j].speed, bot[j].penality);
+            }
         }
         if (!Car1.HasCrashed) {
             Car1.last_loop_time = Loop_time(Circuitos.distance, Car1.speed, Car1.penality);
@@ -105,12 +108,12 @@ float Race::Loop_time(float Circuit_length, float Car_speed, float penality) {
 
 void Race::Display_Times() {
     std::cout << Car1.name << " finish this turn in " << Car1.last_loop_time << "Seconds"
-              << " and his current position in the race is " << Car1.position << std::endl;
+              << " and his current position in the race is " << Car1.position +1 << std::endl;
     std::cout << Car2.name << " finish this turn in " << Car2.last_loop_time << "Seconds"
-              << " and his current position in the race is " << Car2.position << std::endl;
+              << " and his current position in the race is " << Car2.position +1 << std::endl;
 }
 
-void Race::Turn_anim() { // TODO: fix anim not smooth anymore
+void Race::Turn_anim() { // TODO: fix anim skip the end when there is penality
     int anim_speed = 20;
     float Temp_max;
     if (Car1.last_loop_time >= Car2.last_loop_time)
@@ -204,11 +207,14 @@ void Race::Display_learderboard() {
             }
         }
         if (Leaderboard[i] != 40404) // if time != crash time
+        {
             std::cout << "Position " << i + 1 << " : " << Current_position_name << " time : " << Leaderboard[i]
                       << std::endl;
-        else
-            std::cout << Current_position_name << " has crashed during the race..."<< std::endl;
-
+        }
+        else {
+            std::cout << Current_position_name << " crashed during the race..." << std::endl;
+            break;
+        }
         Current_position_name = ""; // reset string
     }
 }
