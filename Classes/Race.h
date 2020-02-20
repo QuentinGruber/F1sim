@@ -10,7 +10,7 @@ class Race {
 public:
     static void start_race();
 
-    static void Display_cars_position();
+    static void Calculate_cars_loop_position();
 
     static void Display_learderboard();
 

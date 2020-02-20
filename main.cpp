@@ -2,6 +2,7 @@
 
 
 int main() {
+    // Start the race
     Race::start_race();
     return 0;
 }
