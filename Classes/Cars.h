@@ -35,8 +35,6 @@ public:
 
     void adjustment(int choice);
 
-    void crash_test();
-
     void Generate_speed();
 
     void Display_info();

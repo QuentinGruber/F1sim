@@ -45,7 +45,7 @@ void Race::start_race() {
     */
 
     // Start the race
-    for (int i = 1; i <= Paul_Ricard.nb_tours; i++) { // every loop
+    for (int i = 1; i <= Paul_Ricard.turn; i++) { // every loop
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
 
         if (i != 1) { // if first loop is passed
@@ -87,6 +87,8 @@ void Race::start_race() {
             }
         }
 
+        // TODO: add collid
+
         // If they didn't crash it calculate the loop time of the cars
         // and add it to there global time
         if (!Car1.HasCrashed) {
@@ -104,8 +106,8 @@ void Race::start_race() {
         Display_Times();
 
         // Apply degration to the player's cars
-        Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.virage_droit + Paul_Ricard.virage_gauche));
-        Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.virage_droit + Paul_Ricard.virage_gauche));
+        Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
+        Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
         /*if (Car1.HasCrashed || Car2.HasCrashed) TODO: probably useless => to remove
             break;  // If one of the component get at a critical state the simulation end.*/
     }

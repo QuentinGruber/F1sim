@@ -6,13 +6,14 @@
 #include "utils.h"
 
 void Cars::Display_info() {
+    // TODO: vérifier les info
     std::cout << "\n[" << name << "'s info] " << std::endl;
     std::cout << "\nVitesse lors du dernier tour : " << speed << "km/h" << std::endl;
     std::cout << "pression_pneu : " << pression_pneu << "%" << " {Fix this with 1}" << std::endl;
     std::cout << "usure des pneu : " << usure_pneu << "%" << " {Fix this with 2}" << std::endl;
     std::cout << "Reservoir d'essence : " << essence << "L" << " {Fix this with 3}" << std::endl;
     std::cout << "Taux d'huile : " << taux_huile << "%" << " {Fix this with 4}" << std::endl;
-    std::cout << "Temperature du moteur : " << temperature_moteur << " degres" " {Fix this with 5}" << std::endl;
+    std::cout << "Temperature du moteur : " << temperature_moteur << " degres" << std::endl;
     std::cout << "Usure du DRS : " << usure_DRS << "%" << " {Fix this with 6}" << std::endl;
     std::cout << "Usure du systeme d'antiblocage : " << usure_antiblocage << "%" << " {Fix this with 7}" << std::endl;
     std::cout << "Usure du systeme de freinage : " << usure_systeme_freinage << "%" << " {Fix this with 8}"
@@ -23,6 +24,8 @@ void Cars::Display_info() {
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
+    // TODO: trad coms
+    // TODO: add some crash option ? with randomness
     int Crash_log = 0;
     pression_pneu -= (0.00003f * Distance_Tour + 0.0003f * nb_virages) * (speed /
                                                                           10); // 0.01% de perte de pression par mètre à + de 100km/h et le double pendant les virages
@@ -51,18 +54,20 @@ void Cars::Wear(float Distance_Tour,float nb_virages) {
     }
     if(HasCrashed)
         global_time = 40404; // 40404 to be sure that we can't get this time without crashing
-
+    // TODO/ explain crash time here
 }
 
 void Cars::Generate_speed() {
-    int Speed = 200 + (utils::rnd_number(1.0,100.0) * 123) / 100; // Vitesse minimum de 200 max de 323
+    // Minimum average speed = 200 Maximum average speed = 323
+    int Speed = 200 + (utils::rnd_number(1.0, 100.0) * 123) / 100;
     speed = Speed;
     temperature_moteur += (Speed / temperature_moteur);
 }
 
 
 void Cars::adjustment(int Choice) {
-    switch (Choice) {
+    // adjust the car in function of the user's choice
+    switch (Choice) { // TODO: reorganiser choice
         case 1 :
             Regonfler_pneu();
             penality = 10;
@@ -74,8 +79,8 @@ void Cars::adjustment(int Choice) {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 3:
-            // les pompes à essence ne peuvent pas dépasser 12,1 litres par secondes
-            penality = ((95 - essence) / 12.1) + 5.0; // minimum 5 secondes de penalité
+            // Fuel pumps may not exceed 12.1 litres per second.
+            penality = ((95 - essence) / 12.1) + 5.0; // minimum 5 second penalty
             std::cout << " Penality : " << penality << "sec" << std::endl;
             refill_fuel();
             break;
@@ -85,7 +90,7 @@ void Cars::adjustment(int Choice) {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 5 :
-            // temperature moteur
+            // engine temperature
             penality = 10;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
@@ -111,6 +116,7 @@ void Cars::adjustment(int Choice) {
 
 
 void Cars::auto_adjustment() {
+    // auto-adjust the car to avoid it to crash
     penality = 0;
     int User_choice;
     if (essence < 20) {
@@ -128,17 +134,19 @@ void Cars::auto_adjustment() {
 }
 
 void Cars::manual_adjustment() {
+    // Ask user to choose an adjustment
     penality = 0;
     int User_choice;
     std::cin >> User_choice;
     adjustment(User_choice);
     refroidir_moteur();
 }
+// TODO TRAD ALL FUNC BELOW IN ENGLISH & ADD COMS
 
 void Cars::Regonfler_pneu() {
-    pression_pneu += 30;
-    if (pression_pneu>(100.0 - (100 -usure_pneu)/2)){
-        pression_pneu = 100.0 - (100 -usure_pneu)/2;
+    pression_pneu += 30; // add +30% of pressure
+    if (pression_pneu > (100.0 - (100 - usure_pneu) / 2)) {
+        pression_pneu = 100.0 - (100 - usure_pneu) / 2;
     }
     std::cout << "Pression_pneu : " << pression_pneu << "%";
 }
@@ -184,10 +192,6 @@ void Cars::fix_antiblocage() {
     } else {
         std::cout << "Nothing to fix on antiblocage ! " << std::endl;
     }
-}
-
-void Cars::crash_test() {
-    // rnd_number();
 }
 
 void Cars::refroidir_moteur() {
