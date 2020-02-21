@@ -2,6 +2,7 @@
 // Created by Quentin on 06/02/2020.
 //
 #include <iostream>
+#include "utils.h"
 #include "Race.h"
 #include "Cars.h"
 #include "Circuit.h"
@@ -88,6 +89,7 @@ void Race::start_race() {
         }
 
         // TODO: add collid
+        random_collid();
 
         // If they didn't crash it calculate the loop time of the cars
         // and add it to there global time
@@ -102,7 +104,7 @@ void Race::start_race() {
         }
         // Display an animation of loop progression and when it finish display times
         Calculate_cars_loop_position();
-        Turn_anim();
+        Turn_anim(); // TODO anim must dislay if a player has crashed
         Display_Times();
 
         // Apply degration to the player's cars
@@ -236,4 +238,64 @@ void Race::Display_learderboard() {
         }
         Current_position_name = ""; // reset string
     }
+}
+
+void Race::random_collid() {
+    if (utils::rnd_number(0.0, 100) < 99) { // 1 in 100 chance that there will be a collision this lap
+        int which_player = utils::rnd_number(0.0, 2.0);
+        int which_bot = utils::rnd_number(1.0, NB_BOT);
+
+        for (int i = 0; i <= 4; i++) {
+            float Collision_power_multiplicator = utils::rnd_number(1.0, 5.0);
+            switch (i) {
+                case 0:
+                    if (which_player == 1)
+                        Car1.usure_DRS -= 15 * Collision_power_multiplicator;
+                    else
+                        Car2.usure_DRS -= 15 * Collision_power_multiplicator;
+                    bot[which_bot].damage += Collision_power_multiplicator;
+                    break;
+                case 1:
+                    if (which_player == 1)
+                        Car1.usure_antiblocage -= 15 * Collision_power_multiplicator;
+                    else
+                        Car2.usure_antiblocage -= 15 * Collision_power_multiplicator;
+                    bot[which_bot].damage += Collision_power_multiplicator;
+                    break;
+                case 2:
+                    if (which_player == 1)
+                        Car1.usure_systeme_freinage -= 15 * Collision_power_multiplicator;
+                    else
+                        Car2.usure_systeme_freinage -= 15 * Collision_power_multiplicator;
+                    bot[which_bot].damage += Collision_power_multiplicator;
+                    break;
+                case 3:
+                    if (which_player == 1)
+                        Car1.usure_colonne_direction -= 15 * Collision_power_multiplicator;
+                    else
+                        Car2.usure_colonne_direction -= 15 * Collision_power_multiplicator;
+                    bot[which_bot].damage += Collision_power_multiplicator;
+                    break;
+                case 4:
+                    if (which_player == 1)
+                        Car1.usure_carroserie -= 15 * Collision_power_multiplicator;
+                    else
+                        Car2.usure_carroserie -= 15 * Collision_power_multiplicator;
+                    bot[which_bot].damage += Collision_power_multiplicator;
+                    break;
+            }
+        }
+        if (bot[which_bot].damage > 10.0) {
+            bot[which_bot].HasCrashed = true;
+            bot[which_bot].global_time = 40404;
+
+            if (which_player == 1)
+                std::cout << bot[which_bot].name << " crashed during the lap by colliding " << Car1.name << std::endl;
+            else
+                std::cout << bot[which_bot].name << " crashed during the lap by colliding " << Car2.name << std::endl;
+        }
+
+
+    }
+
 }

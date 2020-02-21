@@ -16,6 +16,8 @@ public:
 
 private:
 
+    static void random_collid();
+
     static float Loop_time(float Circuit_length, float Car_speed, float penality);
 
     static void Display_Times();

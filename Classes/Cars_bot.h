@@ -9,6 +9,7 @@
 class Cars_bot {
 public:
     int speed = 0;
+    float damage = 0.0;
     float penality = 0;
     float global_time = 0;
     char *name = "undefined";
