@@ -104,7 +104,7 @@ void Race::start_race() {
         }
         // Display an animation of loop progression and when it finish display times
         Calculate_cars_loop_position();
-        Turn_anim(); // TODO anim must dislay if a player has crashed
+        Turn_anim();
         Display_Times();
 
         // Apply degration to the player's cars
@@ -141,15 +141,23 @@ void Race::Turn_anim() {
 
     for (int sec_g = 0; sec_g < Temp_max; sec_g++) {
         std::cout << Car1.name << ":";
-        if (Car1.penality != 0)
-            std::cout << Car_progress(sec_g - Car1.penality, Car1.last_loop_time);
-        else
-            std::cout << Car_progress(sec_g, Car1.last_loop_time);
+        if (!Car1.HasCrashed) {
+            if (Car1.penality != 0)
+                std::cout << Car_progress(sec_g - Car1.penality, Car1.last_loop_time);
+            else
+                std::cout << Car_progress(sec_g, Car1.last_loop_time);
+        } else {
+            std::cout << "[CRASHED...]";
+        }
         std::cout << Car2.name << ":";
-        if(Car2.penality != 0 )
-            std::cout << Car_progress(sec_g - Car2.penality, Car2.last_loop_time);
-        else
-            std::cout << Car_progress(sec_g, Car2.last_loop_time);
+        if (!Car2.HasCrashed) {
+            if (Car2.penality != 0)
+                std::cout << Car_progress(sec_g - Car2.penality, Car2.last_loop_time);
+            else
+                std::cout << Car_progress(sec_g, Car2.last_loop_time);
+        } else {
+            std::cout << "[CRASHED...]";
+        }
         if (sec_g == int(Temp_max)) {
             // Clean screen // TODO: retirer le vomit
             std::cout << "\r";
