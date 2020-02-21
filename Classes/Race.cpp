@@ -88,7 +88,6 @@ void Race::start_race() {
             }
         }
 
-        // TODO: add collid
         random_collid();
 
         // If they didn't crash it calculate the loop time of the cars
@@ -132,7 +131,7 @@ void Race::Display_Times() {
 }
 
 void Race::Turn_anim() {
-    int anim_speed = 20;
+    int anim_speed = 200;
     float Temp_max;
     if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
         Temp_max = Car1.last_loop_time + Car1.penality;
@@ -237,8 +236,8 @@ void Race::Display_learderboard() {
         if (Leaderboard[i] != 40404) // if time is not equal to "crash time"
         {
             // Display cars position
-            std::cout << "Position " << i + 1 << " : " << Current_position_name << " time : " << Leaderboard[i]
-                      << std::endl;
+            std::cout << "Position " << i + 1 << " : " << Current_position_name << " time : " << Leaderboard[i] / 60
+                      << "minute" << std::endl;
         } else {
             // Display cars that crashed during the race
             std::cout << Current_position_name << " crashed during the race..." << std::endl;

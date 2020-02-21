@@ -20,7 +20,8 @@ void Cars::Display_info() {
               << std::endl;
     std::cout << "Usure de la colonne de direction : " << usure_colonne_direction << "%" << std::endl;
     std::cout << "Usure de la carroserie : " << usure_carroserie << "%" << std::endl;
-    std::cout << "\nChoose if you want to fix something or not ( press 0 ): ";
+    if (!automated) // useless to display if automated
+        std::cout << "\nChoose if you want to fix something or not ( press 0 ): ";
 }
 
 void Cars::Wear(float Distance_Tour,float nb_virages) {
