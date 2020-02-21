@@ -131,13 +131,13 @@ void Race::Display_Times() {
               << " and his current position in the race is " << Car2.position +1 << std::endl;
 }
 
-void Race::Turn_anim() { // TODO: fix anim skip the end when there is penality and comms
+void Race::Turn_anim() {
     int anim_speed = 20;
     float Temp_max;
-    if (Car1.last_loop_time >= Car2.last_loop_time)
-        Temp_max = Car1.last_loop_time;
+    if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
+        Temp_max = Car1.last_loop_time + Car1.penality;
     else
-        Temp_max = Car2.last_loop_time;
+        Temp_max = Car2.last_loop_time + Car2.penality;
 
     for (int sec_g = 0; sec_g < Temp_max; sec_g++) {
         std::cout << Car1.name << ":";
@@ -241,10 +241,9 @@ void Race::Display_learderboard() {
 }
 
 void Race::random_collid() {
-    if (utils::rnd_number(0.0, 100) < 99) { // 1 in 100 chance that there will be a collision this lap
+    if (utils::rnd_number(0.0, 100) < 1) { // 1 in 100 chance that there will be a collision this lap
         int which_player = utils::rnd_number(0.0, 2.0);
         int which_bot = utils::rnd_number(1.0, NB_BOT);
-
         for (int i = 0; i <= 4; i++) {
             float Collision_power_multiplicator = utils::rnd_number(1.0, 5.0);
             switch (i) {
@@ -285,7 +284,8 @@ void Race::random_collid() {
                     break;
             }
         }
-        if (bot[which_bot].damage > 10.0) {
+        // TODO REMOVE ==> std::cout<<"[DEBUG] damage = "<<bot[which_bot].damage<<std::endl;
+        if (bot[which_bot].damage > 15.0) {
             bot[which_bot].HasCrashed = true;
             bot[which_bot].global_time = 40404;
 

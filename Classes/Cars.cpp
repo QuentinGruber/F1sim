@@ -6,6 +6,7 @@
 #include "utils.h"
 
 void Cars::Display_info() {
+    // TODO: trad this
     std::cout << "\n[" << name << "'s info] " << std::endl;
     std::cout << "\nVitesse lors du dernier tour : " << speed << "km/h" << std::endl;
     std::cout << "pression_pneu : " << pression_pneu << "%" << " {Fix this with 1}" << std::endl;
