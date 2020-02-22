@@ -42,10 +42,11 @@ void Race::start_race() {
         std::cin >> User_response;
         if (User_response == 'm' || User_response == 'M')
             break;
-        else if (User_response == 'a' || User_response == 'A')
+        else if (User_response == 'a' || User_response == 'A') {
             Car1.automated = true;
-        Car2.automated = true;
-        break;
+            Car2.automated = true;
+            break;
+        }
     }while (true);
 
     // Start the race
@@ -258,37 +259,37 @@ void Race::random_collid() {
             switch (i) {
                 case 0:
                     if (which_player == 1)
-                        Car1.usure_DRS -= 15 * Collision_power_multiplicator;
+                        Car1.wear_DRS -= 15 * Collision_power_multiplicator;
                     else
-                        Car2.usure_DRS -= 15 * Collision_power_multiplicator;
+                        Car2.wear_DRS -= 15 * Collision_power_multiplicator;
                     bot[which_bot].damage += Collision_power_multiplicator;
                     break;
                 case 1:
                     if (which_player == 1)
-                        Car1.usure_antiblocage -= 15 * Collision_power_multiplicator;
+                        Car1.wear_anti_locking -= 15 * Collision_power_multiplicator;
                     else
-                        Car2.usure_antiblocage -= 15 * Collision_power_multiplicator;
+                        Car2.wear_anti_locking -= 15 * Collision_power_multiplicator;
                     bot[which_bot].damage += Collision_power_multiplicator;
                     break;
                 case 2:
                     if (which_player == 1)
-                        Car1.usure_systeme_freinage -= 15 * Collision_power_multiplicator;
+                        Car1.wear_braking_system -= 15 * Collision_power_multiplicator;
                     else
-                        Car2.usure_systeme_freinage -= 15 * Collision_power_multiplicator;
+                        Car2.wear_braking_system -= 15 * Collision_power_multiplicator;
                     bot[which_bot].damage += Collision_power_multiplicator;
                     break;
                 case 3:
                     if (which_player == 1)
-                        Car1.usure_colonne_direction -= 15 * Collision_power_multiplicator;
+                        Car1.wear_column_direction -= 15 * Collision_power_multiplicator;
                     else
-                        Car2.usure_colonne_direction -= 15 * Collision_power_multiplicator;
+                        Car2.wear_column_direction -= 15 * Collision_power_multiplicator;
                     bot[which_bot].damage += Collision_power_multiplicator;
                     break;
                 case 4:
                     if (which_player == 1)
-                        Car1.usure_carroserie -= 15 * Collision_power_multiplicator;
+                        Car1.wear_carriage -= 15 * Collision_power_multiplicator;
                     else
-                        Car2.usure_carroserie -= 15 * Collision_power_multiplicator;
+                        Car2.wear_carriage -= 15 * Collision_power_multiplicator;
                     bot[which_bot].damage += Collision_power_multiplicator;
                     break;
             }

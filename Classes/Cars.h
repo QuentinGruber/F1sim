@@ -6,7 +6,6 @@
 #define PROJ_C_CARS_H
 class Cars {
 public:
-    // TODO: rename var/func
     bool automated = false;
     int penality = 0;
     char *name = "Noname";
@@ -17,16 +16,16 @@ public:
     float chance_crash = 0.1;
     bool HasCrashed = false;
     // télémétrie
-    float pression_pneu = 100.0;
-    float usure_pneu = 100.0;
-    float temperature_moteur = 60.0; // min 60 max 120
+    float tyre_pressure = 100.0;
+    float tyre_wear = 100.0;
+    float motor_temperature = 60.0; // min 60 max 120
     float oil = 100.0;
     float fuel = 95.0; // ferrari f1 stat
-    float usure_systeme_freinage = 100.0;
-    float usure_colonne_direction = 100.0;
-    float usure_DRS = 100.0;
-    float usure_antiblocage = 100.0;
-    float usure_carroserie = 100.0;
+    float wear_braking_system = 100.0;
+    float wear_column_direction = 100.0;
+    float wear_DRS = 100.0;
+    float wear_anti_locking = 100.0;
+    float wear_carriage = 100.0;
 
     // Function
 
@@ -40,13 +39,13 @@ public:
 
     void Display_info();
 
-    void Wear(float Distance_Tour, float nb_virages);
+    void Wear(float Distance_lap, float turns);
 
-    void Regonfler_pneu();
+    void Tyre_inflation();
 
     void Changer_pneu();
 
-    void refroidir_moteur();
+    void Change_tyre();
 
     void refill_fuel();
     void change_oil();
