@@ -2,6 +2,7 @@
 // Created by Quentin on 06/02/2020.
 //
 #include <iostream>
+#include <cstring>
 #include "utils.h"
 #include "Race.h"
 #include "Cars.h"
@@ -170,7 +171,7 @@ void Race::Turn_anim() {
             std::cout << "\r";
             std::cout << "                                                                                         "
                       << std::endl;
-        } else std::cout << "Temps depuis le debut du tour : " << sec_g << " Speed :X" << anim_speed << '\r';
+        } else std::cout << "Time since the beginning of the lap  : " << sec_g << " Speed :X" << anim_speed << '\r';
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1000 / anim_speed));
     }
@@ -193,7 +194,7 @@ char *Race::Car_progress(float elapsed_time, float Total_time) {
     }
     Animtoshow.append("]");
     char *Animtoshow_Converted = new char[Animtoshow.length() + 1];
-    strcpy(Animtoshow_Converted, Animtoshow.c_str());
+    std::strcpy(Animtoshow_Converted, Animtoshow.c_str());
     char *Animtoshow_Render = Animtoshow_Converted;
     return Animtoshow_Render;
 }
