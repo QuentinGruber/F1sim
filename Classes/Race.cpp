@@ -111,8 +111,10 @@ void Race::start_race() {
         Display_Times();
 
         // Apply degration to the player's cars
-        Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
-        Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
+        if (!Car1.HasCrashed)
+            Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
+        if (!Car2.HasCrashed)
+            Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
     }
     // the race end so we display an leaderboard
     Display_learderboard();
@@ -126,10 +128,14 @@ float Race::Loop_time(float Circuit_length, float Car_speed, float penality) {
 }
 
 void Race::Display_Times() {
-    std::cout << Car1.name << " finish this turn in " << Car1.last_loop_time << "Seconds"
-              << " and his current position in the race is " << Car1.position +1 << std::endl;
-    std::cout << Car2.name << " finish this turn in " << Car2.last_loop_time << "Seconds"
-              << " and his current position in the race is " << Car2.position +1 << std::endl;
+    if(!Car1.HasCrashed) {
+        std::cout << Car1.name << " finish this turn in " << Car1.last_loop_time << "Seconds"
+                  << " and his current position in the race is " << Car1.position + 1 << std::endl;
+    }
+    if(!Car2.HasCrashed) {
+        std::cout << Car2.name << " finish this turn in " << Car2.last_loop_time << "Seconds"
+                  << " and his current position in the race is " << Car2.position + 1 << std::endl;
+    }
 }
 
 void Race::Turn_anim() {

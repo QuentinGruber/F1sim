@@ -43,9 +43,9 @@ public:
 
     void Tyre_inflation();
 
-    void Changer_pneu();
-
     void Change_tyre();
+
+    void lower_engine_temperature();
 
     void refill_fuel();
     void change_oil();

@@ -6,20 +6,19 @@
 #include "utils.h"
 
 void Cars::Display_info() {
-    // TODO: trad this
     std::cout << "\n[" << name << "'s info] " << std::endl;
-    std::cout << "\nVitesse lors du dernier tour : " << speed << "km/h" << std::endl;
-    std::cout << "tyre_pressure : " << tyre_pressure << "%" << " {Fix this with 1}" << std::endl;
-    std::cout << "usure des pneu : " << tyre_wear << "%" << " {Fix this with 2}" << std::endl;
-    std::cout << "Reservoir d'essence : " << fuel << "L" << " {Fix this with 3}" << std::endl;
-    std::cout << "Taux d'huile : " << oil << "%" << " {Fix this with 4}" << std::endl;
-    std::cout << "Temperature du moteur : " << motor_temperature << " degres" << std::endl;
-    std::cout << "Usure du DRS : " << wear_DRS << "%" << " {Fix this with 5}" << std::endl;
-    std::cout << "Usure du systeme d'antiblocage : " << wear_anti_locking << "%" << " {Fix this with 6}" << std::endl;
-    std::cout << "Usure du systeme de freinage : " << wear_braking_system << "%" << " {Fix this with 7}"
+    std::cout << "\nSpeed on the last lap : " << speed << "km/h" << std::endl;
+    std::cout << "tyre pressure : " << tyre_pressure << "%" << " {Fix this with 1}" << std::endl;
+    std::cout << "tyre wear : " << tyre_wear << "%" << " {Fix this with 2}" << std::endl;
+    std::cout << "Fuel tank : " << fuel << "L" << " {Fix this with 3}" << std::endl;
+    std::cout << "Motor's oil wear : " << oil << "%" << " {Fix this with 4}" << std::endl;
+    std::cout << "Engine temperature : " << motor_temperature << " degres" << std::endl;
+    std::cout << "DRS wear : " << wear_DRS << "%" << " {Fix this with 5}" << std::endl;
+    std::cout << "anti-lock braking system wear : " << wear_anti_locking << "%" << " {Fix this with 6}" << std::endl;
+    std::cout << "brake system wear : " << wear_braking_system << "%" << " {Fix this with 7}"
               << std::endl;
-    std::cout << "Usure de la colonne de direction : " << wear_column_direction << "%" << std::endl;
-    std::cout << "Usure de la carroserie : " << wear_carriage << "%" << std::endl;
+    std::cout << "Wear of the steering column : " << wear_column_direction << "%" << std::endl;
+    std::cout << "Wear of the car's bodywork : " << wear_carriage << "%" << std::endl;
     if (!automated) // useless to display if automated
         std::cout << "\nChoose if you want to fix something or not ( press 0 ): ";
 }
@@ -32,10 +31,19 @@ void Cars::Wear(float Distance_lap, float turns) {
                                                                     10);
     tyre_wear -= (0.00001f * Distance_lap + 0.00001f * turns) * (speed / 10);
     fuel -= (75 * (Distance_lap / 1000)) / 100; // 75 litres of oil per 100 km(on average)
+    oil -= (0.00001f * Distance_lap) * (motor_temperature/10);
+
+    
 
     if (tyre_pressure <= 0.0) Crash_log = 1;
     if (tyre_wear <= 0.0) Crash_log = 2;
     if (fuel <= 0.0) Crash_log = 3;
+    if (motor_temperature >= 130.0) Crash_log = 4;
+    if (wear_DRS <= 0.0) Crash_log = 5;
+    if (wear_anti_locking <= 0.0) Crash_log = 6;
+    if (wear_braking_system <= 0.0) Crash_log = 7;
+    if (wear_column_direction <= 0.0) Crash_log = 8;
+    if (wear_carriage <= 0.0) Crash_log = 9;
 
     switch (Crash_log) {
         case 1 :
@@ -48,6 +56,30 @@ void Cars::Wear(float Distance_lap, float turns) {
             break;
         case 3:
             std::cout << "[CRASH " << name << "] ran out of gas to finish the lap !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 4:
+            std::cout << "[CRASH " << name << "] engine damaged due to its temperature !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 5:
+            std::cout << "[CRASH " << name << "] DRS excessively damaged !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 6:
+            std::cout << "[CRASH " << name << "] Anti-locking excessively damaged !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 7:
+            std::cout << "[CRASH " << name << "] Braking system excessively damaged !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 8:
+            std::cout << "[CRASH " << name << "] column direction excessively damaged !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 9:
+            std::cout << "[CRASH " << name << "] Carriage excessively damaged !" << std::endl;
             HasCrashed = true;
             break;
         default:
@@ -76,7 +108,7 @@ void Cars::adjustment(int Choice) {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 2:
-            Changer_pneu();
+            Change_tyre();
             penality = 20;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
@@ -122,12 +154,14 @@ void Cars::auto_adjustment() {
         User_choice = 2;
     } else if (tyre_pressure < 40) {
         User_choice = 1;
-    } else {
+    }else if (oil < 80) {
+        User_choice = 4;
+    }else {
         User_choice = 0;
     }
 
     adjustment(User_choice);
-    Change_tyre();
+    lower_engine_temperature();
 }
 
 void Cars::manual_adjustment() {
@@ -136,24 +170,24 @@ void Cars::manual_adjustment() {
     int User_choice;
     std::cin >> User_choice;
     adjustment(User_choice);
-    Change_tyre();
+    lower_engine_temperature();
 }
 
 
 void Cars::Tyre_inflation() {
     tyre_pressure += 30; // add +30% of pressure
-    // tire pressure can't be at 100% if the wear of the tire isn't
+    // tyre pressure can't be at 100% if the wear of the tire isn't
     if (tyre_pressure > (100.0 - (100 - tyre_wear) / 2)) {
         tyre_pressure = 100.0 - (100 - tyre_wear) / 2;
     }
-    std::cout << "Tire pressure : " << tyre_pressure << "%";
+    std::cout << "Tyre pressure : " << tyre_pressure << "%";
 }
 
-void Cars::Changer_pneu() {
-    // set tire wear to 100% like new one
+void Cars::Change_tyre() {
+    // set tyre wear to 100% like new one
     tyre_pressure = 100;
     tyre_wear = 100;
-    std::cout << "New tires installed ! ";
+    std::cout << "New tyres installed ! ";
 }
 
 void Cars::refill_fuel() {
@@ -164,7 +198,7 @@ void Cars::refill_fuel() {
 
 void Cars::change_oil() {
     oil = 100;
-    std::cout << "Taux d'huile moteur retablit ! " << std::endl;
+    std::cout << "Engine oil level restored ! " << std::endl;
 }
 
 void Cars::fix_DRS() {
@@ -197,9 +231,9 @@ void Cars::fix_antiblocage() {
     }
 }
 
-void Cars::Change_tyre() {
-    // cooled the engine by 4 degrees per second at standstill.
-    motor_temperature -= 4 * penality;
+void Cars::lower_engine_temperature() {
+    // cooled the engine by 1 degrees per second at standstill if oil is at 100%
+    motor_temperature -= (1 * (oil/100)) * penality;
     // can't be inferior to 80 degres
     if (motor_temperature < 80) {
         motor_temperature = 80;
