@@ -1,16 +1,20 @@
 # cpp_project
 
+## How to install
+
+
+
 ## télémétries (10 éléments)
 
-* pression des pneus
-* usure des pneus
-* température du moteur
-* taux d'essence
-* taux d'huile
-* systeme de freinage
-* ouverture du DRS
-* antiblocage au freinage
-* Colonne de direction
+* Pression des pneus
+* Usure des pneus
+* Température du moteur
+* Taux d'essence
+* Taux d'huile
+* Usure du systeme de freinage
+* Usure du DRS
+* Usure de l'antiblocage au freinage
+* Usure de la colonne de direction
 * Etat de la carroserie
 
 ## UML
