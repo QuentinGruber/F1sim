@@ -159,7 +159,7 @@ void Race::Turn_anim() {
             std::cout << "[CRASHED...]";
         }
         if (sec_g == int(Temp_max)) {
-            // Clean screen // TODO: retirer le vomit
+            // Clean screen
             std::cout << "\r";
             std::cout << "                                                                                         "
                       << std::endl;
@@ -171,10 +171,11 @@ void Race::Turn_anim() {
 }
 
 char *Race::Car_progress(float elapsed_time, float Total_time) {
-// TODO: coms
+    // Our anim is a progress bar that has 10 progress point
     std::string Animtoshow;
     Animtoshow.append("[");
     for (int p = 1; p <= 10; p++) {
+        // when a car has done 1/10 of the lap it add an "#"
         if (p == 10 && (p * 0.99) < (elapsed_time / Total_time) * 10) {
             Animtoshow.append("#");
         } else if (p < (elapsed_time / Total_time) * 10) {
