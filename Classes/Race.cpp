@@ -33,17 +33,20 @@ void Race::start_race() {
             bot[i].name = "NoName";
         }
     }
-    /*
-     * Disable this for easier testing TODO: make the user choose some parameters or use default one
+
     // Wait for User response to start simulation
     char User_response;
     do {
-        std::cout << "Start simulation? [y]" << std::endl;
+        std::cout << "To start the simulation in 'Manual' press [m] \n"
+                     "To start the simulation in 'Automated?' press [a] " << std::endl;
         std::cin >> User_response;
-        if (User_response == 'y' || User_response == 'Y' )
+        if (User_response == 'm' || User_response == 'M')
             break;
+        else if (User_response == 'a' || User_response == 'A')
+            Car1.automated = true;
+        Car2.automated = true;
+        break;
     }while (true);
-    */
 
     // Start the race
     for (int i = 1; i <= Paul_Ricard.turn; i++) { // every loop
@@ -109,8 +112,6 @@ void Race::start_race() {
         // Apply degration to the player's cars
         Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
         Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
-        /*if (Car1.HasCrashed || Car2.HasCrashed) TODO: probably useless => to remove
-            break;  // If one of the component get at a critical state the simulation end.*/
     }
     // the race end so we display an leaderboard
     Display_learderboard();
@@ -131,7 +132,7 @@ void Race::Display_Times() {
 }
 
 void Race::Turn_anim() {
-    int anim_speed = 200;
+    int anim_speed = 20;
     float Temp_max;
     if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
         Temp_max = Car1.last_loop_time + Car1.penality;
