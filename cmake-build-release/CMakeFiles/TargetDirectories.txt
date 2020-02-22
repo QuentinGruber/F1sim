@@ -1,3 +1,0 @@
-C:/Users/grube/Documents/cpp_project/cmake-build-release/CMakeFiles/edit_cache.dir
-C:/Users/grube/Documents/cpp_project/cmake-build-release/CMakeFiles/proj_c.dir
-C:/Users/grube/Documents/cpp_project/cmake-build-release/CMakeFiles/rebuild_cache.dir
