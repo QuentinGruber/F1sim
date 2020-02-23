@@ -17,9 +17,11 @@ char *bot_namelist[21] = {"Bertand", "Bernie", "Olive", "Paul", "Jacob", "Maxon"
                           "Aurelie", "Quentin", "Alban", "Judiael", "Alick", "Alcapone",
                           "Anne marie", "Cyril", "Emma", "Mohamed", "Louise", "Clara", "Lancelot",
                           "Pierre"};
-Circuit Paul_Ricard; // location "Le Castellet",France
+/// location "Le Castellet",France
+Circuit Paul_Ricard; 
 Cars Car1, Car2; // init our 2 cars
-const int NB_BOT = 20; // define the number of bots during the race
+/// define the number of bots during the race
+const int NB_BOT = 20; 
 Cars_bot *bot = new Cars_bot[NB_BOT]; // init the bots
 
 void Race::start_race() {
