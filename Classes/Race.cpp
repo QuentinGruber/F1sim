@@ -50,11 +50,11 @@ void Race::start_race() {
         }
     }while (true);
 
-    // Start the race
+    /// Start the race
     for (int i = 1; i <= Paul_Ricard.turn; i++) { // every loop
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
 
-        if (i != 1) { // if first loop is passed
+        if (i != 1) {// if first loop is passed
             for (int j = 0; j < NB_BOT; j++) {
                 bot[j].Random_pit_stop(); // bot may have a random pit stop
                 bot[j].Random_crash(); // and may have a random crash
@@ -108,7 +108,7 @@ void Race::start_race() {
         }
         // Display an animation of loop progression and when it finish display times
         Calculate_cars_loop_position();
-        Turn_anim();
+        Lap_anim();
         Display_Times();
 
         // Apply degration to the player's cars
@@ -123,24 +123,27 @@ void Race::start_race() {
 }
 
 float Race::Loop_time(float Circuit_length, float Car_speed, float penality) {
+    /// calculates the time it took a car to complete the lap.
     // speed in mps
     float Car_speed_mps = (Car_speed / 3600) * 1000;
-    return (Circuit_length / Car_speed_mps) + penality; // loop time equal travel time + time penality
+    return (Circuit_length / Car_speed_mps) + penality; /// loop time equal travel time + time penality
 }
 
 void Race::Display_Times() {
+    /// Display the time of the player's cars and their position in the race
     if(!Car1.HasCrashed) {
-        std::cout << Car1.name << " finish this turn in " << Car1.last_loop_time << "Seconds"
+        std::cout << Car1.name << " finish this lap in " << Car1.last_loop_time << "Seconds"
                   << " and his current position in the race is " << Car1.position + 1 << std::endl;
     }
     if(!Car2.HasCrashed) {
-        std::cout << Car2.name << " finish this turn in " << Car2.last_loop_time << "Seconds"
+        std::cout << Car2.name << " finish this lap in " << Car2.last_loop_time << "Seconds"
                   << " and his current position in the race is " << Car2.position + 1 << std::endl;
     }
 }
 
-void Race::Turn_anim() {
-    int anim_speed = 20;
+void Race::Lap_anim() {
+    /// Display an animation of the progress of the player's cars in the lap
+    int anim_speed = 2000;
     float Temp_max;
     if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
         Temp_max = Car1.last_loop_time + Car1.penality;
@@ -179,11 +182,12 @@ void Race::Turn_anim() {
 }
 
 char *Race::Car_progress(float elapsed_time, float Total_time) {
-    // Our anim is a progress bar that has 10 progress point
+    /// Our anim is a progress bar that has 10 progress point
     std::string Animtoshow;
     Animtoshow.append("[");
     for (int p = 1; p <= 10; p++) {
-        // when a car has done 1/10 of the lap it add an "#"
+        /// when a car has done 1/10 of the lap it add an "#"
+        /// \n exemple : [##_______] when the car has done more than 2/10 of the lap ( "_" are space )
         if (p == 10 && (p * 0.99) < (elapsed_time / Total_time) * 10) {
             Animtoshow.append("#");
         } else if (p < (elapsed_time / Total_time) * 10) {
@@ -199,7 +203,7 @@ char *Race::Car_progress(float elapsed_time, float Total_time) {
     return Animtoshow_Render;
 }
 
-void Race::Calculate_cars_loop_position() {
+void Race::Calculate_cars_loop_position() { /// Calculate the position of all the cars in the race
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     // Get cars global time in the board
     Leaderboard[0] = Car1.global_time;
@@ -219,7 +223,7 @@ void Race::Calculate_cars_loop_position() {
     }
 }
 
-void Race::Display_learderboard() {
+void Race::Display_learderboard() { /// Display a ranking of all the cars in the race
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     // Get cars global time in the board
     Leaderboard[0] = Car1.global_time; // TODO: better Leaderboard systeme
@@ -251,14 +255,14 @@ void Race::Display_learderboard() {
         } else {
             // Display cars that crashed during the race
             std::cout << Current_position_name << " crashed during the race..." << std::endl;
-            break;
+           // break;
         }
         Current_position_name = ""; // reset string
     }
 }
 
-void Race::random_collid() {
-    if (utils::rnd_number(0.0, 100) < 1) { // 1 in 100 chance that there will be a collision this lap
+void Race::random_collid() { /// Generate random collision between cars
+    if (utils::rnd_number(0.0, 100) < 1) { /// 1 in 100 chance that there will be a collision this lap
         int which_player = utils::rnd_number(0.0, 2.0);
         int which_bot = utils::rnd_number(1.0, NB_BOT);
         for (int i = 0; i <= 4; i++) {

@@ -22,7 +22,7 @@ private:
 
     static void Display_Times();
 
-    static void Turn_anim();
+    static void Lap_anim();
 
     static char *Car_progress(float elapsed_time, float Total_time);
 };
