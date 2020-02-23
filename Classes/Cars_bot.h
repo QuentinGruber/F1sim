@@ -18,7 +18,7 @@ public:
     float global_time = 0;
     /// Car's name
     char *name = "undefined";
-    /// If has crashed (Due to collid or not)
+    /// If has crashed (Due to collision or not)
     bool HasCrashed = false;
 
     void Generate_speed();

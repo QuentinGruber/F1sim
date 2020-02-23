@@ -20,7 +20,7 @@ public:
     float last_loop_time = 0;
     /// Global race time of the car \n Can be set at 40404 aka "Crash time" to identify that a car has crash in the leaderboard
     float global_time = 0;
-    /// If has crashed (Due to collid or not)
+    /// If has crashed (Due to collision or not)
     bool HasCrashed = false;
     // télémétrie
     /// In %, critical state = 0.0
