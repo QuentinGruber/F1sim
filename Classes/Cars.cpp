@@ -107,7 +107,8 @@ bool Cars::Random_crash() { /// Randomly generate a car crash influenced by car'
     if (utils::rnd_number(0.0, Crash_chance) < 1) {
         HasCrashed = true;
         global_time = 40404; /// set global time to "Crash Time"
-    }
+        return true;
+    } else return false;
 
 }
 

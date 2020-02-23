@@ -13,9 +13,9 @@ public:
     /// Circuit length in meter
     float Circuit_length = 5371.0;
     /// Number of right bends in the circuit
-    float right_bends = 3.0;
+    float right_bends = 4.0;
     /// Number of left bends in the circuit
-    float left_bends = 4.0;
+    float left_bends = 5.0;
 
 };
 
