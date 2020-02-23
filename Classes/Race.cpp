@@ -51,7 +51,7 @@ void Race::start_race() {
     }while (true);
 
     /// Start the race
-    for (int i = 1; i <= Paul_Ricard.turn; i++) { // every loop
+    for (int i = 1; i <= Paul_Ricard.lap; i++) { // every loop
         std::cout << "<--- TOUR " << i << " --->" << std::endl; // display loop number
 
         if (i != 1) {// if first loop is passed

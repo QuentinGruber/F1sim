@@ -14,8 +14,7 @@ public:
     float damage = 0.0;
     /// Time penality is the time the car is at pit stop
     float penality = 0;
-    /// Global race time of the car
-    /// Can be set at 40404 aka "Crash time" to identify that a car has crash in the leaderboard
+    /// Global race time of the car \n Can be set at 40404 aka "Crash time" to identify that a car has crash in the leaderboard
     float global_time = 0;
     /// Car's name
     char *name = "undefined";
