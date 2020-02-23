@@ -21,7 +21,7 @@ char *bot_namelist[21] = {"Bertand", "Bernie", "Olive", "Paul", "Jacob", "Maxon"
 Circuit Paul_Ricard; 
 Cars Car1, Car2; // init our 2 cars
 /// define the number of bots during the race
-const int NB_BOT = 20; 
+const int NB_BOT = 20;
 Cars_bot *bot = new Cars_bot[NB_BOT]; // init the bots
 
 void Race::start_race() {
@@ -143,9 +143,8 @@ void Race::Display_Times() {
     }
 }
 
-void Race::Lap_anim() {
-    /// Display an animation of the progress of the player's cars in the lap
-    int anim_speed = 2000;
+void Race::Lap_anim() {/// Display an animation of the progress of the player's cars in the lap
+    int anim_speed = 2000; // TODO: verifier que anim_speed = 20
     float Temp_max;
     if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
         Temp_max = Car1.last_loop_time + Car1.penality;
@@ -228,7 +227,7 @@ void Race::Calculate_cars_loop_position() { /// Calculate the position of all th
 void Race::Display_learderboard() { /// Display a ranking of all the cars in the race
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     // Get cars global time in the board
-    Leaderboard[0] = Car1.global_time; // TODO: better Leaderboard systeme
+    Leaderboard[0] = Car1.global_time; // TODO: (Low priority) better Leaderboard systeme
     Leaderboard[1] = Car2.global_time;
     for (int t = 0; t < NB_BOT; t++) {
         Leaderboard[2 + t] = bot[t].global_time;
@@ -253,21 +252,22 @@ void Race::Display_learderboard() { /// Display a ranking of all the cars in the
         {
             // Display cars position
             std::cout << "Position " << i + 1 << " : " << Current_position_name << " time : " << Leaderboard[i] / 60
-                      << "minute" << std::endl;
+                      << " minute" << std::endl;
         } else {
             // Display cars that crashed during the race
             std::cout << Current_position_name << " crashed during the race..." << std::endl;
-           // break;
+            break;
         }
         Current_position_name = ""; // reset string
     }
 }
 
 void Race::random_collid() { /// Generate random collision between cars
-    if (utils::rnd_number(0.0, 100) < 1) { /// 1 in 100 chance that there will be a collision this lap
+    if (utils::rnd_number(0.0, 50) < 1) { /// 1 in 50 chance that there will be a collision this lap
         int which_player = utils::rnd_number(0.0, 2.0);
         int which_bot = utils::rnd_number(1.0, NB_BOT);
         for (int i = 0; i <= 4; i++) {
+            /// If the impact is too violent, colliding vehicles may crash.
             float Collision_power_multiplicator = utils::rnd_number(1.0, 5.0);
             switch (i) {
                 case 0:
@@ -307,18 +307,22 @@ void Race::random_collid() { /// Generate random collision between cars
                     break;
             }
         }
-        // TODO REMOVE ==> std::cout<<"[DEBUG] damage = "<<bot[which_bot].damage<<std::endl;
         if (bot[which_bot].damage > 15.0) {
             bot[which_bot].HasCrashed = true;
             bot[which_bot].global_time = 40404;
 
             if (which_player == 1)
-                std::cout << bot[which_bot].name << " crashed during the lap by colliding " << Car1.name << std::endl;
+                std::cout << "[Collision] " << bot[which_bot].name << " crashed during the lap by colliding " << Car1.name << std::endl;
             else
-                std::cout << bot[which_bot].name << " crashed during the lap by colliding " << Car2.name << std::endl;
+                std::cout << "[Collision] " << bot[which_bot].name << " crashed during the lap by colliding " << Car2.name << std::endl;
         }
-
-
+        else{
+            if (which_player == 1)
+                std::cout << "[Collision] " << bot[which_bot].name << " collided with  " << Car1.name << std::endl;
+            else
+                std::cout << "[Collision] " << bot[which_bot].name << " collided with " << Car2.name << std::endl;
+        }
+        random_collid(); /// Can have multiple collision
     }
 
 }

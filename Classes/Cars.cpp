@@ -26,7 +26,7 @@ void Cars::Display_info() { /// Display car's info and if not automated ask user
 void Cars::Wear(float Distance_lap, float bends) {
     /// Applies a degradation to the different elements of the car according to the properties of the car,
     /// the Circuit_length of the lap and the number of bends.
-    // TODO: add some crash option ? with randomness
+    // TODO: add a random crash option influencé par l'état du DRS / ANTI lock / brack sys / colum direction
     int Crash_log = 0;
     // 0.00003% pressure loss per meter at more than 100km/h and 0.0003% during bends
     tyre_pressure -= (0.00003f * Distance_lap + 0.0003f * bends) * (speed /
@@ -40,11 +40,12 @@ void Cars::Wear(float Distance_lap, float bends) {
     if (tyre_wear <= 0.0) Crash_log = 2;
     if (fuel <= 0.0) Crash_log = 3;
     if (motor_temperature >= 130.0) Crash_log = 4;
-    if (wear_DRS <= 0.0) Crash_log = 5;
-    if (wear_anti_locking <= 0.0) Crash_log = 6;
-    if (wear_braking_system <= 0.0) Crash_log = 7;
-    if (wear_column_direction <= 0.0) Crash_log = 8;
-    if (wear_carriage <= 0.0) Crash_log = 9;
+    if (wear_DRS <= 25.0) Crash_log = 5;
+    if (wear_anti_locking <= 25.0) Crash_log = 6;
+    if (wear_braking_system <= 25.0) Crash_log = 7;
+    if (wear_column_direction <= 25.0) Crash_log = 8;
+    if (wear_carriage <= 30.0) Crash_log = 9;
+    if(Random_crash()) Crash_log = 10;
     /// If a telemetry element has reached a critical state:
     /// \n -Send a crash log.
     /// \n -Set HasCrashed to true.
@@ -58,11 +59,11 @@ void Cars::Wear(float Distance_lap, float bends) {
             HasCrashed = true;
             break;
         case 3:
-            std::cout << "[CRASH " << name << "] ran out of gas to finish the lap !" << std::endl;
+            std::cout << "[CRASH " << name << "] Ran out of gas to finish the lap !" << std::endl;
             HasCrashed = true;
             break;
         case 4:
-            std::cout << "[CRASH " << name << "] engine damaged due to its temperature !" << std::endl;
+            std::cout << "[CRASH " << name << "] Engine damaged due to its temperature !" << std::endl;
             HasCrashed = true;
             break;
         case 5:
@@ -78,11 +79,15 @@ void Cars::Wear(float Distance_lap, float bends) {
             HasCrashed = true;
             break;
         case 8:
-            std::cout << "[CRASH " << name << "] column direction excessively damaged !" << std::endl;
+            std::cout << "[CRASH " << name << "] Column direction excessively damaged !" << std::endl;
             HasCrashed = true;
             break;
         case 9:
             std::cout << "[CRASH " << name << "] Carriage excessively damaged !" << std::endl;
+            HasCrashed = true;
+            break;
+        case 10:
+            std::cout << "[CRASH " << name << "] Crashed due to a technical problem !" << std::endl;
             HasCrashed = true;
             break;
         default:
@@ -93,6 +98,19 @@ void Cars::Wear(float Distance_lap, float bends) {
         global_time = 40404; // 40404 to be sure that we can't get this time without crashing
     // "Crash time" is a time that we use to identify that a car has crash
 }
+
+bool Cars::Random_crash() { /// Randomly generate a car crash influenced by car's element wear
+    float Stat_Crash_chance = 100000;  /// 1 in 100000 chance that the car will crash if his element are new one
+
+    float crash_chance_increase = (300-(wear_braking_system + wear_DRS + wear_anti_locking));
+    float Crash_chance = ((Stat_Crash_chance/wear_anti_locking)*(wear_column_direction/100));
+    if (utils::rnd_number(0.0, Crash_chance) < 1) {
+        HasCrashed = true;
+        global_time = 40404; /// set global time to "Crash Time"
+    }
+
+}
+
 
 void Cars::Generate_speed() {/// Randomly generate car average speed during a lap
     /// Minimum average speed = 200 km/h Maximum average speed = 323 km/h
@@ -147,8 +165,10 @@ void Cars::adjustment(int Choice) {
 }
 
 
-void Cars::auto_adjustment() {
-    /// auto-adjust the car to avoid it to crash
+void Cars::auto_adjustment() { /// auto-adjust the car to avoid it to crash
+
+    // TODO : revoir ordre de priorité
+    // TODO: ajouté maintenance des autres élément
     penality = 0;
     int User_choice;
     if (fuel < 20) {
@@ -157,7 +177,7 @@ void Cars::auto_adjustment() {
         User_choice = 2;
     } else if (tyre_pressure < 40) {
         User_choice = 1;
-    }else if (oil < 80) {
+    }else if (oil < 85) {
         User_choice = 4;
     }else {
         User_choice = 0;

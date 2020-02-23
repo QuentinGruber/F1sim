@@ -36,19 +36,23 @@ public:
     /// In liter, critical state = 0.0
     /// \n Ferrari f1 stat : 75 litres of oil per 100 km(on average)
     float fuel = 95.0;
-    /// In % critical state = 0.0
+    /// In % critical state = 25.0
     /// \n Can't be fix to 100%
+    /// \n Influence Car's crash chance
     float wear_braking_system = 100.0;
-    /// In % critical state = 0.0
+    /// In % critical state = 25.0
     /// \n Can't be fix
+    /// \n Influence a lot Car's crash chance, if wear_column_direction < 50% the car is twice as likely to crash.
     float wear_column_direction = 100.0;
-    /// In % critical state = 0.0
+    /// In % critical state = 25.0
     /// \n Can't be fix to 100%
+    /// \n Influence Car's crash chance
     float wear_DRS = 100.0;
-    /// In % critical state = 0.0
+    /// In % critical state = 25.0
     /// \n Can't be fix to 100%
+    /// \n Influence Car's crash chance
     float wear_anti_locking = 100.0;
-    /// In % critical state = 0.0
+    /// In % critical state = 30.0
     /// \n Can't be fix
     float wear_carriage = 100.0;
 
@@ -81,6 +85,8 @@ public:
     void fix_braking_system();
 
     void fix_anti_lock();
+
+    bool Random_crash();
 
 };
 #endif //PROJ_C_CARS_H
