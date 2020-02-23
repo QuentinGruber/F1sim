@@ -64,7 +64,7 @@ public:
 
     void Display_info();
 
-    void Wear(float Distance_lap, float turns);
+    void Wear(float Distance_lap, float bends);
 
     void Tyre_inflation();
 
@@ -73,10 +73,14 @@ public:
     void lower_engine_temperature();
 
     void refill_fuel();
+
     void change_oil();
+
     void fix_DRS();
-    void fix_sysfreinage();
-    void fix_antiblocage();
+
+    void fix_braking_system();
+
+    void fix_anti_lock();
 
 };
 #endif //PROJ_C_CARS_H

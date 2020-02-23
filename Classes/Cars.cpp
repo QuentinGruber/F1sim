@@ -5,7 +5,7 @@
 #include "Cars.h"
 #include "utils.h"
 
-void Cars::Display_info() {
+void Cars::Display_info() { /// Display car's info and if not automated ask user to choose an adjustment
     std::cout << "\n[" << name << "'s info] " << std::endl;
     std::cout << "\nSpeed on the last lap : " << speed << "km/h" << std::endl;
     std::cout << "tyre pressure : " << tyre_pressure << "%" << " {Fix this with 1}" << std::endl;
@@ -23,17 +23,18 @@ void Cars::Display_info() {
         std::cout << "\nChoose if you want to fix something or not ( press 0 ): ";
 }
 
-void Cars::Wear(float Distance_lap, float turns) {
+void Cars::Wear(float Distance_lap, float bends) {
+    /// Applies a degradation to the different elements of the car according to the properties of the car,
+    /// the Circuit_length of the lap and the number of bends.
     // TODO: add some crash option ? with randomness
     int Crash_log = 0;
-    // 0.00003% pressure loss per meter at more than 100km/h and 0.0003% during turns
-    tyre_pressure -= (0.00003f * Distance_lap + 0.0003f * turns) * (speed /
+    // 0.00003% pressure loss per meter at more than 100km/h and 0.0003% during bends
+    tyre_pressure -= (0.00003f * Distance_lap + 0.0003f * bends) * (speed /
                                                                     10);
-    tyre_wear -= (0.00001f * Distance_lap + 0.00001f * turns) * (speed / 10);
+    tyre_wear -= (0.00001f * Distance_lap + 0.00001f * bends) * (speed / 10);
     fuel -= (75 * (Distance_lap / 1000)) / 100; // 75 litres of oil per 100 km(on average)
-    oil -= (0.00001f * Distance_lap) * (motor_temperature/10);
+    oil -= (0.00001f * Distance_lap) * (motor_temperature / 10);
 
-    
 
     if (tyre_pressure <= 0.0) Crash_log = 1;
     if (tyre_wear <= 0.0) Crash_log = 2;
@@ -44,7 +45,9 @@ void Cars::Wear(float Distance_lap, float turns) {
     if (wear_braking_system <= 0.0) Crash_log = 7;
     if (wear_column_direction <= 0.0) Crash_log = 8;
     if (wear_carriage <= 0.0) Crash_log = 9;
-
+    /// If a telemetry element has reached a critical state:
+    /// \n -Send a crash log.
+    /// \n -Set HasCrashed to true.
     switch (Crash_log) {
         case 1 :
             std::cout << "[CRASH " << name << "] His tires reached a critical pressure level !" << std::endl;
@@ -91,8 +94,8 @@ void Cars::Wear(float Distance_lap, float turns) {
     // "Crash time" is a time that we use to identify that a car has crash
 }
 
-void Cars::Generate_speed() {
-    // Minimum average speed = 200 Maximum average speed = 323
+void Cars::Generate_speed() {/// Randomly generate car average speed during a lap
+    /// Minimum average speed = 200 km/h Maximum average speed = 323 km/h
     int Speed = 200 + (utils::rnd_number(1.0, 100.0) * 123) / 100;
     speed = Speed;
     motor_temperature += (Speed / motor_temperature);
@@ -100,7 +103,7 @@ void Cars::Generate_speed() {
 
 
 void Cars::adjustment(int Choice) {
-    // adjust the car in function of the user's choice
+    /// Adjust the car in function of the user's choice
     switch (Choice) {
         case 1 :
             Tyre_inflation();
@@ -129,12 +132,12 @@ void Cars::adjustment(int Choice) {
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 6 :
-            fix_antiblocage();
+            fix_anti_lock();
             penality = 10;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
         case 7 :
-            fix_sysfreinage();
+            fix_braking_system();
             penality = 10;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
@@ -145,7 +148,7 @@ void Cars::adjustment(int Choice) {
 
 
 void Cars::auto_adjustment() {
-    // auto-adjust the car to avoid it to crash
+    /// auto-adjust the car to avoid it to crash
     penality = 0;
     int User_choice;
     if (fuel < 20) {
@@ -165,7 +168,7 @@ void Cars::auto_adjustment() {
 }
 
 void Cars::manual_adjustment() {
-    // Ask user to choose an adjustment
+    /// Ask user to choose an adjustment
     penality = 0;
     int User_choice;
     std::cin >> User_choice;
@@ -175,8 +178,8 @@ void Cars::manual_adjustment() {
 
 
 void Cars::Tyre_inflation() {
-    tyre_pressure += 30; // add +30% of pressure
-    // tyre pressure can't be at 100% if the wear of the tire isn't
+    tyre_pressure += 30; /// add +30% of pressure to tyre
+    /// tyre pressure can't be at 100% if the wear of the tire isn't
     if (tyre_pressure > (100.0 - (100 - tyre_wear) / 2)) {
         tyre_pressure = 100.0 - (100 - tyre_wear) / 2;
     }
@@ -184,25 +187,26 @@ void Cars::Tyre_inflation() {
 }
 
 void Cars::Change_tyre() {
-    // set tyre wear to 100% like new one
+    /// Set tyre wear & tyre pressure to 100% like new one
     tyre_pressure = 100;
     tyre_wear = 100;
     std::cout << "New tyres installed ! ";
 }
 
 void Cars::refill_fuel() {
-    // set fuel to max capacity
+    /// Set fuel to max capacity
     fuel = 95;
     std::cout << "Full fuel tank ! ";
 }
 
 void Cars::change_oil() {
+    /// Set oil to 100%
     oil = 100;
     std::cout << "Engine oil level restored ! " << std::endl;
 }
 
 void Cars::fix_DRS() {
-    // can't be fix to 100%
+    /// Repairs the DRS at 80%.
     if (wear_DRS < 80) {
         wear_DRS = 80;
         std::cout << "DRS fixed at the best we can ! " << std::endl;
@@ -211,8 +215,8 @@ void Cars::fix_DRS() {
     }
 }
 
-void Cars::fix_sysfreinage() {
-    // can't be fix to 100%
+void Cars::fix_braking_system() {
+    /// Repairs the braking system at 80%.
     if (wear_braking_system < 80) {
         wear_braking_system = 80;
         std::cout << "sysfreinage fixed at the best we can ! " << std::endl;
@@ -221,8 +225,8 @@ void Cars::fix_sysfreinage() {
     }
 }
 
-void Cars::fix_antiblocage() {
-    // can't be fix to 100%
+void Cars::fix_anti_lock() {
+    /// Repairs the anti-lock at 80%.
     if (wear_anti_locking < 80) {
         wear_anti_locking = 80;
         std::cout << "antiblocage fixed at the best we can ! " << std::endl;
@@ -232,9 +236,9 @@ void Cars::fix_antiblocage() {
 }
 
 void Cars::lower_engine_temperature() {
-    // cooled the engine by 1 degrees per second at standstill if oil is at 100%
+    /// Cooled the engine by 1 degrees per second at standstill if oil is at 100%
     motor_temperature -= (1 * (oil/100)) * penality;
-    // can't be inferior to 80 degres
+    /// can't be inferior to 80 degres
     if (motor_temperature < 80) {
         motor_temperature = 80;
     }

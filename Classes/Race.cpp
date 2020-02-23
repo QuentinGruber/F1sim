@@ -89,7 +89,7 @@ void Race::start_race() {
         for (int j = 0; j < NB_BOT; j++) {
             if (!bot[j].HasCrashed) {
                 bot[j].Generate_speed();
-                bot[j].global_time += Loop_time(Paul_Ricard.distance, bot[j].speed, bot[j].penality);
+                bot[j].global_time += Loop_time(Paul_Ricard.Circuit_length, bot[j].speed, bot[j].penality);
             }
         }
 
@@ -98,11 +98,11 @@ void Race::start_race() {
         // If they didn't crash it calculate the loop time of the cars
         // and add it to there global time
         if (!Car1.HasCrashed) {
-            Car1.last_loop_time = Loop_time(Paul_Ricard.distance, Car1.speed, Car1.penality);
+            Car1.last_loop_time = Loop_time(Paul_Ricard.Circuit_length, Car1.speed, Car1.penality);
             Car1.global_time += Car1.last_loop_time;
         }
         if (!Car2.HasCrashed) {
-            Car2.last_loop_time = Loop_time(Paul_Ricard.distance, Car2.speed, Car2.penality);
+            Car2.last_loop_time = Loop_time(Paul_Ricard.Circuit_length, Car2.speed, Car2.penality);
             Car2.global_time += Car2.last_loop_time;
 
         }
@@ -113,9 +113,9 @@ void Race::start_race() {
 
         // Apply degration to the player's cars
         if (!Car1.HasCrashed)
-            Car1.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
+            Car1.Wear(Paul_Ricard.Circuit_length, (Paul_Ricard.right_bends + Paul_Ricard.left_bends));
         if (!Car2.HasCrashed)
-            Car2.Wear(Paul_Ricard.distance, (Paul_Ricard.right_turn + Paul_Ricard.left_turn));
+            Car2.Wear(Paul_Ricard.Circuit_length, (Paul_Ricard.right_bends + Paul_Ricard.left_bends));
     }
     // the race end so we display an leaderboard
     Display_learderboard();
