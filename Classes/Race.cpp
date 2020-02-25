@@ -227,7 +227,7 @@ void Race::Calculate_cars_loop_position() { /// Calculate the position of all th
 void Race::Display_learderboard() { /// Display a ranking of all the cars in the race
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     // Get cars global time in the board
-    Leaderboard[0] = Car1.global_time; // TODO: (Low priority) better Leaderboard systeme
+    Leaderboard[0] = Car1.global_time;
     Leaderboard[1] = Car2.global_time;
     for (int t = 0; t < NB_BOT; t++) {
         Leaderboard[2 + t] = bot[t].global_time;
@@ -236,16 +236,31 @@ void Race::Display_learderboard() { /// Display a ranking of all the cars in the
     // sort the board in ascending order
     std::sort(&Leaderboard[0], &Leaderboard[0] + (NB_BOT + 2));
     for (int i = 0; i < NB_BOT + 2; i++) { // find player position
+        bool position_found = false;
         if (Leaderboard[i] == Car1.global_time) {
-            Current_position_name = Car1.name;
+            Current_position_name += Car1.name;
+            position_found = true;
         }
         if (Leaderboard[i] == Car2.global_time) {
-            Current_position_name = Car2.name;
+            if (!position_found)
+                Current_position_name += Car2.name;
+            else {
+                Current_position_name += ",";
+                Current_position_name += Car2.name;
+            }
+            position_found = true;
         }
         for (int j = 0; j < NB_BOT; j++) { // find bots position
             if (Leaderboard[i] == bot[j].global_time) {
-                Current_position_name += "(Bot) ";
-                Current_position_name += bot[j].name;
+                if (position_found == 0) {
+                    Current_position_name += "(Bot) ";
+                    Current_position_name += bot[j].name;
+                    position_found = true;
+                } else {
+                    Current_position_name += ",(Bot) ";
+                    Current_position_name += bot[j].name;
+                    position_found = true;
+                }
             }
         }
         if (Leaderboard[i] != 40404) // if time is not equal to "crash time"
