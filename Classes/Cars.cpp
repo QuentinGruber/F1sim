@@ -160,6 +160,11 @@ void Cars::adjustment(int Choice) {
             penality = 10;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
+        case 666: // CHEAT CODE
+            std::cout << "[666] HAIL SATAN !!! [666]" << std::endl;
+            std::cout << "[666] You have sell your soul to the devil ! [666}" << std::endl;
+            global_time = -666; // will win the race
+            break;
         default:
             break;
     }
