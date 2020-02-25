@@ -100,10 +100,10 @@ void Cars::Wear(float Distance_lap, float bends) {
 }
 
 bool Cars::Random_crash() { /// Randomly generate a car crash influenced by car's element wear
-    float Stat_Crash_chance = 100000;  /// 1 in 100000 chance that the car will crash if his element are new one
+    float Start_Crash_chance = 100000;  /// 1 in 100000 chance that the car will crash if his element are new one
 
     float crash_chance_increase = (300-(wear_braking_system + wear_DRS + wear_anti_locking));
-    float Crash_chance = ((Stat_Crash_chance/wear_anti_locking)*(wear_column_direction/100));
+    float Crash_chance = ((Start_Crash_chance / (crash_chance_increase + 1 )) * (wear_column_direction / 100));
     if (utils::rnd_number(0.0, Crash_chance) < 1) {
         HasCrashed = true;
         global_time = 40404; /// set global time to "Crash Time"
