@@ -144,7 +144,7 @@ void Race::Display_Times() {
 }
 
 void Race::Lap_anim() {/// Display an animation of the progress of the player's cars in the lap
-    int anim_speed = 2000; // TODO: verifier que anim_speed = 20
+    int anim_speed = 20;
     float Temp_max;
     if (Car1.last_loop_time + Car1.penality >= Car2.last_loop_time + Car2.penality)
         Temp_max = Car1.last_loop_time + Car1.penality;

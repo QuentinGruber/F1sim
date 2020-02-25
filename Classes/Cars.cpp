@@ -25,8 +25,8 @@ void Cars::Display_info() { /// Display car's info and if not automated ask user
 
 void Cars::Wear(float Distance_lap, float bends) {
     /// Applies a degradation to the different elements of the car according to the properties of the car,
-    /// the Circuit_length of the lap and the number of bends.
-    // TODO: add a random crash option influencé par l'état du DRS / ANTI lock / brack sys / colum direction
+    /// the length of the lap and the number of bends.
+
     int Crash_log = 0;
     // 0.00003% pressure loss per meter at more than 100km/h and 0.0003% during bends
     tyre_pressure -= (0.00003f * Distance_lap + 0.0003f * bends) * (speed /
@@ -160,9 +160,9 @@ void Cars::adjustment(int Choice) {
             penality = 10;
             std::cout << " Penality : " << penality << "sec" << std::endl;
             break;
-        case 666: // CHEAT CODE
+        case 666: // CHEAT CODE / Easter egg
             std::cout << "[666] HAIL SATAN !!! [666]" << std::endl;
-            std::cout << "[666] You have sell your soul to the devil ! [666}" << std::endl;
+            std::cout << "[666] You sold your soul to the devil ! [666}" << std::endl;
             global_time = -666; // will win the race
             break;
         default:
@@ -172,20 +172,23 @@ void Cars::adjustment(int Choice) {
 
 
 void Cars::auto_adjustment() { /// auto-adjust the car to avoid it to crash
-
-    // TODO : revoir ordre de priorité
-    // TODO: ajouté maintenance des autres élément
     penality = 0;
     int User_choice;
-    if (fuel < 20) {
+    if (fuel < 10) {
         User_choice = 3;
     } else if (tyre_wear < 20) {
         User_choice = 2;
+    } else if (oil < 85) {
+        User_choice = 4;
     } else if (tyre_pressure < 40) {
         User_choice = 1;
-    }else if (oil < 85) {
-        User_choice = 4;
-    }else {
+    } else if (wear_DRS < 70) {
+        User_choice = 5;
+    } else if (wear_anti_locking < 70) {
+        User_choice = 6;
+    } else if (wear_braking_system < 70) {
+        User_choice = 7;
+    } else {
         User_choice = 0;
     }
 
