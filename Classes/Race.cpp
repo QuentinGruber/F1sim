@@ -174,6 +174,7 @@ void Race::Lap_anim() {/// Display an animation of the progress of the player's 
             // Clean screen
             std::cout << "\r";
             std::cout << "                                                                                         "
+                         "                                                                                         "
                       << std::endl;
         } else std::cout << "Time since the beginning of the lap  : " << sec_g << " Speed :X" << anim_speed << '\r';
 
@@ -225,6 +226,7 @@ void Race::Calculate_cars_loop_position() { /// Calculate the position of all th
 }
 
 void Race::Display_learderboard() { /// Display a ranking of all the cars in the race
+    std::cout<<"--[RACE LEADERBOARD]--"<<std::endl;
     float Leaderboard[NB_BOT + 2]; // init leaderboard tab
     // Get cars global time in the board
     Leaderboard[0] = Car1.global_time;
