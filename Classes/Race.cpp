@@ -15,7 +15,7 @@
 // Name list for bots
 char *bot_namelist[21] = {"Bertand", "Bernie", "Olive", "Paul", "Jacob", "Maxon", "Laurent",
                           "Aurelie", "Quentin", "Alban", "Judicael", "Alick", "Alcapone",
-                          "Anne marie", "Cyril", "Emma", "Mohamed", "Louise", "Clara", "Lancelot",
+                          "Estelle", "Cyril", "Emma", "Mohamed", "Barack", "Clara", "Lancelot",
                           "Pierre"};
 /// location "Le Castellet",France
 Circuit Paul_Ricard; 
