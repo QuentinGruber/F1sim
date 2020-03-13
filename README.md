@@ -27,15 +27,15 @@ F1sim.exe has been build in Debug folder or Release folder , it depend on which 
 
 
 
-## télémétries (10 éléments)
+## telemetry (10 items)
 
-* Pression des pneus
-* Usure des pneus
-* Température du moteur
-* Taux d'essence
-* Taux d'huile
-* Usure du systeme de freinage
-* Usure du DRS
-* Usure de l'antiblocage au freinage
-* Usure de la colonne de direction
-* Etat de la carroserie
+* Tyre pressure
+* Tire wear
+* Motor temperature
+* Fuel rate
+* Oil rate
+* Brake system wear
+* Wear of the DRS
+* Anti-lock Brake System (ABS) wear during braking
+* Wear of the steering column
+* Condition of the bodywork
