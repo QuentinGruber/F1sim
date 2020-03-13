@@ -25,8 +25,6 @@ Need :
 * Then generate F1sim
 F1sim.exe has been build in Debug folder or Release folder , it depend on which one you choosed.
 
-
-
 ## telemetry (10 items)
 
 * Tyre pressure
@@ -39,3 +37,8 @@ F1sim.exe has been build in Debug folder or Release folder , it depend on which 
 * Anti-lock Brake System (ABS) wear during braking
 * Wear of the steering column
 * Condition of the bodywork
+
+
+## Docs
+
+Click [here](https://quentingruber.github.io/F1sim/)
